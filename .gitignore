@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Source pitch videos (regenerate frames via npm run extract-frames)
+/*.mp4

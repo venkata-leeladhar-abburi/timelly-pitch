@@ -1,49 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+body {
+  background: #1c1f1a;
+  color: #f0ede6;
+  overflow-x: hidden;
+}
+
+/* Section divider — green line that draws left to right */
+.section-divider {
+  height: 1px;
+  background: #3cb55a;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Canvas base */
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Custom cursor */
+#cursor {
+  width: 12px;
+  height: 12px;
+  background: #3cb55a;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: transform 0.15s ease;
+}
+
+#cursor.hover {
+  transform: translate(-50%, -50%) scale(2.5);
+}
+
+/* Clip-path text reveal utility */
+.text-reveal {
+  clip-path: inset(0 100% 0 0);
+}
+
+.text-reveal.revealed {
+  clip-path: inset(0 0% 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #1c1f1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #3cb55a;
+  border-radius: 2px;
+}
+
+/* Hide cursor on touch */
+@media (pointer: coarse) {
+  #cursor {
+    display: none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
