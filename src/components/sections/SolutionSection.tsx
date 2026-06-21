@@ -137,90 +137,192 @@ export default function SolutionSection() {
   const card2Ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // 1. Initial idle float for chaos items
-      gsap.set('.chaos-item', { xPercent: -50, yPercent: -50 })
-      const chaosItems = document.querySelectorAll('.chaos-item')
-      chaosItems.forEach((item, i) => {
-        gsap.to(item, {
-          y: `+=${Math.random() * 20 - 10}`,
-          rotation: `+=${Math.random() * 6 - 3}`,
-          duration: 2 + Math.random() * 2,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          delay: i * 0.2,
+    const mm = gsap.matchMedia()
+
+    // Pinned scrub animation only runs on tablet/desktop — on mobile the
+    // section flows normally (see mobile-only markup below) since a
+    // pinned 400vh scrub with this much content doesn't fit a small viewport.
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        // 1. Initial idle float for chaos items
+        gsap.set('.chaos-item', { xPercent: -50, yPercent: -50 })
+        const chaosItems = document.querySelectorAll('.chaos-item')
+        chaosItems.forEach((item, i) => {
+          gsap.to(item, {
+            y: `+=${Math.random() * 20 - 10}`,
+            rotation: `+=${Math.random() * 6 - 3}`,
+            duration: 2 + Math.random() * 2,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            delay: i * 0.2,
+          })
         })
-      })
 
-      // 2. Scrub timeline for backwards/forwards scrolling animation
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: '+=400%', // 400vh scroll for smooth pacing
-          scrub: 1, // smooth scrubbing effect
-          pin: true,
-        },
-      })
+        // 2. Scrub timeline for backwards/forwards scrolling animation
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top top',
+            end: '+=400%', // 400vh scroll for smooth pacing
+            scrub: 1, // smooth scrubbing effect
+            pin: true,
+          },
+        })
 
-      // Frame 0-2: Suck chaos into center and fade out
-      tl.to(
-        chaosContainerRef.current,
-        {
-          scale: 0.2,
-          opacity: 0,
-          duration: 2,
-          ease: 'power2.in',
-        },
-        0
-      )
+        // Frame 0-2: Suck chaos into center and fade out
+        tl.to(
+          chaosContainerRef.current,
+          {
+            scale: 0.2,
+            opacity: 0,
+            duration: 2,
+            ease: 'power2.in',
+          },
+          0
+        )
 
-      // Frame 2-3.5: Transition text appears (Huge Typography like Image 2)
-      tl.fromTo(
-        transitionTextRef.current,
-        { scale: 0.7, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1.5, ease: 'back.out(1.2)' },
-        2
-      )
+        // Frame 2-3.5: Transition text appears (Huge Typography like Image 2)
+        tl.fromTo(
+          transitionTextRef.current,
+          { scale: 0.7, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 1.5, ease: 'back.out(1.2)' },
+          2
+        )
 
-      // Frame 4.5-6: Transition text disappears
-      tl.to(
-        transitionTextRef.current,
-        { scale: 1.2, opacity: 0, duration: 1.5, ease: 'power2.in' },
-        4.5
-      )
+        // Frame 4.5-6: Transition text disappears
+        tl.to(
+          transitionTextRef.current,
+          { scale: 1.2, opacity: 0, duration: 1.5, ease: 'power2.in' },
+          4.5
+        )
 
-      // Make cards container visible
-      tl.set(cardsContainerRef.current, { opacity: 1 }, 4.5)
+        // Make cards container visible
+        tl.set(cardsContainerRef.current, { opacity: 1 }, 4.5)
 
-      // Frame 5.5-7.5: Cards slide in from bottom
-      tl.fromTo(
-        [card1Ref.current, card2Ref.current],
-        { y: 150, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 2,
-          stagger: 0.2,
-          ease: 'power3.out',
-        },
-        5.5
-      )
+        // Frame 5.5-7.5: Cards slide in from bottom
+        tl.fromTo(
+          [card1Ref.current, card2Ref.current],
+          { y: 150, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 2,
+            stagger: 0.2,
+            ease: 'power3.out',
+          },
+          5.5
+        )
 
-      // Frame 7.5-10: Hold cards
-      tl.to({}, { duration: 2.5 })
-    }, containerRef)
+        // Frame 7.5-10: Hold cards
+        tl.to({}, { duration: 2.5 })
+      }, containerRef)
 
-    return () => ctx.revert()
+      return () => ctx.revert()
+    })
+
+    return () => mm.revert()
   }, [])
 
   return (
     <>
-      {/* Wave SVG Texture overlay for background */}
-      <section 
-        ref={containerRef} 
-        className="relative h-screen w-full overflow-hidden"
+      {/* ───────────────── Mobile — static, normal-flow layout ───────────────── */}
+      <section
+        className="relative block w-full overflow-hidden px-6 py-20 md:hidden"
+        style={{ backgroundColor: BG_COLOR }}
+      >
+        <svg
+          className="pointer-events-none absolute inset-0 h-full w-full opacity-10"
+          preserveAspectRatio="xMidYMid slice"
+          viewBox="0 0 1200 600"
+          fill="none"
+          stroke={CREAM}
+          strokeWidth="0.5"
+          aria-hidden
+        >
+          <path d="M-50 120 C 250 40, 450 220, 750 120 S 1250 60, 1300 180" />
+          <path d="M-50 480 C 300 400, 520 560, 820 480 S 1250 420, 1300 540" />
+        </svg>
+
+        <div className="relative z-10 flex flex-col items-center text-center">
+          <h2
+            className="font-display text-[clamp(36px,9vw,48px)] tracking-tight uppercase"
+            style={{ color: CREAM }}
+          >
+            THE SOLUTION<span style={{ color: LIME }}>.</span>
+          </h2>
+
+          <h3 className="mt-6 font-display text-[clamp(30px,8vw,40px)] leading-[1.05] tracking-tight uppercase" style={{ color: CREAM }}>
+            SCHOOLS DON&apos;T NEED <span style={{ color: LIME }}>MORE</span> SOFTWARE.
+            <br />
+            THEY NEED ONE <span style={{ color: LIME }}>SYSTEM</span> THAT ACTUALLY WORKS.
+          </h3>
+
+          <p className="font-body text-base mt-6 leading-relaxed" style={{ color: CREAM, opacity: 0.75 }}>
+            Timelly unifies administration, communication, academics, finance, and parent engagement into a single operating system designed for modern schools.
+          </p>
+
+          {/* Chaos tags — static flex-wrap, no absolute positioning */}
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            {CHAOS_ITEMS.map((item, i) => (
+              <span
+                key={i}
+                className="rounded-full border px-4 py-2 font-body text-xs font-semibold"
+                style={{
+                  transform: `rotate(${item.rotation / 2}deg)`,
+                  backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                  borderColor: 'rgba(255, 255, 255, 0.1)',
+                  color: CREAM,
+                }}
+              >
+                {item.label}
+              </span>
+            ))}
+          </div>
+
+          {/* Transition statement — condensed */}
+          <h2 className="mt-16 font-display text-[clamp(28px,7vw,36px)] leading-[1.15] tracking-tight uppercase" style={{ color: CREAM }}>
+            BUILT FOR <span style={{ color: LIME }}>PRINCIPALS.</span> LOVED BY{' '}
+            <span style={{ color: LIME }}>TEACHERS.</span> TRUSTED BY{' '}
+            <span style={{ color: LIME }}>PARENTS.</span>
+          </h2>
+
+          {/* Feature cards — stacked, normal flow, fully scrollable */}
+          <div className="mt-12 flex w-full flex-col gap-6">
+            {[CARD_1_ITEMS, CARD_2_ITEMS].map((cardItems, cardIdx) => (
+              <div
+                key={cardIdx}
+                className="rounded-[24px] p-6 text-left shadow-[0_24px_60px_rgba(0,0,0,0.3)]"
+                style={{ backgroundColor: 'rgba(235,233,223,0.05)', border: `1px solid ${CARD_BORDER}` }}
+              >
+                <ul className="flex flex-col gap-5">
+                  {cardItems.map((item, i) => (
+                    <li key={i} className="flex items-center gap-4">
+                      <div
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
+                        style={{ backgroundColor: 'rgba(235, 233, 223, 0.05)', border: `1px solid ${CARD_BORDER}` }}
+                      >
+                        <item.icon />
+                      </div>
+                      <span
+                        className="font-body text-xs font-bold tracking-widest uppercase"
+                        style={{ color: CREAM }}
+                      >
+                        {item.label}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────── Desktop/tablet — pinned scrub animation ───────────────── */}
+      <section
+        ref={containerRef}
+        className="relative hidden h-screen w-full overflow-hidden md:block"
         style={{ backgroundColor: BG_COLOR }}
       >
         <svg

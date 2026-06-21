@@ -67,7 +67,7 @@ function StepIcon({ variant, index }: { variant: Step['variant']; index: number 
   if (variant === 'logo') {
     return (
       <div
-        className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full shadow-[0_12px_32px_rgba(60,181,90,0.3)] transition-transform duration-300 hover:scale-110"
+        className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full shadow-[0_12px_32px_rgba(60,181,90,0.3)] transition-transform duration-300 hover:scale-110 md:h-28 md:w-28"
         style={{ backgroundColor: GREEN }}
       >
         <TimellyMark />
@@ -76,7 +76,7 @@ function StepIcon({ variant, index }: { variant: Step['variant']; index: number 
   }
   return (
     <div
-      className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full bg-white transition-transform duration-300 hover:scale-110"
+      className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white transition-transform duration-300 hover:scale-110 md:h-28 md:w-28"
       style={{ border: `1.5px solid ${INK}1F`, boxShadow: '0 12px 32px rgba(28,31,26,0.04)' }}
     >
       {index === 0 && <BriefcaseIcon />}
@@ -154,12 +154,12 @@ export default function JourneySection() {
           </h2>
         </div>
 
-        {/* Timeline container */}
-        <div className="relative flex items-start justify-between gap-6 h-[380px]">
-          {/* Connecting Winding Roadmap Path */}
-          <div 
+        {/* Timeline container — vertical stack on mobile, winding road on desktop */}
+        <div className="relative flex flex-col items-stretch gap-8 md:h-[380px] md:flex-row md:items-start md:justify-between md:gap-6">
+          {/* Connecting Winding Roadmap Path — desktop only */}
+          <div
             ref={lineRef}
-            className="absolute inset-x-0 top-0 z-0 pointer-events-none" 
+            className="absolute inset-x-0 top-0 z-0 hidden pointer-events-none md:block"
             style={{ transformOrigin: 'left center' }}
           >
             <svg
@@ -195,31 +195,39 @@ export default function JourneySection() {
             </svg>
           </div>
 
+          {/* Connecting vertical line — mobile only, runs through icon centers */}
+          <div
+            className="absolute left-[52px] top-12 bottom-12 z-0 w-[3px] rounded-full md:hidden"
+            style={{ backgroundColor: `${GREEN}30` }}
+          />
+
           {STEPS.map((step, i) => (
             <div
               key={step.title}
               ref={(el) => {
                 itemRefs.current[i] = el
               }}
-              className={`relative z-10 flex w-[22%] flex-col items-center rounded-2xl border border-[#1C1F1A]/15 bg-white p-6 text-center shadow-[0_12px_32px_rgba(28,31,26,0.05)] transition-all duration-300 hover:scale-105 hover:bg-[#F9F8F5] hover:border-[#1C1F1A]/25 hover:shadow-[0_16px_48px_rgba(28,31,26,0.08)] ${
-                i % 2 === 0 ? 'mt-20' : 'mt-0'
+              className={`relative z-10 flex w-full flex-row items-center gap-5 rounded-2xl border border-[#1C1F1A]/15 bg-white p-5 text-left shadow-[0_12px_32px_rgba(28,31,26,0.05)] transition-all duration-300 hover:scale-[1.02] hover:bg-[#F9F8F5] hover:border-[#1C1F1A]/25 hover:shadow-[0_16px_48px_rgba(28,31,26,0.08)] md:w-[22%] md:flex-col md:items-center md:p-6 md:text-center ${
+                i % 2 === 0 ? 'md:mt-20' : 'md:mt-0'
               }`}
             >
-              <StepIcon variant={step.variant} index={i} />
-              <h3
-                className="mt-8 font-body text-lg font-bold leading-snug text-[#1C1F1A] md:text-xl"
-              >
-                {step.title}
-                {step.highlight && (
-                  <>
-                    {' '}
-                    <span className="font-extrabold" style={{ color: GREEN }}>{step.highlight}</span>
-                  </>
-                )}
-              </h3>
-              <p className="mt-3 font-mono text-sm tracking-widest text-[#1C1F1A]/50 font-medium">
-                {step.range}
-              </p>
+              <div className="shrink-0">
+                <StepIcon variant={step.variant} index={i} />
+              </div>
+              <div>
+                <h3 className="font-body text-base font-bold leading-snug text-[#1C1F1A] md:mt-8 md:text-lg lg:text-xl">
+                  {step.title}
+                  {step.highlight && (
+                    <>
+                      {' '}
+                      <span className="font-extrabold" style={{ color: GREEN }}>{step.highlight}</span>
+                    </>
+                  )}
+                </h3>
+                <p className="mt-2 font-mono text-xs tracking-widest text-[#1C1F1A]/50 font-medium md:mt-3 md:text-sm">
+                  {step.range}
+                </p>
+              </div>
             </div>
           ))}
         </div>

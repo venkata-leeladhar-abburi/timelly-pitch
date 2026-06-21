@@ -345,69 +345,64 @@ export default function TractionSection() {
         />
       </div>
 
-      {/* ── Mobile Timeline (Vertical straight list) ─────────────────────── */}
-      <div className="relative md:hidden px-[6vw] space-y-16 pb-12">
-        {/* Dynamic height line that draws itself */}
+      {/* ── Mobile Timeline (icon + line spine, cards centered below each icon) ── */}
+      <div className="relative md:hidden px-[6vw] pb-12">
+        {/* Dynamic height line that draws itself, running down the center spine */}
         <div
           ref={mobileLineRef}
-          className="absolute top-0 bottom-0 w-[2px]"
+          className="absolute top-0 bottom-0 left-1/2 w-[2px] -translate-x-1/2"
           style={{
-            left: '44px',
             background: `linear-gradient(to bottom, ${LIME}, ${LIME_MID}, transparent)`,
             transformOrigin: 'top center',
           }}
         />
 
-        {STEPS.map((step, i) => (
-          <div
-            key={i}
-            className="traction-node-group relative flex items-start pl-24"
-          >
-            {/* Circle centered on the timeline line */}
+        <div className="relative flex flex-col items-center gap-14">
+          {STEPS.map((step, i) => (
             <div
-              className="node-circle absolute flex items-center justify-center rounded-full"
-              style={{
-                width: '52px',
-                height: '52px',
-                background: 'rgba(235,233,223,0.06)',
-                border: `1.5px solid ${LIME}`,
-                boxShadow: `0 0 16px rgba(180,212,41,0.15)`,
-                left: '44px',
-                transform: 'translateX(-50%)',
-                top: '4px',
-                zIndex: 10,
-              }}
+              key={i}
+              className="traction-node-group relative flex w-full max-w-sm flex-col items-center"
             >
-              <div className="flex items-center justify-center">
-                <step.Icon />
-              </div>
-            </div>
-
-            {/* Content card on the right */}
-            <div className="traction-card w-full">
+              {/* Circle centered on the timeline spine */}
               <div
-                className="rounded-2xl p-6 transition-all duration-300 hover:border-[#B4D429] hover:shadow-[0_0_20px_rgba(180,212,41,0.1)]"
+                className="node-circle relative z-10 mb-5 flex items-center justify-center rounded-full"
                 style={{
-                  background: CARD_BG,
-                  border: `1px solid ${CARD_BDR}`,
-                  backdropFilter: 'blur(10px)',
+                  width: '52px',
+                  height: '52px',
+                  background: BG,
+                  border: `1.5px solid ${LIME}`,
+                  boxShadow: `0 0 16px rgba(180,212,41,0.15)`,
                 }}
               >
-                <div className="flex justify-between items-center mb-3">
-                  <span className="font-mono text-[12px] uppercase tracking-widest text-[#B4D429]">
-                    {step.label}
-                  </span>
-                  <span className="font-mono text-[15px] text-[#B4D429] font-bold">
-                    {step.num}
-                  </span>
+                <step.Icon />
+              </div>
+
+              {/* Content card — centered, full width up to max-w-sm */}
+              <div className="traction-card relative z-10 w-full">
+                <div
+                  className="rounded-2xl p-6 text-center transition-all duration-300 hover:border-[#B4D429] hover:shadow-[0_0_20px_rgba(180,212,41,0.1)]"
+                  style={{
+                    background: CARD_BG,
+                    border: `1px solid ${CARD_BDR}`,
+                    backdropFilter: 'blur(10px)',
+                  }}
+                >
+                  <div className="flex flex-col items-center gap-2 mb-3">
+                    <span className="font-mono text-[15px] text-[#B4D429] font-bold">
+                      {step.num}
+                    </span>
+                    <span className="font-mono text-[12px] uppercase tracking-widest text-[#B4D429]">
+                      {step.label}
+                    </span>
+                  </div>
+                  <p className="font-body text-[16px] leading-relaxed" style={{ color: DIM }}>
+                    <Rich text={step.body} />
+                  </p>
                 </div>
-                <p className="font-body text-[16px] leading-relaxed" style={{ color: DIM }}>
-                  <Rich text={step.body} />
-                </p>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )

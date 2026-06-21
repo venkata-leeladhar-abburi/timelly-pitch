@@ -145,20 +145,20 @@ export default function HeroSection() {
               ref={(el) => {
                 textRefs.current[i] = el
               }}
-              className={`absolute bottom-[12%] px-12 z-10 ${
+              className={`absolute bottom-[14%] sm:bottom-[12%] px-6 sm:px-8 md:px-12 z-10 w-full ${
                 beat.align === 'center'
-                  ? 'left-1/2 -translate-x-1/2 text-center w-full'
+                  ? 'left-1/2 -translate-x-1/2 text-center'
                   : beat.align === 'left'
-                    ? 'left-12 text-left max-w-2xl'
-                    : 'right-12 text-right max-w-2xl'
+                    ? 'left-0 text-center sm:text-left max-w-full sm:max-w-xl md:max-w-2xl'
+                    : 'right-0 text-center sm:text-right max-w-full sm:max-w-xl md:max-w-2xl ml-auto'
               }`}
             >
               {beat.label && (
-                <div className="font-mono text-xs text-green tracking-[0.3em] mb-4">
+                <div className="font-mono text-[10px] sm:text-xs text-green tracking-[0.2em] sm:tracking-[0.3em] mb-2 sm:mb-4">
                   {beat.label}
                 </div>
               )}
-              <h1 className="font-display text-hero text-text-warm leading-none mb-4">
+              <h1 className="font-display text-hero text-text-warm leading-none mb-2 sm:mb-4">
                 {beat.headline.map((line, j) => (
                   <span key={j} className="block">
                     {line}
@@ -166,7 +166,7 @@ export default function HeroSection() {
                 ))}
               </h1>
               {beat.body && (
-                <p className="font-body font-light text-lg text-text-dim whitespace-pre-line">
+                <p className="font-body font-light text-sm sm:text-base md:text-lg text-text-dim whitespace-pre-line">
                   {beat.body}
                 </p>
               )}
@@ -174,7 +174,7 @@ export default function HeroSection() {
           ))}
 
           {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
+          <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
             <div className="w-px h-12 bg-green animate-pulse" />
           </div>
         </div>

@@ -5,8 +5,6 @@ import Image from 'next/image'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { FOUNDER } from '@/lib/constants'
 
-const OLIVE = '#7E8B4F'
-
 export default function FounderSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const nameRefs = useRef<(HTMLSpanElement | null)[]>([])
@@ -84,31 +82,33 @@ export default function FounderSection() {
       />
 
       {/* Readability washes for the text columns */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#EFEDE5]/85 via-transparent to-[#EFEDE5]/70" />
+      {/* Mobile: dark bottom-up wash so text sits in a legible band at the foot of the photo */}
+      <div className="absolute inset-x-0 bottom-0 h-3/5 pointer-events-none bg-gradient-to-t from-[#1C1F1A]/90 via-[#1C1F1A]/45 to-transparent md:hidden" />
+      {/* Desktop: original light side wash */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#EFEDE5]/85 via-transparent to-[#EFEDE5]/70 hidden md:block" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex h-screen w-full max-w-[1750px] items-center justify-between gap-8 px-8 md:px-16 lg:px-24 xl:px-32">
+      <div className="relative z-10 mx-auto flex h-screen w-full max-w-[1750px] items-end justify-center gap-8 px-6 pb-16 md:items-center md:justify-between md:px-16 md:pb-0 lg:px-24 xl:px-32">
         {/* LEFT — identity */}
         <div className="max-w-2xl">
           {/* Label */}
           <div
             ref={labelRef}
-            className="mb-6 flex items-center gap-4 font-mono text-xs font-medium tracking-[0.35em]"
-            style={{ color: OLIVE }}
+            className="mb-6 flex items-center gap-4 font-mono text-xs font-medium tracking-[0.35em] text-[#A9B97B] md:text-[#7E8B4F]"
           >
             <span>FOUNDER</span>
-            <span className="h-px w-10" style={{ backgroundColor: OLIVE }} />
+            <span className="h-px w-10 bg-[#A9B97B] md:bg-[#7E8B4F]" />
           </div>
 
           {/* Name */}
-          <h2 className="font-serif font-medium leading-[0.92] text-bg-primary">
+          <h2 className="font-serif font-medium leading-[0.92] text-text-warm md:text-bg-primary">
             {['SREERAMA', 'KARTHEEK'].map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <span
                   ref={(el) => {
                     nameRefs.current[i] = el
                   }}
-                  className="block text-[clamp(44px,7.2vw,104px)] tracking-tight"
+                  className="block text-[clamp(40px,9vw,104px)] tracking-tight"
                 >
                   {line}
                 </span>
@@ -119,16 +119,16 @@ export default function FounderSection() {
                 ref={(el) => {
                   nameRefs.current[2] = el
                 }}
-                className="block text-[clamp(44px,7.2vw,104px)] tracking-tight pb-4 pr-4"
+                className="block text-[clamp(40px,9vw,104px)] tracking-tight pb-4 pr-4"
               >
-                RAJ<span style={{ color: OLIVE }}>.</span>
+                RAJ<span className="text-[#A9B97B] md:text-[#7E8B4F]">.</span>
               </span>
             </span>
           </h2>
 
           {/* Subtitle */}
           <div ref={subRef} className="mt-7">
-            <p className="font-body text-lg font-medium tracking-wide text-bg-primary/70">
+            <p className="font-body text-base md:text-lg font-medium tracking-wide text-text-warm/75 md:text-bg-primary/70">
               {FOUNDER.title}, Timelly
             </p>
           </div>
@@ -136,8 +136,7 @@ export default function FounderSection() {
           {/* Signature */}
           <div
             ref={signRef}
-            className="mt-4 font-script text-3xl md:text-4xl"
-            style={{ color: OLIVE }}
+            className="mt-4 font-script text-3xl md:text-4xl text-[#A9B97B] md:text-[#7E8B4F]"
           >
             {FOUNDER.name}
           </div>
@@ -195,7 +194,7 @@ export default function FounderSection() {
                 .getElementById('section-problem')
                 ?.scrollIntoView({ behavior: 'smooth' })
             }
-            className="mt-8 flex h-12 w-12 items-center justify-center rounded-full border border-[#1C1F1A]/20 text-[#1C1F1A] transition-all duration-300 hover:bg-[#1C1F1A] hover:text-[#EFEDE5] hover:border-[#1C1F1A] hover:scale-110 shadow-sm"
+            className="mt-8 flex h-12 w-12 items-center justify-center rounded-full border border-[#1C1F1A]/20 text-[#1C1F1A] shadow-sm transition-[transform,background-color,border-color,color] duration-200 ease-out hover:bg-[#1C1F1A] hover:text-[#EFEDE5] hover:border-[#1C1F1A] hover:scale-110 active:scale-95"
           >
             <span className="text-lg leading-none">→</span>
           </button>

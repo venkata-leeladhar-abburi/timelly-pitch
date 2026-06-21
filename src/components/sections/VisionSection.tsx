@@ -106,13 +106,13 @@ function StudentProfile() {
 // ─── Ecosystem Diagram ────────────────────────────────────────────────────────
 function EcosystemDiagram() {
   return (
-    <div className="flex gap-8 items-start w-full">
+    <div className="flex flex-col gap-6 items-stretch w-full sm:flex-row sm:gap-8 sm:items-start">
       <div className="flex flex-col items-center gap-0 shrink-0">
         {LADDER.map((item, i) => (
-          <div key={item} className="flex flex-col items-center">
+          <div key={item} className="flex flex-col items-center w-full">
             <div
-              className="rounded-xl px-6 py-3 text-center font-mono text-sm font-bold tracking-widest uppercase"
-              style={{ background: i === 0 ? LIME_DIM : SUBTLE, border: `1px solid ${i === 0 ? LIME_MID : SUBTLE}`, color: i === 0 ? LIME : CREAM, minWidth: '190px' }}
+              className="w-full rounded-xl px-4 py-3 text-center font-mono text-xs font-bold tracking-widest uppercase sm:min-w-[190px] sm:px-6 sm:text-sm"
+              style={{ background: i === 0 ? LIME_DIM : SUBTLE, border: `1px solid ${i === 0 ? LIME_MID : SUBTLE}`, color: i === 0 ? LIME : CREAM }}
             >
               {item}
             </div>
@@ -158,6 +158,10 @@ export default function VisionSection() {
   const p3RightRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // The horizontal-scroll pinned track only makes sense on tablet/desktop —
+    // on mobile the section renders as a normal static stack instead (below).
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return
+
     const ctx = gsap.context(() => {
       const track  = trackRef.current
       const section = sectionRef.current
@@ -245,12 +249,109 @@ export default function VisionSection() {
   }, [terminalActive])
 
   return (
-    <section
-      ref={sectionRef}
-      id="section-vision"
-      className="relative"
-      style={{ height: '350vh', backgroundColor: BG }}
-    >
+    <>
+      {/* ───────────────── Mobile — static vertical stack ───────────────── */}
+      <div className="relative block w-full px-6 py-20 md:hidden" style={{ backgroundColor: BG }}>
+        <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.035]" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 700" fill="none" stroke={CREAM} strokeWidth="0.6" aria-hidden>
+          <path d="M-50 200 C 350 80, 600 380, 900 200 S 1350 80, 1400 300" />
+          <path d="M-50 500 C 300 380, 580 600, 900 500 S 1350 380, 1400 600" />
+        </svg>
+
+        <div className="relative z-10">
+          <h2 className="mb-10 font-display text-[clamp(36px,9vw,48px)] tracking-tight uppercase text-center" style={{ color: CREAM }}>
+            THE VISION<span style={{ color: LIME }}>.</span>
+          </h2>
+
+          {[
+            {
+              num: '01',
+              eyebrow: 'AI-NATIVE SCHOOLS',
+              heading: [['THE', 'SCHOOL'], ['THAT', 'RUNS', 'ON'], ['COMMANDS.']],
+              limeWords: new Set(['COMMANDS.']),
+              body: (
+                <>
+                  <p className="font-body text-sm leading-relaxed" style={{ color: DIM }}>What if managing a school felt as simple as having a conversation?</p>
+                  <div className="space-y-1 pl-3 border-l-2 mt-3" style={{ borderColor: LIME_MID }}>
+                    {['No dashboards.', 'No complex workflows.', 'No searching through menus.'].map(t => (
+                      <p key={t} className="font-body text-xs" style={{ color: DIM }}>{t}</p>
+                    ))}
+                  </div>
+                  <p className="font-body text-sm font-semibold mt-3" style={{ color: CREAM }}>Just ask.</p>
+                </>
+              ),
+              visual: <Terminal active={terminalActive} />,
+              footer: <>From <span style={{ color: CREAM }}>software that schools use</span> to <span style={{ color: LIME }}>intelligence that schools rely on.</span></>,
+            },
+            {
+              num: '02',
+              eyebrow: 'AI AFTER SCHOOL',
+              heading: [['THE', 'LEARNING'], ['CONTINUES'], ['AT', 'HOME.']],
+              limeWords: new Set(['CONTINUES']),
+              body: (
+                <>
+                  <p className="font-body text-sm leading-relaxed" style={{ color: DIM }}>Every child learns differently.</p>
+                  <p className="font-body text-sm leading-relaxed mt-3" style={{ color: DIM }}>
+                    Timelly becomes an AI companion that guides students beyond the classroom and helps parents support the right skills at the right age.
+                  </p>
+                  <p className="font-body text-sm font-semibold mt-3" style={{ color: CREAM }}>Learning no longer ends when school ends.</p>
+                </>
+              ),
+              visual: <StudentProfile />,
+              footer: <><span style={{ color: LIME }}>An AI mentor for every student.</span> A trusted guide for every parent.</>,
+            },
+            {
+              num: '03',
+              eyebrow: 'EDUCATION INFRASTRUCTURE',
+              heading: [['ONE', 'PLATFORM.'], ['EVERY', 'INSTITUTION.'], ['EVERY', 'LEARNER.']],
+              limeWords: new Set(['ONE']),
+              body: (
+                <>
+                  <p className="font-body text-sm leading-relaxed" style={{ color: DIM }}>Timelly starts with schools.</p>
+                  <p className="font-body text-sm leading-relaxed mt-3" style={{ color: DIM }}>
+                    But the future extends beyond K-12 education — the same infrastructure can power intermediate colleges, degree colleges, universities, and skill development institutions.
+                  </p>
+                  <p className="font-body text-sm font-semibold mt-3" style={{ color: CREAM }}>One connected ecosystem for lifelong learning.</p>
+                </>
+              ),
+              visual: <EcosystemDiagram />,
+              footer: <>Building the <span style={{ color: LIME }}>operating system for education.</span> Not just for schools. For <span style={{ color: CREAM }}>an entire generation.</span></>,
+            },
+          ].map((panel, pi) => (
+            <div key={pi} className={pi > 0 ? 'mt-16 pt-12' : ''} style={pi > 0 ? { borderTop: `1px solid ${SUBTLE}` } : undefined}>
+              <div className="mb-4 flex items-center gap-3">
+                <span className="rounded-full px-3 py-1 font-mono text-[10px] font-bold tracking-[0.25em] uppercase" style={{ backgroundColor: LIME_DIM, color: LIME, border: `1px solid ${LIME_MID}` }}>VISION {panel.num}</span>
+                <span className="font-mono text-[10px] tracking-widest uppercase" style={{ color: DIM }}>{panel.eyebrow}</span>
+              </div>
+
+              <div className="mb-5">
+                {panel.heading.map((line, i) => (
+                  <div key={i} className="flex flex-wrap gap-x-[0.22em]">
+                    {line.map((w, j) => (
+                      <span key={j} className="font-display text-[clamp(28px,9vw,40px)] leading-[0.95] tracking-tight uppercase" style={{ color: panel.limeWords.has(w) ? LIME : CREAM }}>
+                        {w}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mb-6">{panel.body}</div>
+
+              <div className="mb-6">{panel.visual}</div>
+
+              <p className="font-body text-sm leading-relaxed" style={{ color: DIM }}>{panel.footer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ───────────────── Desktop/tablet — pinned horizontal scroll ───────────────── */}
+      <section
+        ref={sectionRef}
+        id="section-vision"
+        className="relative hidden md:block"
+        style={{ height: '350vh', backgroundColor: BG }}
+      >
       <div ref={stickyRef} className="sticky top-0 h-screen overflow-hidden">
 
         {/* Subtle texture overlay */}
@@ -439,6 +540,7 @@ export default function VisionSection() {
           ))}
         </div>
       </div>
-    </section>
+      </section>
+    </>
   )
 }
