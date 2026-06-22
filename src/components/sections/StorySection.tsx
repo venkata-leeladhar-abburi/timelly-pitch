@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { useParallax } from '@/hooks/useParallax'
 
 const GREEN = '#86B25C'
 
@@ -69,6 +70,9 @@ export default function StorySection() {
   const sectionRef = useRef<HTMLElement>(null)
   const labelRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLLIElement | null)[]>([])
+  const imageWrapRef = useRef<HTMLDivElement>(null)
+
+  useParallax(sectionRef, imageWrapRef, 18)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -107,15 +111,17 @@ export default function StorySection() {
       id="section-story"
       className="relative min-h-screen w-full overflow-hidden bg-black"
     >
-      {/* Dark dramatic portrait — full bleed */}
-      <Image
-        src="/assets/founder-dark.jpg"
-        alt="Sreerama Kartheek Raj"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center select-none"
-      />
+      {/* Dark dramatic portrait — full bleed, parallaxed */}
+      <div ref={imageWrapRef} className="absolute inset-0 -top-[9%] -bottom-[9%]">
+        <Image
+          src="/assets/founder-dark.jpg"
+          alt="Sreerama Kartheek Raj"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center select-none"
+        />
+      </div>
 
       {/* Left darkening wash so the list reads over the portrait */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent pointer-events-none" />

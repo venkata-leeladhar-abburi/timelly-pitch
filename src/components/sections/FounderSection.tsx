@@ -4,6 +4,8 @@ import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { FOUNDER } from '@/lib/constants'
+import { useParallax } from '@/hooks/useParallax'
+import { useMagneticHover } from '@/hooks/useMagneticHover'
 
 export default function FounderSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -12,6 +14,11 @@ export default function FounderSection() {
   const subRef = useRef<HTMLDivElement>(null)
   const signRef = useRef<HTMLDivElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
+  const imageWrapRef = useRef<HTMLDivElement>(null)
+  const continueBtnRef = useRef<HTMLButtonElement>(null)
+
+  useParallax(sectionRef, imageWrapRef, 18)
+  useMagneticHover(continueBtnRef, 0.4)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -71,15 +78,17 @@ export default function FounderSection() {
       className="relative w-full min-h-screen overflow-hidden"
       style={{ backgroundColor: '#EFEDE5' }}
     >
-      {/* Founder photo — full bleed, person stays centered */}
-      <Image
-        src="/assets/founder.jpg"
-        alt={FOUNDER.name}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center select-none"
-      />
+      {/* Founder photo — full bleed, person stays centered, parallaxed */}
+      <div ref={imageWrapRef} className="absolute inset-0 -top-[9%] -bottom-[9%]">
+        <Image
+          src="/assets/founder.jpg"
+          alt={FOUNDER.name}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center select-none"
+        />
+      </div>
 
       {/* Readability washes for the text columns */}
       {/* Mobile: dark bottom-up wash so text sits in a legible band at the foot of the photo */}
@@ -187,6 +196,7 @@ export default function FounderSection() {
           </div>
 
           <button
+            ref={continueBtnRef}
             type="button"
             aria-label="Continue"
             onClick={() =>

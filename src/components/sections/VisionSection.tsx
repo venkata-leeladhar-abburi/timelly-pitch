@@ -11,6 +11,8 @@ const DIM      = 'rgba(235,233,223,0.55)'
 const SUBTLE   = 'rgba(235,233,223,0.08)'
 const LIME_DIM = 'rgba(180,212,41,0.10)'
 const LIME_MID = 'rgba(180,212,41,0.22)'
+const CARD_GLASS_BG = 'rgba(18,20,15,0.55)'
+const CARD_GLASS_BORDER = 'rgba(180,212,41,0.20)'
 
 // ─── Terminal Data ────────────────────────────────────────────────────────────
 const TERMINAL_LINES = [
@@ -138,6 +140,38 @@ function EcosystemDiagram() {
           <p className="font-body text-sm mt-1" style={{ color: CREAM }}>Infinite Possibilities</p>
         </div>
       </div>
+    </div>
+  )
+}
+
+// ─── Glass Card Wrapper ────────────────────────────────────────────────────────
+function VisionCard({ num, className = '', children }: { num: string; className?: string; children: React.ReactNode }) {
+  return (
+    <div
+      className={`relative w-full overflow-hidden rounded-[32px] backdrop-blur-2xl ${className}`}
+      style={{
+        background: CARD_GLASS_BG,
+        border: `1px solid ${CARD_GLASS_BORDER}`,
+        boxShadow: '0 30px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(235,233,223,0.06)',
+      }}
+    >
+      {/* Corner glow accent */}
+      <div
+        className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full opacity-40"
+        style={{ background: `radial-gradient(circle, ${LIME_DIM} 0%, transparent 70%)`, filter: 'blur(20px)' }}
+      />
+      {/* Watermark number */}
+      <span
+        className="pointer-events-none absolute top-5 right-7 font-display leading-none select-none"
+        style={{ color: LIME, opacity: 0.12, fontSize: 'clamp(64px,9vw,140px)' }}
+      >
+        {num}
+      </span>
+      {/* Corner brackets */}
+      <span className="pointer-events-none absolute left-5 top-5 h-5 w-5 border-l-2 border-t-2 rounded-tl-md" style={{ borderColor: LIME_MID }} />
+      <span className="pointer-events-none absolute bottom-5 right-5 h-5 w-5 border-r-2 border-b-2 rounded-br-md" style={{ borderColor: LIME_MID }} />
+
+      <div className="relative z-10 flex h-full flex-col">{children}</div>
     </div>
   )
 }
@@ -317,7 +351,7 @@ export default function VisionSection() {
               footer: <>Building the <span style={{ color: LIME }}>operating system for education.</span> Not just for schools. For <span style={{ color: CREAM }}>an entire generation.</span></>,
             },
           ].map((panel, pi) => (
-            <div key={pi} className={pi > 0 ? 'mt-16 pt-12' : ''} style={pi > 0 ? { borderTop: `1px solid ${SUBTLE}` } : undefined}>
+            <VisionCard key={pi} num={panel.num} className={`p-6 ${pi > 0 ? 'mt-8' : ''}`}>
               <div className="mb-4 flex items-center gap-3">
                 <span className="rounded-full px-3 py-1 font-mono text-[10px] font-bold tracking-[0.25em] uppercase" style={{ backgroundColor: LIME_DIM, color: LIME, border: `1px solid ${LIME_MID}` }}>VISION {panel.num}</span>
                 <span className="font-mono text-[10px] tracking-widest uppercase" style={{ color: DIM }}>{panel.eyebrow}</span>
@@ -339,8 +373,10 @@ export default function VisionSection() {
 
               <div className="mb-6">{panel.visual}</div>
 
-              <p className="font-body text-sm leading-relaxed" style={{ color: DIM }}>{panel.footer}</p>
-            </div>
+              <div className="pt-5" style={{ borderTop: `1px solid ${SUBTLE}` }}>
+                <p className="font-body text-sm leading-relaxed" style={{ color: DIM }}>{panel.footer}</p>
+              </div>
+            </VisionCard>
           ))}
         </div>
       </div>
@@ -372,7 +408,8 @@ export default function VisionSection() {
         <div ref={trackRef} className="flex h-full" style={{ width: '300vw' }}>
 
           {/* ═══ PANEL 1: AI-NATIVE SCHOOLS ═══════════════════════════════════ */}
-          <div className="panel-1 flex h-screen w-screen shrink-0 flex-col justify-between px-[8vw] pt-36 pb-10">
+          <div className="panel-1 flex h-screen w-screen shrink-0 items-center justify-center px-[6vw] pt-24 pb-10">
+            <VisionCard num="01" className="flex h-[76vh] max-h-[760px] max-w-[1480px] flex-col justify-between p-10 md:p-14">
             <div className="flex flex-1 gap-14 items-center min-h-0">
 
               {/* LEFT */}
@@ -424,10 +461,12 @@ export default function VisionSection() {
                 <span style={{ color: LIME }}>intelligence that schools rely on.</span>
               </p>
             </div>
+            </VisionCard>
           </div>
 
           {/* ═══ PANEL 2: AI AFTER SCHOOL ══════════════════════════════════════ */}
-          <div className="panel-2 flex h-screen w-screen shrink-0 flex-col justify-between px-[8vw] pt-36 pb-10">
+          <div className="panel-2 flex h-screen w-screen shrink-0 items-center justify-center px-[6vw] pt-24 pb-10">
+            <VisionCard num="02" className="flex h-[76vh] max-h-[760px] max-w-[1480px] flex-col justify-between p-10 md:p-14">
             <div className="flex flex-1 gap-14 items-center min-h-0">
 
               {/* LEFT */}
@@ -474,10 +513,12 @@ export default function VisionSection() {
                 A trusted guide for every parent.
               </p>
             </div>
+            </VisionCard>
           </div>
 
           {/* ═══ PANEL 3: EDUCATION INFRASTRUCTURE ════════════════════════════ */}
-          <div className="panel-3 flex h-screen w-screen shrink-0 flex-col justify-between px-[8vw] pt-36 pb-10">
+          <div className="panel-3 flex h-screen w-screen shrink-0 items-center justify-center px-[6vw] pt-24 pb-10">
+            <VisionCard num="03" className="flex h-[76vh] max-h-[760px] max-w-[1480px] flex-col justify-between p-10 md:p-14">
             <div className="flex flex-1 gap-14 items-center min-h-0">
 
               {/* LEFT */}
@@ -524,6 +565,7 @@ export default function VisionSection() {
                 Not just for schools. For <span style={{ color: CREAM }}>an entire generation.</span>
               </p>
             </div>
+            </VisionCard>
           </div>
 
         </div>
