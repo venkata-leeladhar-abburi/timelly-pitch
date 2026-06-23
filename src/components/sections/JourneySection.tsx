@@ -15,17 +15,27 @@ type Step = {
 }
 
 const STEPS: Step[] = [
-  { title: 'Software Consultant', range: '2016 – 2018', variant: 'icon' },
-  { title: 'Built & Sold Startup', range: '2018 – 2020', variant: 'icon' },
-  { title: 'Built & Sold EdTech Platform', range: '2020 – 2023', variant: 'icon' },
-  { title: 'Founded', highlight: 'Timelly', range: '2024 – Present', variant: 'logo' },
+  { title: 'Incorporated', range: 'Nov 2025', variant: 'icon' },
+  { title: '1st Version Developed', range: 'Apr 2025', variant: 'icon' },
+  { title: 'Launched', range: 'May 2025', variant: 'icon' },
+  { title: 'Onboarded 2 Schools', highlight: '& Generating Revenue', range: '', variant: 'logo' },
 ]
 
-function BriefcaseIcon() {
+function IncorporatedIcon() {
   return (
     <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+      <rect x="4" y="2" width="16" height="20" rx="2" />
+      <path d="M9 2h6v4H9z" />
+      <path d="m9 14 2 2 4-4" />
+    </svg>
+  )
+}
+
+function CodeIcon() {
+  return (
+    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
     </svg>
   )
 }
@@ -35,15 +45,6 @@ function RocketIcon() {
     <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="m22 7-8.5 8.5-5-5L2 17" />
       <path d="M16 7h6v6" />
-    </svg>
-  )
-}
-
-function GradCapIcon() {
-  return (
-    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
-      <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
     </svg>
   )
 }
@@ -79,9 +80,9 @@ function StepIcon({ variant, index }: { variant: Step['variant']; index: number 
       className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white transition-transform duration-300 hover:scale-110 md:h-28 md:w-28"
       style={{ border: `1.5px solid ${INK}1F`, boxShadow: '0 12px 32px rgba(28,31,26,0.04)' }}
     >
-      {index === 0 && <BriefcaseIcon />}
-      {index === 1 && <RocketIcon />}
-      {index === 2 && <GradCapIcon />}
+      {index === 0 && <IncorporatedIcon />}
+      {index === 1 && <CodeIcon />}
+      {index === 2 && <RocketIcon />}
     </div>
   )
 }
@@ -224,9 +225,11 @@ export default function JourneySection() {
                     </>
                   )}
                 </h3>
-                <p className="mt-2 font-mono text-xs tracking-widest text-[#1C1F1A]/50 font-medium md:mt-3 md:text-sm">
-                  {step.range}
-                </p>
+                {step.range && (
+                  <p className="mt-2 font-body text-xs tracking-widest text-[#1C1F1A]/50 font-medium md:mt-3 md:text-sm">
+                    {step.range}
+                  </p>
+                )}
               </div>
             </div>
           ))}

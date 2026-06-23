@@ -4,14 +4,14 @@ import { useEffect, useRef } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 /* ── Theme (dark olive, matching the reference image) ────────────────────── */
-const BG       = '#262A22'
-const CREAM    = '#EBE9DF'
-const LIME     = '#B4D429'
-const DIM      = 'rgba(235,233,223,0.60)'
-const LIME_MID = 'rgba(180,212,41,0.25)'
-const CARD_BG  = 'rgba(235,233,223,0.05)'
-const CARD_BDR = 'rgba(235,233,223,0.10)'
-const INK_ICON = '#EBE9DF'
+const BG       = '#1E2A1A'
+const CREAM    = '#E8E4D0'
+const LIME     = '#B5D142'
+const DIM      = 'rgba(232,228,208,0.60)'
+const LIME_MID = 'rgba(181,209,66,0.25)'
+const CARD_BG  = 'rgba(232,228,208,0.05)'
+const CARD_BDR = 'rgba(232,228,208,0.10)'
+const INK_ICON = '#E8E4D0'
 
 /* ── Layout (Desktop) ────────────────────────────────────────────────────── */
 const NODE_R  = 52     // icon circle radius (px, diameter is 104px)
@@ -222,7 +222,7 @@ export default function TractionSection() {
           <path
             d={DESKTOP_PATH}
             fill="none"
-            stroke="rgba(235,233,223,0.06)"
+            stroke="rgba(232,228,208,0.06)"
             strokeWidth="2.5"
             strokeDasharray="14 10"
           />
@@ -253,10 +253,10 @@ export default function TractionSection() {
                 style={{
                   width: `${NODE_R * 2}px`,
                   height: `${NODE_R * 2}px`,
-                  background: 'rgba(235,233,223,0.06)',
+                  background: 'rgba(232,228,208,0.06)',
                   border: `1.5px solid ${LIME}`,
                   backdropFilter: 'blur(10px)',
-                  boxShadow: `0 0 28px rgba(180,212,41,0.18), inset 0 0 14px rgba(180,212,41,0.08)`,
+                  boxShadow: `0 0 28px rgba(181,209,66,0.18), inset 0 0 14px rgba(181,209,66,0.08)`,
                   left: 0,
                   top: 0,
                   transform: 'translate(-50%, -50%)',
@@ -267,14 +267,14 @@ export default function TractionSection() {
                   className="absolute rounded-full pointer-events-none"
                   style={{
                     inset: '-10px',
-                    border: `1px solid rgba(180,212,41,0.15)`,
+                    border: `1px solid rgba(181,209,66,0.15)`,
                   }}
                 />
               </div>
 
               {/* Step Number Above Circle */}
               <div
-                className="node-num absolute font-mono font-bold tracking-[0.35em]"
+                className="node-num absolute font-body font-bold tracking-[0.35em]"
                 style={{
                   fontSize: '16px',
                   color: LIME,
@@ -293,7 +293,7 @@ export default function TractionSection() {
                 style={{
                   width: '108px',
                   height: '2px',
-                  background: `linear-gradient(${isLeft ? 'to right' : 'to left'}, ${LIME_MID}, rgba(180,212,41,0.02))`,
+                  background: `linear-gradient(${isLeft ? 'to right' : 'to left'}, ${LIME_MID}, rgba(181,209,66,0.02))`,
                   left: isLeft ? `${NODE_R}px` : 'auto',
                   right: isLeft ? 'auto' : `${NODE_R}px`,
                   top: 0,
@@ -303,7 +303,7 @@ export default function TractionSection() {
 
               {/* Card */}
               <div
-                className="traction-card absolute rounded-2xl transition-all duration-300 hover:border-[#B4D429] hover:shadow-[0_0_30px_rgba(180,212,41,0.12)]"
+                className="traction-card absolute rounded-2xl transition-all duration-300 hover:border-[#B5D142] hover:shadow-[0_0_30px_rgba(181,209,66,0.12)]"
                 style={{
                   width: `${CARD_W}px`,
                   padding: '24px 28px',
@@ -317,7 +317,7 @@ export default function TractionSection() {
                 }}
               >
                 <p
-                  className="font-mono font-semibold uppercase tracking-widest mb-3"
+                  className="font-body font-semibold uppercase tracking-widest mb-3"
                   style={{ fontSize: '13px', color: LIME }}
                 >
                   {step.label}
@@ -371,7 +371,7 @@ export default function TractionSection() {
                   height: '52px',
                   background: BG,
                   border: `1.5px solid ${LIME}`,
-                  boxShadow: `0 0 16px rgba(180,212,41,0.15)`,
+                  boxShadow: `0 0 16px rgba(181,209,66,0.15)`,
                 }}
               >
                 <step.Icon />
@@ -380,7 +380,7 @@ export default function TractionSection() {
               {/* Content card — centered, full width up to max-w-sm */}
               <div className="traction-card relative z-10 w-full">
                 <div
-                  className="rounded-2xl p-6 text-center transition-all duration-300 hover:border-[#B4D429] hover:shadow-[0_0_20px_rgba(180,212,41,0.1)]"
+                  className="rounded-2xl p-6 text-center transition-all duration-300 hover:border-[#B5D142] hover:shadow-[0_0_20px_rgba(181,209,66,0.1)]"
                   style={{
                     background: CARD_BG,
                     border: `1px solid ${CARD_BDR}`,
@@ -388,10 +388,10 @@ export default function TractionSection() {
                   }}
                 >
                   <div className="flex flex-col items-center gap-2 mb-3">
-                    <span className="font-mono text-[15px] text-[#B4D429] font-bold">
+                    <span className="font-body text-[15px] text-[#B5D142] font-bold">
                       {step.num}
                     </span>
-                    <span className="font-mono text-[12px] uppercase tracking-widest text-[#B4D429]">
+                    <span className="font-body text-[12px] uppercase tracking-widest text-[#B5D142]">
                       {step.label}
                     </span>
                   </div>

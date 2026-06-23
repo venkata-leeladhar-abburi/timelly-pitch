@@ -41,7 +41,7 @@ export default function LoadingScreen({
           style={{ width: `${progress}%` }}
         />
       </div>
-      <div className="font-mono text-xs text-text-muted mt-4 tracking-widest">
+      <div className="font-body text-xs text-text-muted mt-4 tracking-widest">
         LOADING EXPERIENCE — {progress}%
       </div>
     </div>

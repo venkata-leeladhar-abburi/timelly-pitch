@@ -76,7 +76,7 @@ export default function LegacySection() {
       </svg>
 
       <p
-        className="relative z-10 max-w-[22ch] text-center font-body font-extrabold uppercase leading-[1.05] tracking-tight md:max-w-[26ch]"
+        className="relative z-10 max-w-[22ch] text-center font-display uppercase leading-[1.05] tracking-tight md:max-w-[26ch]"
         style={{
           color: CREAM,
           fontSize: 'clamp(36px, 5.4vw, 84px)',

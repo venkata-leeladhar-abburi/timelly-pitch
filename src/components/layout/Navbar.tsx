@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 export default function Navbar() {
@@ -7,9 +8,20 @@ export default function Navbar() {
   // viewport. Only the tint/border/shadow intensify once the user scrolls,
   // and those are cheap, paint-only properties safe to transition directly.
   const [scrolled, setScrolled] = useState(false)
+  const [inVisionSection, setInVisionSection] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 80)
+
+      const visionEl = document.getElementById('section-vision')
+      if (visionEl) {
+        const rect = visionEl.getBoundingClientRect()
+        setInVisionSection(rect.top <= 0 && rect.bottom >= 0)
+      } else {
+        setInVisionSection(false)
+      }
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -24,19 +36,21 @@ export default function Navbar() {
         backgroundColor: scrolled ? 'rgba(28,31,26,0.55)' : 'rgba(28,31,26,0.22)',
         borderBottomColor: scrolled ? 'rgba(240,237,230,0.12)' : 'rgba(240,237,230,0.08)',
         boxShadow: scrolled ? '0 8px 32px rgba(0,0,0,0.25)' : '0 0px 0px rgba(0,0,0,0)',
+        opacity: inVisionSection ? 0 : 1,
+        pointerEvents: inVisionSection ? 'none' : 'auto',
         transition:
-          'background-color 300ms var(--ease-out), border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out)',
+          'background-color 300ms var(--ease-out), border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out), opacity 300ms var(--ease-out)',
       }}
     >
       {/* Logo */}
-      <div className="flex items-center gap-2.5 sm:gap-3">
-        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-green flex items-center justify-center">
-          <span className="font-display text-black text-base sm:text-lg leading-none">T</span>
-        </div>
-        <span className="font-body text-text-warm font-medium text-base sm:text-lg tracking-wide">
-          timelly
-        </span>
-      </div>
+      <Image
+        src="/timelly-logo-full.png"
+        alt="timelly"
+        width={100}
+        height={36}
+        priority
+        className="h-8 w-auto sm:h-9 select-none"
+      />
 
       {/* CTA */}
       <a

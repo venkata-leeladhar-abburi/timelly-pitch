@@ -154,7 +154,7 @@ export default function HeroSection() {
               }`}
             >
               {beat.label && (
-                <div className="font-mono text-[10px] sm:text-xs text-green tracking-[0.2em] sm:tracking-[0.3em] mb-2 sm:mb-4">
+                <div className="font-body text-[10px] sm:text-xs text-green tracking-[0.2em] sm:tracking-[0.3em] mb-2 sm:mb-4">
                   {beat.label}
                 </div>
               )}

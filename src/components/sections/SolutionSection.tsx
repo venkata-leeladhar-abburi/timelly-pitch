@@ -526,7 +526,7 @@ export default function SolutionSection() {
           className="font-body text-lg md:text-xl max-w-3xl mb-20 leading-relaxed"
           style={{ color: CREAM, opacity: 0.8 }}
         >
-          For just <strong style={{ color: LIME }}>₹125 per student per month</strong>, schools replace paperwork, disconnected communication, and operational inefficiencies with a unified digital ecosystem.
+          For just <strong style={{ color: LIME }}>₹199 per student per year</strong>, schools replace paperwork, disconnected communication, and operational inefficiencies with a unified digital ecosystem.
         </p>
 
         <div className="flex flex-col md:flex-row gap-12 items-center justify-center w-full max-w-4xl">
@@ -539,13 +539,13 @@ export default function SolutionSection() {
               className="font-display text-[clamp(64px,10vw,100px)] leading-none mb-4"
               style={{ color: LIME }}
             >
-              ₹125
+              ₹199
             </span>
-            <span 
-              className="font-mono text-sm md:text-base font-bold tracking-[0.3em]"
+            <span
+              className="font-body text-sm md:text-base font-bold tracking-[0.3em]"
               style={{ color: CREAM, opacity: 0.6 }}
             >
-              / STUDENT / MONTH
+              / STUDENT / YEAR
             </span>
           </div>
 

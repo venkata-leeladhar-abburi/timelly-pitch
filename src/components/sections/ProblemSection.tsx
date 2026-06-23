@@ -308,44 +308,55 @@ export default function ProblemSection() {
               {/* Unified Content Block - Left Aligned & Vertically Centered */}
               <div
                 ref={(el) => { headlineRefs.current[pi] = el }}
-                className="absolute inset-0 flex items-center justify-between px-16"
+                className="absolute inset-0 flex items-center justify-center px-6 md:justify-between md:px-16"
                 style={{ opacity: pi === 0 ? 1 : 0, transition: 'none' }}
               >
-                
+
                 {/* LEFT SIDE: Heading & Loss */}
-                <div className="max-w-[50vw] -mt-64">
+                <div className="max-w-full text-center md:max-w-[50vw] md:-mt-64 md:text-left">
                   {/* Top Label (e.g. PROBLEM 01 / 04 —— ADMINISTRATIVE CHAOS) */}
-                  <div className="mb-8 flex items-center gap-6">
-                    <span className="font-mono text-sm font-semibold tracking-[0.2em] text-[#F5F4F0]/50">
+                  <div className="mb-6 flex flex-col items-center gap-3 md:mb-8 md:flex-row md:items-center md:gap-6">
+                    <span className="font-body text-sm font-semibold tracking-[0.2em] text-[#F5F4F0]/50">
                       {problem.label}
                     </span>
-                    <div className="h-px w-20 bg-[#F5F4F0]/30" />
-                    <span className="font-mono text-sm font-semibold tracking-[0.3em] text-[#8DC63F] uppercase">
+                    <div className="hidden h-px w-20 bg-[#F5F4F0]/30 md:block" />
+                    <span className="font-body text-sm font-semibold tracking-[0.3em] text-[#8DC63F] uppercase">
                       {problem.card.heading}
                     </span>
                   </div>
-                  
-                  {/* Massive Hook / Headline */}
-                  <h2 className="mb-8 font-display text-[clamp(48px,5vw,80px)] leading-[0.9] text-[#F5F4F0] tracking-tight drop-shadow-2xl">
-                    {problem.headline.map((line, li) => (
-                      <span key={li} className="block">
-                        {line}
-                      </span>
-                    ))}
+
+                  {/* Massive Hook / Headline — desktop only */}
+                  <h2 className="mb-8 hidden text-[clamp(48px,5vw,80px)] leading-[0.9] text-[#F5F4F0] tracking-tight drop-shadow-2xl md:block">
+                    {problem.headline.map((line, li) => {
+                      const isLast = li === problem.headline.length - 1
+                      return (
+                        <span
+                          key={li}
+                          className={
+                            isLast
+                              ? 'block font-serif font-semibold italic'
+                              : 'block font-display'
+                          }
+                          style={isLast ? { color: '#8DC63F' } : undefined}
+                        >
+                          {line}
+                        </span>
+                      )
+                    })}
                   </h2>
 
-                  {/* The Loss (Small Point) */}
-                  <div className="border-l-[3px] border-[#8DC63F] pl-8">
+                  {/* The Loss (Small Point) — desktop only */}
+                  <div className="hidden border-l-[3px] border-[#8DC63F] pl-8 md:block">
                     <p className="font-body text-xl font-light leading-relaxed text-[#F5F4F0]/90 max-w-xl drop-shadow-md">
                       {problem.card.loss}
                     </p>
                   </div>
                 </div>
 
-                {/* RIGHT SIDE: Cards List */}
-                <div className="flex flex-col gap-5 mr-8 w-80 mt-80">
+                {/* RIGHT SIDE: Cards List — desktop only */}
+                <div className="hidden flex-col gap-5 mr-8 w-80 mt-80 md:flex">
                   {problem.rightCards.map((rc, rci) => (
-                    <div 
+                    <div
                       key={rci}
                       className="flex items-center gap-5 rounded-2xl border p-5"
                       style={{
@@ -356,7 +367,7 @@ export default function ProblemSection() {
                       }}
                     >
                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#8DC63F]/10 border border-[#8DC63F]/30 text-[#8DC63F]">
-                         <span className="font-mono text-sm font-bold">0{rci + 1}</span>
+                         <span className="font-body text-sm font-bold">0{rci + 1}</span>
                        </div>
                        <h4 className="font-body text-lg font-medium leading-tight text-[#F5F4F0]">
                          {rc}

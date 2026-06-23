@@ -3,17 +3,17 @@
 import { useEffect, useRef } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
-// ─── LITE THEME COLORS ────────────────────────────────────────────────────────
+// ─── LIGHT THEME COLORS (dark green accent, not lime) ───────────────────────
 const BG       = '#F5F4F0'
 const BG_ALT   = '#EFEDE5'
 const BG_WHITE = '#FFFFFF'
-const INK      = '#1C1F1A'
-const INK_DIM  = 'rgba(28,31,26,0.65)'
-const SUBTLE   = 'rgba(28,31,26,0.06)'
-const BORDER   = 'rgba(28,31,26,0.1)'
-const GREEN    = '#3CB55A'
-const GREEN_DIM = 'rgba(60,181,90,0.1)'
-const GREEN_MID = 'rgba(60,181,90,0.2)'
+const INK      = '#1E2A1A'
+const INK_DIM  = 'rgba(30,42,26,0.65)'
+const SUBTLE   = 'rgba(30,42,26,0.06)'
+const BORDER   = 'rgba(30,42,26,0.1)'
+const GREEN    = '#2F6B3A'
+const GREEN_DIM = 'rgba(47,107,58,0.1)'
+const GREEN_MID = 'rgba(47,107,58,0.2)'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const STATS = [
@@ -153,7 +153,7 @@ function SectionHeading({ label, lines }: { label: string; lines: { words: { tex
 
   return (
     <div ref={ref}>
-      <span className="inline-block mb-6 rounded-full px-4 py-1.5 font-mono text-xs font-bold tracking-[0.3em] uppercase" style={{ backgroundColor: GREEN_DIM, color: GREEN, border: `1px solid ${GREEN_MID}` }}>
+      <span className="inline-block mb-6 rounded-full px-4 py-1.5 font-body text-xs font-bold tracking-[0.3em] uppercase" style={{ backgroundColor: GREEN_DIM, color: GREEN, border: `1px solid ${GREEN_MID}` }}>
         {label}
       </span>
       <div>
@@ -382,19 +382,19 @@ export default function MarketSection() {
             <div className="flex justify-center relative h-[400px] w-full">
               <svg viewBox="0 0 400 400" className="w-full h-full max-w-[400px]">
                 {/* TAM */}
-                <circle ref={tamCircleRef} cx="200" cy="180" r="160" fill="#3CB55A" opacity="0.9" />
-                <text x="200" y="70" textAnchor="middle" fill="#FFFFFF" className="font-display text-2xl tracking-widest">TAM</text>
-                <text x="200" y="90" textAnchor="middle" fill="#FFFFFF" className="font-body text-sm font-semibold">42.58 B</text>
+                <circle ref={tamCircleRef} cx="200" cy="180" r="160" fill="#1E2A1A" opacity="0.9" />
+                <text x="200" y="70" textAnchor="middle" fill="#F5F4F0" className="font-display text-2xl tracking-widest">TAM</text>
+                <text x="200" y="90" textAnchor="middle" fill="#F5F4F0" className="font-body text-sm font-semibold">42.58 B</text>
 
                 {/* SAM */}
-                <circle ref={samCircleRef} cx="200" cy="220" r="120" fill="#6EE089" opacity="1" />
-                <text x="200" y="160" textAnchor="middle" fill="#FFFFFF" className="font-display text-2xl tracking-widest">SAM</text>
-                <text x="200" y="180" textAnchor="middle" fill="#FFFFFF" className="font-body text-sm font-semibold">1.16 B</text>
+                <circle ref={samCircleRef} cx="200" cy="220" r="120" fill="#2F6B3A" opacity="0.9" />
+                <text x="200" y="160" textAnchor="middle" fill="#F5F4F0" className="font-display text-2xl tracking-widest">SAM</text>
+                <text x="200" y="180" textAnchor="middle" fill="#F5F4F0" className="font-body text-sm font-semibold">1.16 B</text>
 
                 {/* SOM */}
-                <circle ref={somCircleRef} cx="200" cy="270" r="70" fill="#A4F1B6" opacity="1" />
-                <text x="200" y="260" textAnchor="middle" fill="#1C1F1A" className="font-display text-xl tracking-widest">SOM</text>
-                <text x="200" y="280" textAnchor="middle" fill="#1C1F1A" className="font-body text-xs font-bold">1.0 CRORE</text>
+                <circle ref={somCircleRef} cx="200" cy="270" r="70" fill="#2F6B3A" opacity="0.35" />
+                <text x="200" y="260" textAnchor="middle" fill="#1E2A1A" className="font-display text-xl tracking-widest">SOM</text>
+                <text x="200" y="280" textAnchor="middle" fill="#1E2A1A" className="font-body text-xs font-bold">1.0 CRORE</text>
               </svg>
             </div>
 
@@ -422,7 +422,7 @@ export default function MarketSection() {
             {LADDER.map((item, i) => (
               <div key={item} className="flex flex-col items-start ladder-item">
                 <div
-                  className="rounded-xl px-8 py-4 font-mono text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:scale-105"
+                  className="rounded-xl px-8 py-4 font-body text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:scale-105"
                   style={{
                     background: i === 0 ? GREEN_DIM : BG_WHITE,
                     border: `1px solid ${i === 0 ? GREEN_MID : BORDER}`,

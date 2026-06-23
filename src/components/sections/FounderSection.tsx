@@ -103,7 +103,7 @@ export default function FounderSection() {
           {/* Label */}
           <div
             ref={labelRef}
-            className="mb-6 flex items-center gap-4 font-mono text-xs font-medium tracking-[0.35em] text-[#A9B97B] md:text-[#7E8B4F]"
+            className="mb-6 flex items-center gap-4 font-body text-xs font-medium tracking-[0.35em] text-[#A9B97B] md:text-[#7E8B4F]"
           >
             <span>FOUNDER</span>
             <span className="h-px w-10 bg-[#A9B97B] md:bg-[#7E8B4F]" />
@@ -145,7 +145,7 @@ export default function FounderSection() {
           {/* Signature */}
           <div
             ref={signRef}
-            className="mt-4 font-script text-3xl md:text-4xl text-[#A9B97B] md:text-[#7E8B4F]"
+            className="mt-4 font-serif italic text-3xl md:text-4xl text-[#A9B97B] md:text-[#7E8B4F]"
           >
             {FOUNDER.name}
           </div>
@@ -156,7 +156,7 @@ export default function FounderSection() {
           ref={cardRef}
           className="hidden w-[320px] shrink-0 rounded-2xl border border-[#1C1F1A]/12 bg-[#EFEDE5]/70 p-8 backdrop-blur-md shadow-[0_12px_40px_rgba(28,31,26,0.06)] lg:block"
         >
-          <div className="font-mono text-[11px] font-medium tracking-[0.3em] text-[#1C1F1A]/45">
+          <div className="font-body text-[11px] font-medium tracking-[0.3em] text-[#1C1F1A]/45">
             NEXT CHAPTER
           </div>
 
@@ -181,7 +181,7 @@ export default function FounderSection() {
 
           <div className="h-px w-full bg-[#1C1F1A]/10" />
 
-          <div className="mt-6 font-mono text-[11px] font-medium tracking-[0.3em] text-[#1C1F1A]/45">
+          <div className="mt-6 font-body text-[11px] font-medium tracking-[0.3em] text-[#1C1F1A]/45">
             OUR MISSION
           </div>
           <div className="space-y-2.5 mt-4">

@@ -3,18 +3,22 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
-/* ── Lite Theme (matching MarketSection + SolutionSection ending) ─────────── */
+/* ── Light Theme (dark green accent, not lime) ────────────────────────────── */
 const BG        = '#F5F4F0'
 const BG_ALT    = '#EFEDE5'
-const INK       = '#1C1F1A'
-const INK_DIM   = 'rgba(28,31,26,0.65)'
-const INK_SUB   = 'rgba(28,31,26,0.35)'
-const BORDER    = 'rgba(28,31,26,0.10)'
-const GREEN     = '#3CB55A'
-const GREEN_DIM = 'rgba(60,181,90,0.12)'
-const GREEN_MID = 'rgba(60,181,90,0.22)'
-const GREEN_BOR = 'rgba(60,181,90,0.35)'
-const LIME      = '#B4D429'
+const INK       = '#1E2A1A'
+const INK_DIM   = 'rgba(30,42,26,0.65)'
+const INK_SUB   = 'rgba(30,42,26,0.35)'
+const BORDER    = 'rgba(30,42,26,0.10)'
+const GREEN     = '#2F6B3A'
+const GREEN_DIM = 'rgba(47,107,58,0.12)'
+const GREEN_MID = 'rgba(47,107,58,0.22)'
+const GREEN_BOR = 'rgba(47,107,58,0.35)'
+const LIME      = '#2F6B3A'
+/* Dark band (Block 2) needs lighter shades for contrast against a dark bg */
+const DARK_BAND_BG = '#1E2A1A'
+const DARK_BAND_TEXT = '#F5F4F0'
+const DARK_BAND_ACCENT = '#6FAE76'
 
 /* ── Phase Data ───────────────────────────────────────────────────────────── */
 const PHASES = [
@@ -123,7 +127,7 @@ export default function ProjectionsSection() {
       ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative z-10 w-full px-[8vw] py-20">
         <div ref={headerRef} className="max-w-[1400px] mx-auto mb-16">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] mb-4" style={{ color: GREEN }}>FUTURE PROJECTIONS</p>
+          <p className="font-body text-xs uppercase tracking-[0.3em] mb-4" style={{ color: GREEN }}>FUTURE PROJECTIONS</p>
           <h2 className="font-display text-[clamp(44px,6vw,80px)] tracking-tight uppercase leading-[0.9] mb-8" style={{ color: INK }}>
             FROM SCHOOL SOFTWARE<br />
             <span style={{ color: GREEN }}>TO EDUCATION</span> INFRASTRUCTURE<span style={{ color: GREEN }}>.</span>
@@ -153,58 +157,58 @@ export default function ProjectionsSection() {
       {/* ═══════════════════════════════════════════════════════════════════
           BLOCK 2 — COMPACT BIG REVEAL
       ══════════════════════════════════════════════════════════════════════ */}
-      <div ref={revealRef} className="relative z-10 w-full overflow-hidden py-24" style={{ backgroundColor: INK }}>
+      <div ref={revealRef} className="relative z-10 w-full overflow-hidden py-24" style={{ backgroundColor: DARK_BAND_BG }}>
         {/* Background glow */}
-        <div className="pointer-events-none absolute -top-40 left-0 w-[400px] h-[400px] rounded-full opacity-10" style={{ background: `radial-gradient(circle, ${GREEN} 0%, transparent 70%)`, filter: 'blur(60px)' }} />
-        
+        <div className="pointer-events-none absolute -top-40 left-0 w-[400px] h-[400px] rounded-full opacity-10" style={{ background: `radial-gradient(circle, ${DARK_BAND_ACCENT} 0%, transparent 70%)`, filter: 'blur(60px)' }} />
+
         <div className="relative max-w-[1400px] mx-auto px-[8vw]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
+
             {/* Left: Compact Headline */}
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.3em] mb-4" style={{ color: GREEN }}>THE BIG PICTURE</p>
-              <h2 className="font-display text-[clamp(40px,5vw,64px)] leading-[0.9] tracking-tight uppercase" style={{ color: '#EBE9DF' }}>
+              <p className="font-body text-xs uppercase tracking-[0.3em] mb-4" style={{ color: DARK_BAND_ACCENT }}>THE BIG PICTURE</p>
+              <h2 className="font-display text-[clamp(40px,5vw,64px)] leading-[0.9] tracking-tight uppercase" style={{ color: DARK_BAND_TEXT }}>
                 <span className="reveal-word inline-block">THE </span>
-                <span className="reveal-word inline-block" style={{ color: GREEN }}> FUTURE </span>
+                <span className="reveal-word inline-block" style={{ color: DARK_BAND_ACCENT }}> FUTURE </span>
                 <span className="reveal-word inline-block"> SCHOOL</span><br/>
                 <span className="reveal-word inline-block">WON&apos;T RUN </span>
                 <span className="reveal-word inline-block"> ON SOFTWARE.</span><br/>
                 <span className="reveal-word inline-block">IT WILL </span>
                 <span className="reveal-word inline-block"> RUN ON </span>
-                <span className="reveal-word inline-block" style={{ color: LIME }}> AI.</span>
+                <span className="reveal-word inline-block" style={{ color: DARK_BAND_ACCENT }}> AI.</span>
               </h2>
-              
+
               <div className="mt-8 flex flex-wrap gap-x-4 gap-y-2">
                 {['Ask.', 'Approve.', 'Analyze.', 'Automate.'].map((word, i) => (
-                  <span key={i} className="reveal-word font-display text-2xl md:text-3xl uppercase tracking-tight" style={{ color: i % 2 === 0 ? '#EBE9DF' : GREEN }}>{word}</span>
+                  <span key={i} className="reveal-word font-display text-2xl md:text-3xl uppercase tracking-tight" style={{ color: i % 2 === 0 ? DARK_BAND_TEXT : DARK_BAND_ACCENT }}>{word}</span>
                 ))}
               </div>
-              <p className="reveal-word font-body text-base mt-6 max-w-md" style={{ color: 'rgba(235,233,223,0.65)' }}>
-                The next generation of school management will happen through <span style={{ color: '#EBE9DF', fontWeight: 600 }}>conversations.</span>
+              <p className="reveal-word font-body text-base mt-6 max-w-md" style={{ color: 'rgba(245,244,240,0.65)' }}>
+                The next generation of school management will happen through <span style={{ color: DARK_BAND_TEXT, fontWeight: 600 }}>conversations.</span>
               </p>
             </div>
 
             {/* Right: Compact AI Terminal */}
             <div ref={terminalRef} className="reveal-word">
-              <div className="rounded-xl overflow-hidden" style={{ border: `1px solid rgba(235,233,223,0.08)`, backgroundColor: 'rgba(235,233,223,0.04)' }}>
-                <div className="flex items-center gap-2 px-4 py-2 border-b" style={{ borderColor: 'rgba(235,233,223,0.06)', backgroundColor: 'rgba(235,233,223,0.03)' }}>
+              <div className="rounded-xl overflow-hidden" style={{ border: `1px solid rgba(245,244,240,0.08)`, backgroundColor: 'rgba(245,244,240,0.04)' }}>
+                <div className="flex items-center gap-2 px-4 py-2 border-b" style={{ borderColor: 'rgba(245,244,240,0.06)', backgroundColor: 'rgba(245,244,240,0.03)' }}>
                   <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#FF5F57' }} />
                   <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#FFBD2E' }} />
                   <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#28C840' }} />
-                  <span className="ml-2 font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(235,233,223,0.35)' }}>
+                  <span className="ml-2 font-body text-[10px] uppercase tracking-widest" style={{ color: 'rgba(245,244,240,0.35)' }}>
                     timelly-ai
                   </span>
                 </div>
                 <div className="p-5 space-y-4 min-h-[220px]">
                   {AI_COMMANDS.map((cmd, i) => (
                     <div key={i} className="transition-all duration-500" style={{ opacity: visibleCmds.includes(i) ? 1 : 0, transform: visibleCmds.includes(i) ? 'translateY(0)' : 'translateY(4px)' }}>
-                      <p className="font-mono text-[13px]" style={{ color: GREEN }}>{cmd.prompt}</p>
-                      <p className="font-mono text-[13px] mt-0.5" style={{ color: 'rgba(235,233,223,0.50)' }}>{cmd.response}</p>
+                      <p className="font-body text-[13px]" style={{ color: DARK_BAND_ACCENT }}>{cmd.prompt}</p>
+                      <p className="font-body text-[13px] mt-0.5" style={{ color: 'rgba(245,244,240,0.50)' }}>{cmd.response}</p>
                     </div>
                   ))}
-                  <div className="flex items-center gap-1 font-mono text-[13px]" style={{ color: GREEN }}>
+                  <div className="flex items-center gap-1 font-body text-[13px]" style={{ color: DARK_BAND_ACCENT }}>
                     <span>&gt;</span>
-                    <span className="w-2 h-3.5 ml-1 animate-pulse" style={{ backgroundColor: GREEN, display: 'inline-block' }} />
+                    <span className="w-2 h-3.5 ml-1 animate-pulse" style={{ backgroundColor: DARK_BAND_ACCENT, display: 'inline-block' }} />
                   </div>
                 </div>
               </div>
@@ -237,8 +241,8 @@ export default function ProjectionsSection() {
           </p>
 
           <div className="closing-line mt-12 opacity-0 flex justify-center">
-            <div className="px-6 py-2 rounded-full" style={{ backgroundColor: INK }}>
-              <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em]" style={{ color: '#EBE9DF' }}>
+            <div className="px-6 py-2 rounded-full" style={{ backgroundColor: GREEN_DIM, border: `1px solid ${GREEN_MID}` }}>
+              <p className="font-body text-xs md:text-sm uppercase tracking-[0.2em]" style={{ color: INK }}>
                 From 1 school to <span style={{ color: GREEN }}>an entire generation.</span>
               </p>
             </div>
@@ -274,7 +278,7 @@ function PhaseCard({ phase, index }: { phase: typeof PHASES[number], index: numb
       </div>
       
       <div className="mb-4">
-        <div className="font-mono text-[10px] uppercase tracking-[0.2em] mb-1 font-semibold" style={{ color: INK_SUB }}>
+        <div className="font-body text-[10px] uppercase tracking-[0.2em] mb-1 font-semibold" style={{ color: INK_SUB }}>
           {phase.phase}
         </div>
         <h3 className="font-body text-xl font-bold uppercase tracking-tight" style={{ color: INK }}>

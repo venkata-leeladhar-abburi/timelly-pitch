@@ -184,45 +184,35 @@ export const PROBLEMS = [
   },
 ]
 
-export const VISION_PANELS = [
+export const VISION = [
   {
     id: 1,
-    label: 'VISION 01',
-    headline: ['THE SCHOOL', 'THAT RUNS ON', 'COMMANDS.'],
-    body: 'What if a school principal could run the entire institution — just by asking?\n\nNo dashboards. No clicking through menus. Just a conversation.',
-    terminal: [
-      {
-        input: 'Generate attendance report for this week.',
-        output: '✓ Done. Report sent to your email.',
-      },
-      {
-        input: 'Which students missed more than 3 days?',
-        output: '✓ 12 students found. Parents notified.',
-      },
-      {
-        input: 'Collect pending fees from Class 8.',
-        output: '✓ Reminders sent to 24 parents.',
-      },
-      {
-        input: 'Create Semester 1 report cards.',
-        output: '✓ 340 report cards generated.',
-      },
-    ],
+    framesPath: '/frames/vision1/',
+    headline: ['THE SCHOOL', 'RUNS ON COMMANDS.'],
+    label: 'VISION 01 / 03',
+    card: {
+      heading: 'AI-NATIVE SCHOOLS',
+      loss: 'What if managing a school felt as simple as having a conversation? No dashboards. No complex workflows. Just ask.',
+    },
   },
   {
     id: 2,
-    label: 'VISION 02',
-    headline: ['LEARNING', "DOESN'T", 'STOP AT 4PM.'],
-    body: 'What if parents knew exactly which skill their child needed to develop — right now?\n\nNot guessing. Not hoping. AI-guided. Age-appropriate. Personalized.',
-    pills: ['Right Skill', 'Right Age', 'Right Time'],
-    quote: '"The right skill.\nAt the right age.\nAt the right time."',
+    framesPath: '/frames/vision2/',
+    headline: ['LEARNING CONTINUES', 'AT HOME.'],
+    label: 'VISION 02 / 03',
+    card: {
+      heading: 'AI AFTER SCHOOL',
+      loss: 'Every child learns differently. Timelly becomes an AI companion that guides students and helps parents support the right skills at the right age.',
+    },
   },
   {
     id: 3,
-    label: 'VISION 03',
-    headline: ['BEYOND', 'SCHOOLS.'],
-    body: "We started with schools.\nBecause that's where every future begins.\n\nBut Timelly follows the student through every stage.",
-    expansion: ['SCHOOL', 'INTERMEDIATE', 'DEGREE', 'B.TECH', 'EVERY INSTITUTION'],
-    finalStatement: 'NOT SOFTWARE FOR SCHOOLS.\nINTELLIGENCE FOR EDUCATION.',
+    framesPath: '/frames/vision3/',
+    headline: ['ONE PLATFORM.', 'EVERY LEARNER.'],
+    label: 'VISION 03 / 03',
+    card: {
+      heading: 'EDUCATION INFRASTRUCTURE',
+      loss: 'Timelly starts with schools. But the same infrastructure can power intermediate colleges, degree colleges, universities, and skill platforms.',
+    },
   },
 ]
