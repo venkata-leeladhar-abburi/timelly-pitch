@@ -149,8 +149,8 @@ export default function JourneySection() {
       <div className="relative z-10 mx-auto w-full max-w-[1450px]">
         {/* Section Title */}
         <div ref={labelRef} className="mb-24">
-          <h2 className="flex flex-wrap gap-x-[0.3em] font-bold text-[clamp(44px,6vw,80px)] tracking-tight uppercase" style={{ color: INK }}>
-            <span className="font-body">THE</span>
+          <h2 className="font-bold text-[clamp(44px,6vw,80px)] tracking-tight uppercase" style={{ color: INK }}>
+            <span className="font-body">THE</span>{' '}
             <span className="font-display" style={{ color: GREEN }}>JOURNEY.</span>
           </h2>
         </div>

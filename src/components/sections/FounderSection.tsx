@@ -110,7 +110,7 @@ export default function FounderSection() {
           </div>
 
           {/* Name */}
-          <h2 className="font-body font-bold leading-[0.92] text-text-warm md:text-bg-primary">
+          <h2 className="font-body font-bold leading-[1.05] text-text-warm md:text-bg-primary">
             {['SREERAMA', 'KARTHEEK'].map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <span
@@ -206,7 +206,7 @@ export default function FounderSection() {
             }
             className="mt-8 flex h-12 w-12 items-center justify-center rounded-full border border-[#1C1F1A]/20 text-[#1C1F1A] shadow-sm transition-[transform,background-color,border-color,color] duration-200 ease-out hover:bg-[#1C1F1A] hover:text-[#EFEDE5] hover:border-[#1C1F1A] hover:scale-110 active:scale-95"
           >
-            <span className="text-lg leading-none">→</span>
+            <span className="text-lg leading-[1.08]">→</span>
           </button>
         </div>
       </div>

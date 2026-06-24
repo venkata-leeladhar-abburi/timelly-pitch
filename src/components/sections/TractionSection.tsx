@@ -106,9 +106,21 @@ export default function TractionSection() {
   const sectionRef  = useRef<HTMLElement>(null)
   const wavePathRef = useRef<SVGPathElement>(null)
   const mobileLineRef = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // ─── 0. Title Reveal ───
+      if (titleRef.current) {
+        gsap.fromTo(titleRef.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+            scrollTrigger: { trigger: titleRef.current, start: 'top 85%', toggleActions: 'play none none reverse' },
+          }
+        )
+      }
+
       // ─── 1. Desktop Winding Path Animation ───
       const desktopWavePath = wavePathRef.current
       if (desktopWavePath) {
@@ -203,8 +215,8 @@ export default function TractionSection() {
 
       {/* ── Title Header ───────────────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-[6vw] md:px-[8vw] mb-24 text-center">
-        <h2 className="flex flex-wrap justify-center gap-x-[0.3em] font-bold text-[clamp(54px,7vw,96px)] tracking-tight uppercase">
-          <span className="font-body" style={{ color: CREAM }}>CURRENT</span>
+        <h2 ref={titleRef} className="font-bold text-[clamp(54px,7vw,96px)] tracking-tight uppercase">
+          <span className="font-body" style={{ color: CREAM }}>CURRENT</span>{' '}
           <span className="font-display" style={{ color: LIME }}>TRACTION.</span>
         </h2>
       </div>

@@ -116,7 +116,7 @@ function StatCard({ stat, index }: { stat: typeof STATS[number]; index: number }
     >
       <span
         ref={numberRef}
-        className="font-body font-bold leading-none"
+        className="font-body font-bold leading-[1.08]"
         style={{ color: INK, fontSize: 'clamp(32px,4vw,56px)' }}
       >
         {stat.number}
@@ -228,7 +228,7 @@ export default function MarketSection() {
 
           {/* THE MARKET. — moderate size, both fonts */}
           <h2
-            className="uppercase tracking-tight leading-[0.9]"
+            className="uppercase tracking-tight leading-[1.05]"
             style={{ color: INK }}
           >
             <span
@@ -256,28 +256,28 @@ export default function MarketSection() {
         <div ref={headingRef} className="text-center">
           {/* Line 1 */}
           <div
-            className="font-body font-bold uppercase tracking-tight leading-[0.88] flex flex-wrap justify-center gap-x-[0.35em]"
+            className="font-body font-bold uppercase tracking-tight leading-[1.05] text-center"
             style={{ fontSize: 'clamp(36px, 6.2vw, 96px)', color: INK }}
           >
-            <span>WE</span>
-            <span>AREN&apos;T</span>
-            <span>BUILDING</span>
-            <span>FOR</span>
-            <span>A</span>
-            <span className="font-display" style={{ color: LIME }}>FEW</span>
+            <span>WE</span>{' '}
+            <span>AREN&apos;T</span>{' '}
+            <span>BUILDING</span>{' '}
+            <span>FOR</span>{' '}
+            <span>A</span>{' '}
+            <span className="font-display" style={{ color: LIME }}>FEW</span>{' '}
             <span>SCHOOLS.</span>
           </div>
           {/* Line 2 */}
           <div
-            className="font-body font-bold uppercase tracking-tight leading-[0.88] flex flex-wrap justify-center gap-x-[0.35em] mt-2"
+            className="font-body font-bold uppercase tracking-tight leading-[1.05] text-center mt-2"
             style={{ fontSize: 'clamp(36px, 6.2vw, 96px)', color: INK }}
           >
-            <span>WE&apos;RE</span>
-            <span>BUILDING</span>
-            <span>FOR</span>
-            <span className="font-display" style={{ color: LIME }}>AN</span>
-            <span>ENTIRE</span>
-            <span className="font-display" style={{ color: LIME }}>EDUCATION</span>
+            <span>WE&apos;RE</span>{' '}
+            <span>BUILDING</span>{' '}
+            <span>FOR</span>{' '}
+            <span className="font-display" style={{ color: LIME }}>AN</span>{' '}
+            <span>ENTIRE</span>{' '}
+            <span className="font-display" style={{ color: LIME }}>EDUCATION</span>{' '}
             <span>SYSTEM.</span>
           </div>
         </div>
@@ -311,14 +311,16 @@ export default function MarketSection() {
               [{ text: 'THIS' }, { text: "ISN'T" }, { text: 'A' }, { text: 'SCHOOL' }],
               [{ text: 'SOFTWARE', lime: true }, { text: 'MARKET.' }],
             ].map((line, i) => (
-              <div key={i} className="flex flex-wrap justify-center gap-x-[0.3em]">
+              <div key={i} className="text-center">
                 {line.map((w: {text:string;lime?:boolean}, j) => (
-                  <span
-                    key={j}
-                    className={`leading-[0.88] tracking-tight uppercase ${w.lime ? 'font-display font-bold' : 'font-body font-bold'}`}
-                    style={{ color: w.lime ? '#B4D429' : '#F0EDE6', fontSize: 'clamp(38px,5.8vw,86px)' }}
-                  >
-                    {w.text}
+                  <span key={j}>
+                    <span
+                      className={`leading-[1.05] tracking-tight uppercase ${w.lime ? 'font-display font-bold' : 'font-body font-bold'}`}
+                      style={{ color: w.lime ? '#B4D429' : '#F0EDE6', fontSize: 'clamp(38px,5.8vw,86px)' }}
+                    >
+                      {w.text}
+                    </span>
+                    {j < line.length - 1 ? ' ' : ''}
                   </span>
                 ))}
               </div>
@@ -331,14 +333,16 @@ export default function MarketSection() {
               [{ text: "IT'S" }, { text: 'AN' }, { text: 'EDUCATION' }],
               [{ text: 'INFRASTRUCTURE', lime: true }, { text: 'MARKET.' }],
             ].map((line, i) => (
-              <div key={i} className="flex flex-wrap justify-center gap-x-[0.3em]">
+              <div key={i} className="text-center">
                 {line.map((w: {text:string;lime?:boolean}, j) => (
-                  <span
-                    key={j}
-                    className={`leading-[0.88] tracking-tight uppercase ${w.lime ? 'font-display font-bold' : 'font-body font-bold'}`}
-                    style={{ color: w.lime ? '#B4D429' : '#F0EDE6', fontSize: 'clamp(38px,5.8vw,86px)' }}
-                  >
-                    {w.text}
+                  <span key={j}>
+                    <span
+                      className={`leading-[1.05] tracking-tight uppercase ${w.lime ? 'font-display font-bold' : 'font-body font-bold'}`}
+                      style={{ color: w.lime ? '#B4D429' : '#F0EDE6', fontSize: 'clamp(38px,5.8vw,86px)' }}
+                    >
+                      {w.text}
+                    </span>
+                    {j < line.length - 1 ? ' ' : ''}
                   </span>
                 ))}
               </div>
@@ -364,10 +368,9 @@ export default function MarketSection() {
             >
               MARKET SIZE
             </span>
-            <div className="flex flex-wrap gap-x-[0.35em] items-baseline">
-              <span className="font-body font-bold uppercase leading-[0.9] tracking-tight" style={{ color: INK, fontSize: 'clamp(38px,5.5vw,80px)' }}>THE</span>
-              <span className="font-display font-bold uppercase leading-[0.9] tracking-tight" style={{ color: LIME, fontSize: 'clamp(38px,5.5vw,80px)' }}>OPPORTUNITY</span>
-              <span className="font-display font-bold uppercase leading-[0.9] tracking-tight" style={{ color: LIME, fontSize: 'clamp(38px,5.5vw,80px)' }}>.</span>
+            <div>
+              <span className="font-body font-bold uppercase leading-[1.05] tracking-tight" style={{ color: INK, fontSize: 'clamp(38px,5.5vw,80px)' }}>THE</span>{' '}
+              <span className="font-display font-bold uppercase leading-[1.05] tracking-tight" style={{ color: LIME, fontSize: 'clamp(38px,5.5vw,80px)' }}>OPPORTUNITY</span><span className="font-display font-bold uppercase leading-[1.05] tracking-tight" style={{ color: LIME, fontSize: 'clamp(38px,5.5vw,80px)' }}>.</span>
             </div>
           </div>
 
@@ -429,13 +432,13 @@ export default function MarketSection() {
             >
               EXPANSION VISION
             </span>
-            <h3 className="font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[0.85] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
-              <div className="flex flex-wrap justify-center gap-x-[0.25em]">
-                <span className="font-display font-bold" style={{ color: LIME }}>ONE</span>
+            <h3 className="font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[1.05] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
+              <div className="text-center">
+                <span className="font-display font-bold" style={{ color: LIME }}>ONE</span>{' '}
                 <span style={{ color: INK }}>PLATFORM.</span>
               </div>
-              <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
-                <span style={{ color: INK }}>MULTIPLE</span>
+              <div className="text-center mt-1 md:mt-2">
+                <span style={{ color: INK }}>MULTIPLE</span>{' '}
                 <span className="font-display font-bold" style={{ color: LIME }}>SEGMENTS.</span>
               </div>
             </h3>
@@ -475,23 +478,23 @@ export default function MarketSection() {
         <div ref={endingRef} className="max-w-[1400px] mx-auto">
           {/* Full-width headline */}
           <div className="mb-14 flex flex-col items-center text-center">
-            <h3 className="font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[0.85] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
-              <div className="flex flex-wrap justify-center gap-x-[0.25em]">
-                <span style={{ color: INK }}>THE</span>
-                <span className="font-display font-bold" style={{ color: LIME }}>MARKET</span>
+            <h3 className="font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[1.05] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
+              <div className="text-center">
+                <span style={{ color: INK }}>THE</span>{' '}
+                <span className="font-display font-bold" style={{ color: LIME }}>MARKET</span>{' '}
                 <span style={{ color: INK }}>ISN'T</span>
               </div>
-              <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
-                <span style={{ color: INK }}>MEASURED</span>
-                <span style={{ color: INK }}>IN</span>
+              <div className="text-center mt-1 md:mt-2">
+                <span style={{ color: INK }}>MEASURED</span>{' '}
+                <span style={{ color: INK }}>IN</span>{' '}
                 <span className="font-display font-bold" style={{ color: LIME }}>INSTITUTIONS.</span>
               </div>
-              <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-6 md:mt-8">
-                <span style={{ color: INK }}>IT'S</span>
+              <div className="text-center mt-6 md:mt-8">
+                <span style={{ color: INK }}>IT'S</span>{' '}
                 <span style={{ color: INK }}>MEASURED</span>
               </div>
-              <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
-                <span className="font-display font-bold" style={{ color: LIME }}>IN</span>
+              <div className="text-center mt-1 md:mt-2">
+                <span className="font-display font-bold" style={{ color: LIME }}>IN</span>{' '}
                 <span style={{ color: INK }}>LEARNERS.</span>
               </div>
             </h3>
@@ -521,25 +524,29 @@ export default function MarketSection() {
       >
         <div ref={finalLineRef} className="relative z-10 text-center px-[8vw]">
           <div className="mb-4">
-            <div className="flex flex-wrap justify-center gap-x-[0.35em]">
+            <div>
               {['FROM', '1', 'SCHOOL'].map((w, i) => (
-                <span
-                  key={i}
-                  className="font-body font-bold leading-[0.88] tracking-tight uppercase"
-                  style={{ color: i === 1 ? LIME : INK, fontSize: 'clamp(44px,7vw,110px)' }}
-                >
-                  {w}
+                <span key={i}>
+                  <span
+                    className="font-body font-bold leading-[1.05] tracking-tight uppercase"
+                    style={{ color: i === 1 ? LIME : INK, fontSize: 'clamp(44px,7vw,110px)' }}
+                  >
+                    {w}
+                  </span>
+                  {i < 2 ? ' ' : ''}
                 </span>
               ))}
             </div>
-            <div className="flex flex-wrap justify-center gap-x-[0.35em]">
+            <div>
               {[{ w: 'TO', lime: false }, { w: 'AN', lime: false }, { w: 'ENTIRE', lime: true }, { w: 'GENERATION.', lime: false }].map((obj, i) => (
-                <span
-                  key={i}
-                  className={`leading-[0.88] tracking-tight uppercase ${obj.lime ? 'font-display font-bold' : 'font-body font-bold'}`}
-                  style={{ color: obj.lime ? LIME : INK, fontSize: 'clamp(44px,7vw,110px)' }}
-                >
-                  {obj.w}
+                <span key={i}>
+                  <span
+                    className={`leading-[1.05] tracking-tight uppercase ${obj.lime ? 'font-display font-bold' : 'font-body font-bold'}`}
+                    style={{ color: obj.lime ? LIME : INK, fontSize: 'clamp(44px,7vw,110px)' }}
+                  >
+                    {obj.w}
+                  </span>
+                  {i < 3 ? ' ' : ''}
                 </span>
               ))}
             </div>

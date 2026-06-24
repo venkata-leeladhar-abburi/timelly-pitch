@@ -59,7 +59,7 @@ function Glyph({ kind }: { kind: IconKind }) {
       )
     case 'timelly':
       return (
-        <span className="font-body text-2xl leading-none" style={{ color: GREEN }}>
+        <span className="font-body text-2xl leading-[1.08]" style={{ color: GREEN }}>
           T
         </span>
       )

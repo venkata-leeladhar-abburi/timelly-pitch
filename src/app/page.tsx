@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { useLenis } from '@/hooks/useLenis'
 import Navbar from '@/components/layout/Navbar'
-import CustomCursor from '@/components/layout/CustomCursor'
 import HeroSection from '@/components/sections/HeroSection'
 import FounderSection from '@/components/sections/FounderSection'
 import StatementSection from '@/components/sections/StatementSection'
@@ -29,7 +28,6 @@ export default function Home() {
 
   return (
     <main>
-      <CustomCursor />
       <Navbar />
       <HeroSection />
       <FounderSection />

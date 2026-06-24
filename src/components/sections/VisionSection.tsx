@@ -25,6 +25,8 @@ export default function VisionSection() {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const stickyRef = useRef<HTMLDivElement>(null)
   const bridgeRef = useRef<HTMLDivElement>(null)
+  const introLineRefs = useRef<(HTMLDivElement | null)[]>([])
+  const bridgeLineRefs = useRef<(HTMLDivElement | null)[]>([])
 
   const canvasRefs = useRef<(HTMLCanvasElement | null)[]>([null, null, null])
   const headlineRefs = useRef<(HTMLDivElement | null)[]>([null, null, null])
@@ -200,34 +202,32 @@ export default function VisionSection() {
   }, [renderFrame])
 
   useEffect(() => {
-    const tween = gsap.fromTo(
-      bridgeRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: bridgeRef.current, start: 'top 85%' },
-      }
-    )
+    const lines = bridgeLineRefs.current.filter(Boolean)
+    gsap.set(lines, { opacity: 0, y: 30 })
+    const tween = gsap.to(lines, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: bridgeRef.current, start: 'top 80%', toggleActions: 'play none none reverse' },
+    })
     return () => {
       tween.scrollTrigger?.kill()
     }
   }, [])
 
   useEffect(() => {
-    const tween = gsap.fromTo(
-      introRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: introRef.current, start: 'top 85%' },
-      }
-    )
+    const lines = introLineRefs.current.filter(Boolean)
+    gsap.set(lines, { opacity: 0, y: 30 })
+    const tween = gsap.to(lines, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: introRef.current, start: 'top 80%', toggleActions: 'play none none reverse' },
+    })
     return () => {
       tween.scrollTrigger?.kill()
     }
@@ -260,24 +260,24 @@ export default function VisionSection() {
 
         <div className="relative z-10 mb-8 h-2.5 w-2.5 rounded-full" style={{ backgroundColor: '#3F8F3F' }} />
 
-        <h3 className="relative z-10 font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[0.85] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
-          <div className="flex flex-wrap justify-center gap-x-[0.25em]">
-            <span style={{ color: '#E9ECDB' }}>THIS</span>
-            <span style={{ color: '#E9ECDB' }}>ISN&apos;T</span>
-            <span style={{ color: '#E9ECDB' }}>A</span>
+        <h3 className="relative z-10 font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[1.05] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
+          <div ref={(el) => { introLineRefs.current[0] = el }} className="text-center">
+            <span style={{ color: '#E9ECDB' }}>THIS</span>{' '}
+            <span style={{ color: '#E9ECDB' }}>ISN&apos;T</span>{' '}
+            <span style={{ color: '#E9ECDB' }}>A</span>{' '}
             <span style={{ color: '#E9ECDB' }}>SCHOOL</span>
           </div>
-          <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
-            <span className="font-display font-bold" style={{ color: '#B4D429' }}>SOFTWARE</span>
+          <div ref={(el) => { introLineRefs.current[1] = el }} className="text-center mt-1 md:mt-2">
+            <span className="font-display font-bold" style={{ color: '#B4D429' }}>SOFTWARE</span>{' '}
             <span style={{ color: '#E9ECDB' }}>COMPANY.</span>
           </div>
-          <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-6 md:mt-8">
-            <span style={{ color: '#E9ECDB' }}>IT&apos;S</span>
-            <span style={{ color: '#E9ECDB' }}>AN</span>
+          <div ref={(el) => { introLineRefs.current[2] = el }} className="text-center mt-6 md:mt-8">
+            <span style={{ color: '#E9ECDB' }}>IT&apos;S</span>{' '}
+            <span style={{ color: '#E9ECDB' }}>AN</span>{' '}
             <span style={{ color: '#E9ECDB' }}>EDUCATION</span>
           </div>
-          <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
-            <span className="font-display font-bold" style={{ color: '#B4D429' }}>INFRASTRUCTURE</span>
+          <div ref={(el) => { introLineRefs.current[3] = el }} className="text-center mt-1 md:mt-2">
+            <span className="font-display font-bold" style={{ color: '#B4D429' }}>INFRASTRUCTURE</span>{' '}
             <span style={{ color: '#E9ECDB' }}>COMPANY.</span>
           </div>
         </h3>
@@ -362,7 +362,7 @@ export default function VisionSection() {
 
                   {/* Main headline — Brier for accent line, Mona Sans otherwise */}
                   <h2
-                    className="mb-0 md:mb-5 font-body font-bold uppercase leading-[1.05] tracking-tight"
+                    className="mb-0 md:mb-5 font-body font-bold uppercase leading-[1.08] tracking-tight"
                     style={{
                       color: '#F0EDE6',
                       fontSize: 'clamp(24px, 6vw, 48px)',
@@ -436,20 +436,20 @@ export default function VisionSection() {
           <ellipse cx="1020" cy="260" rx="200" ry="140" />
         </svg>
 
-        <h3 className="relative z-10 font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[0.85] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
-          <div className="flex flex-wrap justify-center gap-x-[0.25em]">
-            <span style={{ color: '#E9ECDB' }}>NOT</span>
-            <span className="font-display font-bold" style={{ color: '#B4D429' }}>SOFTWARE</span>
-            <span style={{ color: '#E9ECDB' }}>FOR</span>
+        <h3 className="relative z-10 font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[1.05] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
+          <div ref={(el) => { bridgeLineRefs.current[0] = el }} className="text-center">
+            <span style={{ color: '#E9ECDB' }}>NOT</span>{' '}
+            <span className="font-display font-bold" style={{ color: '#B4D429' }}>SOFTWARE</span>{' '}
+            <span style={{ color: '#E9ECDB' }}>FOR</span>{' '}
             <span style={{ color: '#E9ECDB' }}>SCHOOLS.</span>
           </div>
-          <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-6 md:mt-8">
-            <span className="font-display font-bold" style={{ color: '#B4D429' }}>INTELLIGENCE</span>
-            <span style={{ color: '#E9ECDB' }}>FOR</span>
+          <div ref={(el) => { bridgeLineRefs.current[1] = el }} className="text-center mt-6 md:mt-8">
+            <span className="font-display font-bold" style={{ color: '#B4D429' }}>INTELLIGENCE</span>{' '}
+            <span style={{ color: '#E9ECDB' }}>FOR</span>{' '}
             <span style={{ color: '#E9ECDB' }}>EDUCATION.</span>
           </div>
         </h3>
-        <p className="relative z-10 mt-8 font-body text-base md:text-lg font-light tracking-wide text-[#E9ECDB]/60">
+        <p ref={(el) => { bridgeLineRefs.current[2] = el }} className="relative z-10 mt-8 font-body text-base md:text-lg font-light tracking-wide text-[#E9ECDB]/60">
           One platform. Every learner. Every stage.
         </p>
       </div>

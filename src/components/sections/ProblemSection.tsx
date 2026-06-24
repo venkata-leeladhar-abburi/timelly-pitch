@@ -339,7 +339,7 @@ export default function ProblemSection() {
 
                     {/* Headline — Mona Sans line 1, Brier+lime line 2 */}
                     <h2
-                      className="mb-0 md:mb-5 font-body font-bold uppercase leading-[1.05] tracking-tight"
+                      className="mb-0 md:mb-5 font-body font-bold uppercase leading-[1.08] tracking-tight"
                       style={{
                         color: '#F0EDE6',
                         fontSize: 'clamp(24px, 6vw, 50px)',
@@ -454,7 +454,7 @@ export default function ProblemSection() {
         </svg>
 
         <h3
-          className="relative z-10 font-body font-bold uppercase leading-[1.05] tracking-tight max-w-[20ch]"
+          className="relative z-10 font-body font-bold uppercase leading-[1.08] tracking-tight max-w-[20ch]"
           style={{
             color: '#E9ECDB',
             fontSize: 'clamp(36px, 5.4vw, 84px)',

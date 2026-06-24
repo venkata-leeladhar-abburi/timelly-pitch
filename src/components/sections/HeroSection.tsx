@@ -158,7 +158,7 @@ export default function HeroSection() {
                   {beat.label}
                 </div>
               )}
-              <h1 className="font-display font-bold text-[clamp(48px,9vw,120px)] uppercase leading-[0.85] tracking-tight text-[#F5F4F0] mb-3 sm:mb-5">
+              <h1 className="font-display font-bold text-[clamp(48px,9vw,120px)] uppercase leading-[1.05] tracking-tight text-[#F5F4F0] mb-3 sm:mb-5">
                 {beat.headline.map((line, j) => (
                   <span key={j} className="block whitespace-nowrap">
                     {line}
