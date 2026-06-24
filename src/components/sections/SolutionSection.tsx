@@ -3,12 +3,12 @@
 import { useEffect, useRef } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
-// Premium Dark Olive Theme (Inspired by Image 2)
-const BG_COLOR = '#262A22'
-const CREAM = '#EBE9DF'
+// Premium Light Theme
+const BG_COLOR = '#F5F4F0'
+const CREAM = '#1A3A24' // Re-using variable name, but this is the dark green INK color
 const LIME = '#B4D429'
-const CARD_BG = 'rgba(235, 233, 223, 0.03)'
-const CARD_BORDER = 'rgba(235, 233, 223, 0.08)'
+const CARD_BG = '#FFFFFF'
+const CARD_BORDER = 'rgba(26, 58, 36, 0.12)'
 
 // ─── Icons Matching Journey Section Style (but themed) ─────────────────────────
 const SVGI = ({ children }: { children: React.ReactNode }) => (
@@ -267,11 +267,11 @@ export default function SolutionSection() {
             {CHAOS_ITEMS.map((item, i) => (
               <span
                 key={i}
-                className="rounded-full border px-4 py-2 font-body text-xs font-semibold"
+                className="rounded-full border px-4 py-2 font-body text-xs font-semibold shadow-sm"
                 style={{
                   transform: `rotate(${item.rotation / 2}deg)`,
-                  backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                  borderColor: 'rgba(255, 255, 255, 0.1)',
+                  backgroundColor: '#FFFFFF',
+                  borderColor: CARD_BORDER,
                   color: CREAM,
                 }}
               >
@@ -292,15 +292,15 @@ export default function SolutionSection() {
             {[CARD_1_ITEMS, CARD_2_ITEMS].map((cardItems, cardIdx) => (
               <div
                 key={cardIdx}
-                className="rounded-[24px] p-6 text-left shadow-[0_24px_60px_rgba(0,0,0,0.3)]"
-                style={{ backgroundColor: 'rgba(235,233,223,0.05)', border: `1px solid ${CARD_BORDER}` }}
+                className="rounded-[24px] p-6 text-left shadow-[0_24px_60px_rgba(26,58,36,0.08)]"
+                style={{ backgroundColor: CARD_BG, border: `1px solid ${CARD_BORDER}` }}
               >
                 <ul className="flex flex-col gap-5">
                   {cardItems.map((item, i) => (
-                    <li key={i} className="flex items-center gap-4">
+                    <li key={i} className="flex items-center gap-4 transition-transform duration-300 hover:translate-x-2">
                       <div
                         className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
-                        style={{ backgroundColor: 'rgba(235, 233, 223, 0.05)', border: `1px solid ${CARD_BORDER}` }}
+                        style={{ backgroundColor: 'rgba(26,58,36,0.03)', border: `1px solid ${CARD_BORDER}` }}
                       >
                         <item.icon />
                       </div>
@@ -389,13 +389,13 @@ export default function SolutionSection() {
           {CHAOS_ITEMS.map((item, i) => (
             <div
               key={i}
-              className="chaos-item absolute rounded-full border px-6 py-3 font-body text-sm md:text-base font-semibold backdrop-blur-md shadow-2xl flex items-center justify-center"
+              className="chaos-item absolute rounded-full border px-6 py-3 font-body text-sm md:text-base font-semibold backdrop-blur-md shadow-[0_8px_24px_rgba(26,58,36,0.08)] flex items-center justify-center"
               style={{
                 left: item.x,
                 top: item.y,
                 transform: `rotate(${item.rotation}deg)`,
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                borderColor: 'rgba(255, 255, 255, 0.1)',
+                backgroundColor: '#FFFFFF',
+                borderColor: CARD_BORDER,
                 color: CREAM,
               }}
             >
@@ -444,15 +444,15 @@ export default function SolutionSection() {
             {/* Card 1 */}
             <div
               ref={card1Ref}
-              className="rounded-[32px] p-10 md:p-12 shadow-[0_24px_60px_rgba(0,0,0,0.3)] backdrop-blur-xl"
+              className="rounded-[32px] p-10 md:p-12 shadow-[0_24px_60px_rgba(26,58,36,0.08)] backdrop-blur-xl"
               style={{ backgroundColor: CARD_BG, border: `1px solid ${CARD_BORDER}` }}
             >
               <ul className="space-y-7">
                 {CARD_1_ITEMS.map((item, i) => (
-                  <li key={i} className="flex items-center gap-5">
+                  <li key={i} className="flex items-center gap-5 transition-transform duration-300 hover:translate-x-2 cursor-pointer">
                     <div 
-                      className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full shadow-sm"
-                      style={{ backgroundColor: 'rgba(235, 233, 223, 0.05)', border: `1px solid ${CARD_BORDER}` }}
+                      className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl shadow-sm transition-colors duration-300 hover:bg-[#F9F8F5]"
+                      style={{ backgroundColor: 'rgba(26,58,36,0.03)', border: `1px solid ${CARD_BORDER}` }}
                     >
                       <item.icon />
                     </div>
@@ -470,15 +470,15 @@ export default function SolutionSection() {
             {/* Card 2 */}
             <div
               ref={card2Ref}
-              className="rounded-[32px] p-10 md:p-12 shadow-[0_24px_60px_rgba(0,0,0,0.3)] backdrop-blur-xl"
+              className="rounded-[32px] p-10 md:p-12 shadow-[0_24px_60px_rgba(26,58,36,0.08)] backdrop-blur-xl"
               style={{ backgroundColor: CARD_BG, border: `1px solid ${CARD_BORDER}` }}
             >
               <ul className="space-y-7">
                 {CARD_2_ITEMS.map((item, i) => (
-                  <li key={i} className="flex items-center gap-5">
+                  <li key={i} className="flex items-center gap-5 transition-transform duration-300 hover:translate-x-2 cursor-pointer">
                     <div 
-                      className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full shadow-sm"
-                      style={{ backgroundColor: 'rgba(235, 233, 223, 0.05)', border: `1px solid ${CARD_BORDER}` }}
+                      className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl shadow-sm transition-colors duration-300 hover:bg-[#F9F8F5]"
+                      style={{ backgroundColor: 'rgba(26,58,36,0.03)', border: `1px solid ${CARD_BORDER}` }}
                     >
                       <item.icon />
                     </div>
@@ -498,8 +498,8 @@ export default function SolutionSection() {
 
       {/* 4. Ending Section (Static, flows naturally with the Dark Olive theme) */}
       <div 
-        className="relative z-40 w-full py-32 px-8 md:px-16 flex flex-col items-center text-center border-t border-white/5"
-        style={{ backgroundColor: BG_COLOR }}
+        className="relative z-40 w-full py-32 px-8 md:px-16 flex flex-col items-center text-center"
+        style={{ backgroundColor: BG_COLOR, borderTop: `1px solid ${CARD_BORDER}` }}
       >
         <h2 className="font-body font-bold text-[clamp(44px,7vw,110px)] leading-[0.85] tracking-tight uppercase flex flex-col items-center justify-center w-full mb-10">
           <div className="flex flex-wrap justify-center gap-x-[0.25em]">
@@ -532,7 +532,7 @@ export default function SolutionSection() {
         <div className="flex flex-col md:flex-row gap-12 items-center justify-center w-full max-w-4xl">
           {/* Highlight Box */}
           <div 
-            className="rounded-[32px] p-10 md:p-14 shadow-[0_24px_60px_rgba(0,0,0,0.3)] backdrop-blur-xl flex flex-col items-center transition-transform duration-500 hover:scale-105"
+            className="rounded-[32px] p-10 md:p-14 shadow-[0_24px_60px_rgba(26,58,36,0.08)] backdrop-blur-xl flex flex-col items-center transition-transform duration-500 hover:scale-105"
             style={{ backgroundColor: CARD_BG, border: `1px solid ${CARD_BORDER}` }}
           >
             <span 

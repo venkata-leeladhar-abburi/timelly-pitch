@@ -44,8 +44,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${brier.variable} ${monaSans.variable} ${jetbrainsMono.variable} ${cedarville.variable}`}
+      suppressHydrationWarning
     >
-      <body className="bg-bg-primary overflow-x-hidden cursor-none">
+      <body className="bg-bg-primary overflow-x-hidden cursor-none" suppressHydrationWarning>
         {children}
       </body>
     </html>

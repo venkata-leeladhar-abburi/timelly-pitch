@@ -156,26 +156,26 @@ export default function TractionSection() {
 
         ScrollTrigger.create({
           trigger: group,
-          start: 'top 85%',
+          start: 'top 95%', // Trigger just inside the viewport so reverse animations are visible when scrolling back up
           toggleActions: 'play none none reverse',
           onEnter: () => {
             const tl = gsap.timeline()
             if (conn) {
-              tl.to(conn, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' })
+              tl.to(conn, { opacity: 1, scale: 1, duration: 0.2, ease: 'power2.out' })
             }
-            tl.to(circle, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2.2)' }, conn ? '-=0.15' : '0')
+            tl.to(circle, { opacity: 1, scale: 1, duration: 0.35, ease: 'back.out(1.5)' }, conn ? '<' : '0')
             if (num) {
-              tl.to(num, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, '-=0.3')
+              tl.to(num, { opacity: 1, scale: 1, duration: 0.2, ease: 'power2.out' }, '<')
             }
             if (card) {
-              tl.to(card, { opacity: 1, scale: 1, duration: 0.55, ease: 'power3.out' }, '-=0.3')
+              tl.to(card, { opacity: 1, scale: 1, duration: 0.35, ease: 'power3.out' }, '<0.1')
             }
           },
           onLeaveBack: () => {
             gsap.to([circle, card, num, conn].filter(Boolean), {
               opacity: 0,
               scale: 0.85,
-              duration: 0.25,
+              duration: 0.15,
             })
           }
         })
@@ -202,12 +202,10 @@ export default function TractionSection() {
       </svg>
 
       {/* ── Title Header ───────────────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-[6vw] md:px-[8vw] mb-24">
-        <h2
-          className="font-body font-bold text-[clamp(54px,7vw,96px)] tracking-tight uppercase"
-          style={{ color: CREAM }}
-        >
-          CURRENT TRACTION<span style={{ color: LIME }}>.</span>
+      <div className="max-w-7xl mx-auto px-[6vw] md:px-[8vw] mb-24 text-center">
+        <h2 className="flex flex-wrap justify-center gap-x-[0.3em] font-bold text-[clamp(54px,7vw,96px)] tracking-tight uppercase">
+          <span className="font-body" style={{ color: CREAM }}>CURRENT</span>
+          <span className="font-display" style={{ color: LIME }}>TRACTION.</span>
         </h2>
       </div>
 

@@ -154,11 +154,11 @@ export default function HeroSection() {
               }`}
             >
               {beat.label && (
-                <div className="font-body text-[10px] sm:text-xs text-green tracking-[0.2em] sm:tracking-[0.3em] mb-2 sm:mb-4">
+                <div className="font-body font-bold text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-3 sm:mb-5" style={{ color: '#B4D429' }}>
                   {beat.label}
                 </div>
               )}
-              <h1 className="font-body font-bold text-hero text-text-warm leading-none mb-2 sm:mb-4">
+              <h1 className="font-display font-bold text-[clamp(48px,9vw,120px)] uppercase leading-[0.85] tracking-tight text-[#F5F4F0] mb-3 sm:mb-5">
                 {beat.headline.map((line, j) => (
                   <span key={j} className="block whitespace-nowrap">
                     {line}
@@ -166,7 +166,7 @@ export default function HeroSection() {
                 ))}
               </h1>
               {beat.body && (
-                <p className="font-body font-light text-sm sm:text-base md:text-lg text-text-dim whitespace-pre-line">
+                <p className="font-body text-base md:text-xl font-medium whitespace-pre-line" style={{ color: 'rgba(245,244,240,0.85)' }}>
                   {beat.body}
                 </p>
               )}
@@ -175,7 +175,7 @@ export default function HeroSection() {
 
           {/* Scroll indicator */}
           <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
-            <div className="w-px h-12 bg-green animate-pulse" />
+            <div className="w-px h-12 animate-pulse" style={{ backgroundColor: '#B4D429' }} />
           </div>
         </div>
       </section>

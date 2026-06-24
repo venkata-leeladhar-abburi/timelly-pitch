@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 const OLIVE = '#7E8B4F'
-const GREEN = '#3CB55A'
-const INK = '#1C1F1A'
+const GREEN = '#B4D429'
+const INK = '#1A3A24'
 
 type Step = {
   title: string
@@ -23,7 +23,7 @@ const STEPS: Step[] = [
 
 function IncorporatedIcon() {
   return (
-    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F5F4F0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="4" y="2" width="16" height="20" rx="2" />
       <path d="M9 2h6v4H9z" />
       <path d="m9 14 2 2 4-4" />
@@ -33,7 +33,7 @@ function IncorporatedIcon() {
 
 function CodeIcon() {
   return (
-    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F5F4F0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="16 18 22 12 16 6" />
       <polyline points="8 6 2 12 8 18" />
     </svg>
@@ -42,7 +42,7 @@ function CodeIcon() {
 
 function RocketIcon() {
   return (
-    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F5F4F0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="m22 7-8.5 8.5-5-5L2 17" />
       <path d="M16 7h6v6" />
     </svg>
@@ -52,8 +52,7 @@ function RocketIcon() {
 function TimellyMark() {
   return (
     <svg
-      width="58"
-      height="58"
+      className="w-10 h-10"
       viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +67,7 @@ function StepIcon({ variant, index }: { variant: Step['variant']; index: number 
   if (variant === 'logo') {
     return (
       <div
-        className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full shadow-[0_12px_32px_rgba(60,181,90,0.3)] transition-transform duration-300 hover:scale-110 md:h-28 md:w-28"
+        className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl shadow-[0_8px_24px_rgba(180,212,41,0.4)] transition-transform duration-300 hover:scale-110 md:h-20 md:w-20"
         style={{ backgroundColor: GREEN }}
       >
         <TimellyMark />
@@ -77,8 +76,8 @@ function StepIcon({ variant, index }: { variant: Step['variant']; index: number 
   }
   return (
     <div
-      className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white transition-transform duration-300 hover:scale-110 md:h-28 md:w-28"
-      style={{ border: `1.5px solid ${INK}1F`, boxShadow: '0 12px 32px rgba(28,31,26,0.04)' }}
+      className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 hover:rotate-6 md:h-20 md:w-20"
+      style={{ border: `1.5px solid rgba(245,244,240,0.15)`, backgroundColor: 'rgba(245,244,240,0.04)' }}
     >
       {index === 0 && <IncorporatedIcon />}
       {index === 1 && <CodeIcon />}
@@ -150,8 +149,9 @@ export default function JourneySection() {
       <div className="relative z-10 mx-auto w-full max-w-[1450px]">
         {/* Section Title */}
         <div ref={labelRef} className="mb-24">
-          <h2 className="font-body font-bold text-[clamp(44px,6vw,80px)] tracking-tight text-[#1C1F1A] uppercase">
-            THE JOURNEY<span style={{ color: GREEN }}>.</span>
+          <h2 className="flex flex-wrap gap-x-[0.3em] font-bold text-[clamp(44px,6vw,80px)] tracking-tight uppercase" style={{ color: INK }}>
+            <span className="font-body">THE</span>
+            <span className="font-display" style={{ color: GREEN }}>JOURNEY.</span>
           </h2>
         </div>
 
@@ -208,15 +208,23 @@ export default function JourneySection() {
               ref={(el) => {
                 itemRefs.current[i] = el
               }}
-              className={`relative z-10 flex w-full flex-row items-center gap-5 rounded-2xl border border-[#1C1F1A]/15 bg-white p-5 text-left shadow-[0_12px_32px_rgba(28,31,26,0.05)] transition-all duration-300 hover:scale-[1.02] hover:bg-[#F9F8F5] hover:border-[#1C1F1A]/25 hover:shadow-[0_16px_48px_rgba(28,31,26,0.08)] md:w-[22%] md:flex-col md:items-center md:p-6 md:text-center ${
-                i % 2 === 0 ? 'md:mt-20' : 'md:mt-0'
+              className={`group relative z-10 flex w-full flex-row items-center gap-5 rounded-3xl bg-[#1A3A24] p-6 text-left shadow-[0_20px_40px_rgba(26,58,36,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_54px_rgba(180,212,41,0.2)] md:w-[22%] md:flex-col md:items-start md:p-8 md:text-left ${
+                i % 2 === 0 ? 'md:mt-24' : 'md:-mt-4'
               }`}
             >
-              <div className="shrink-0">
+              {/* Card top glow line */}
+              <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#B4D429] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              
+              <div className="shrink-0 mb-2 md:mb-6">
                 <StepIcon variant={step.variant} index={i} />
               </div>
-              <div>
-                <h3 className="font-body text-base font-bold leading-snug text-[#1C1F1A] md:mt-8 md:text-lg lg:text-xl">
+              <div className="flex-1 w-full flex flex-col justify-between">
+                {step.range && (
+                  <p className="mb-2 font-body text-[10px] tracking-[0.2em] uppercase font-bold" style={{ color: GREEN }}>
+                    {step.range}
+                  </p>
+                )}
+                <h3 className="font-body text-2xl font-bold leading-snug text-[#F5F4F0] lg:text-3xl">
                   {step.title}
                   {step.highlight && (
                     <>
@@ -225,11 +233,6 @@ export default function JourneySection() {
                     </>
                   )}
                 </h3>
-                {step.range && (
-                  <p className="mt-2 font-body text-xs tracking-widest text-[#1C1F1A]/50 font-medium md:mt-3 md:text-sm">
-                    {step.range}
-                  </p>
-                )}
               </div>
             </div>
           ))}

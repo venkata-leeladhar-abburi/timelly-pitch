@@ -169,25 +169,20 @@ export default function VisionSection() {
             renderFrame(vi, frameIndex)
           }
 
-          const textFadeBuffer = TRANSITION_FRAC * 0.7
-          const textStart = sectionStart + textFadeBuffer
-          const textEnd = sectionEnd - textFadeBuffer
-
-          let textOpacity = 0
-          if (progress >= textStart && progress <= textEnd) {
-            textOpacity = 1
-            if (progress < textStart + TRANSITION_FRAC * 0.5) {
-              textOpacity = (progress - textStart) / (TRANSITION_FRAC * 0.5)
-            }
-            if (progress > textEnd - TRANSITION_FRAC * 0.5) {
-              textOpacity = 1 - (progress - (textEnd - TRANSITION_FRAC * 0.5)) / (TRANSITION_FRAC * 0.5)
-            }
-          }
-
-          textOpacity = clamp01(textOpacity)
+          const isActive = progress >= sectionStart && progress < sectionEnd
+          const textOpacity = isActive ? 1 : 0
 
           const headline = headlineRefs.current[vi]
-          if (headline) headline.style.opacity = String(textOpacity)
+          if (headline) {
+            headline.style.opacity = String(textOpacity)
+            if (window.innerWidth <= 768) {
+              headline.style.transform = isActive ? 'translateY(0)' : 'translateY(20px)'
+              headline.style.transition = isActive ? 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
+            } else {
+              headline.style.transform = 'none'
+              headline.style.transition = 'none'
+            }
+          }
 
           const dot = dotRefs.current[vi]
           if (dot) {
@@ -243,7 +238,7 @@ export default function VisionSection() {
       {/* ── Intro statement bridging into the Vision section ── */}
       <div
         ref={introRef}
-        className="relative flex flex-col items-center justify-center overflow-hidden px-8 py-32 text-center"
+        className="relative flex flex-col items-center justify-center overflow-hidden px-8 min-h-screen text-center"
         style={{ backgroundColor: '#23271A' }}
       >
         <svg
@@ -265,16 +260,26 @@ export default function VisionSection() {
 
         <div className="relative z-10 mb-8 h-2.5 w-2.5 rounded-full" style={{ backgroundColor: '#3F8F3F' }} />
 
-        <h3
-          className="relative z-10 font-body font-bold uppercase leading-[1.05] tracking-tight max-w-[24ch]"
-          style={{
-            color: '#E9ECDB',
-            fontSize: 'clamp(28px, 4.6vw, 64px)',
-          }}
-        >
-          THIS ISN&apos;T A SCHOOL <span className="font-display font-bold" style={{ color: '#B4D429' }}>SOFTWARE</span> COMPANY.
-          <br />
-          IT&apos;S AN EDUCATION <span className="font-display font-bold" style={{ color: '#B4D429' }}>INFRASTRUCTURE</span> COMPANY.
+        <h3 className="relative z-10 font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[0.85] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
+          <div className="flex flex-wrap justify-center gap-x-[0.25em]">
+            <span style={{ color: '#E9ECDB' }}>THIS</span>
+            <span style={{ color: '#E9ECDB' }}>ISN&apos;T</span>
+            <span style={{ color: '#E9ECDB' }}>A</span>
+            <span style={{ color: '#E9ECDB' }}>SCHOOL</span>
+          </div>
+          <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
+            <span className="font-display font-bold" style={{ color: '#B4D429' }}>SOFTWARE</span>
+            <span style={{ color: '#E9ECDB' }}>COMPANY.</span>
+          </div>
+          <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-6 md:mt-8">
+            <span style={{ color: '#E9ECDB' }}>IT&apos;S</span>
+            <span style={{ color: '#E9ECDB' }}>AN</span>
+            <span style={{ color: '#E9ECDB' }}>EDUCATION</span>
+          </div>
+          <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
+            <span className="font-display font-bold" style={{ color: '#B4D429' }}>INFRASTRUCTURE</span>
+            <span style={{ color: '#E9ECDB' }}>COMPANY.</span>
+          </div>
         </h3>
       </div>
 
@@ -320,32 +325,31 @@ export default function VisionSection() {
             <div key={vi} className="pointer-events-none absolute inset-0 z-20">
               <div
                 ref={(el) => { headlineRefs.current[vi] = el }}
-                className="absolute inset-0 flex items-end justify-end p-6 md:p-10 lg:p-14"
+                className="absolute inset-0 flex items-end justify-center md:justify-end p-4 pb-10 md:p-10 lg:p-14"
                 style={{ opacity: vi === 0 ? 1 : 0, transition: 'none' }}
               >
                 {/* ── Vision Card ── */}
-                <div
-                  className="w-full max-w-[580px] rounded-2xl p-8 md:p-10"
+                <div className="w-full max-w-[580px]">
+                  <div
+                    className="w-full rounded-2xl p-6 md:p-10"
                   style={{
-                    background: 'rgba(16, 20, 16, 0.82)',
-                    backdropFilter: 'blur(24px)',
-                    WebkitBackdropFilter: 'blur(24px)',
-                    border: '1px solid rgba(240, 237, 230, 0.13)',
-                    boxShadow: '0 20px 60px rgba(0,0,0,0.55)',
+                    background: '#1A3A24',
+                    border: '1px solid rgba(180, 212, 41, 0.2)',
+                    boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
                   }}
                 >
                   {/* Label row */}
-                  <div className="mb-5 flex items-center gap-3">
+                  <div className="mb-4 flex flex-col md:flex-row md:items-center gap-2 md:gap-3 items-start">
                     <span
-                      className="font-body text-xs font-semibold tracking-[0.25em] uppercase"
+                      className="font-body text-[10px] md:text-xs font-semibold tracking-[0.2em] md:tracking-[0.25em] uppercase"
                       style={{ color: 'rgba(240,237,230,0.45)' }}
                     >
                       {vision.label}
                     </span>
-                    <div className="h-px flex-1" style={{ background: 'rgba(240,237,230,0.12)' }} />
+                    <div className="hidden md:block h-px flex-1" style={{ background: 'rgba(240,237,230,0.12)' }} />
                     {/* Heading tag pill */}
                     <span
-                      className="rounded-full px-3 py-1 font-body text-[11px] font-bold tracking-[0.18em] uppercase"
+                      className="rounded-full px-3 py-1 font-body text-[10px] md:text-[11px] font-bold tracking-[0.18em] uppercase"
                       style={{
                         background: 'rgba(180, 212, 41, 0.14)',
                         border: '1px solid rgba(180, 212, 41, 0.40)',
@@ -358,10 +362,10 @@ export default function VisionSection() {
 
                   {/* Main headline — Brier for accent line, Mona Sans otherwise */}
                   <h2
-                    className="mb-5 font-body font-bold uppercase leading-[1.0] tracking-tight"
+                    className="mb-0 md:mb-5 font-body font-bold uppercase leading-[1.05] tracking-tight"
                     style={{
                       color: '#F0EDE6',
-                      fontSize: 'clamp(28px, 3.4vw, 48px)',
+                      fontSize: 'clamp(24px, 6vw, 48px)',
                     }}
                   >
                     {vision.headline.map((line, li) => (
@@ -378,17 +382,18 @@ export default function VisionSection() {
                   </h2>
 
                   {/* Divider */}
-                  <div className="mb-5 h-px w-12" style={{ background: 'rgba(180,212,41,0.5)' }} />
+                  <div className="hidden md:block mb-5 h-px w-12" style={{ background: 'rgba(180,212,41,0.5)' }} />
 
                   {/* Body text */}
                   <p
-                    className="font-body text-base font-light leading-relaxed"
+                    className="hidden md:block font-body text-base font-light leading-relaxed"
                     style={{ color: 'rgba(240,237,230,0.88)' }}
                   >
                     {vision.card.loss}
                   </p>
                 </div>
               </div>
+            </div>
             </div>
           ))}
 
@@ -411,7 +416,7 @@ export default function VisionSection() {
 
       <div
         ref={bridgeRef}
-        className="relative flex flex-col items-center justify-center overflow-hidden px-8 py-32 text-center"
+        className="relative flex flex-col items-center justify-center overflow-hidden px-8 min-h-screen text-center"
         style={{ backgroundColor: '#23271A' }}
       >
         <svg
@@ -431,16 +436,18 @@ export default function VisionSection() {
           <ellipse cx="1020" cy="260" rx="200" ry="140" />
         </svg>
 
-        <h3
-          className="relative z-10 font-body font-bold uppercase leading-[1.05] tracking-tight max-w-[24ch]"
-          style={{
-            color: '#E9ECDB',
-            fontSize: 'clamp(36px, 5.4vw, 84px)',
-          }}
-        >
-          NOT <span className="font-display font-bold" style={{ color: '#B4D429' }}>SOFTWARE</span> FOR SCHOOLS.
-          <br />
-          <span className="font-display font-bold" style={{ color: '#B4D429' }}>INTELLIGENCE</span> FOR EDUCATION.
+        <h3 className="relative z-10 font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[0.85] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
+          <div className="flex flex-wrap justify-center gap-x-[0.25em]">
+            <span style={{ color: '#E9ECDB' }}>NOT</span>
+            <span className="font-display font-bold" style={{ color: '#B4D429' }}>SOFTWARE</span>
+            <span style={{ color: '#E9ECDB' }}>FOR</span>
+            <span style={{ color: '#E9ECDB' }}>SCHOOLS.</span>
+          </div>
+          <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-6 md:mt-8">
+            <span className="font-display font-bold" style={{ color: '#B4D429' }}>INTELLIGENCE</span>
+            <span style={{ color: '#E9ECDB' }}>FOR</span>
+            <span style={{ color: '#E9ECDB' }}>EDUCATION.</span>
+          </div>
         </h3>
         <p className="relative z-10 mt-8 font-body text-base md:text-lg font-light tracking-wide text-[#E9ECDB]/60">
           One platform. Every learner. Every stage.

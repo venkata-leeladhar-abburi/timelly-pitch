@@ -16,6 +16,7 @@ export default function Navbar() {
 
       const visionEl = document.getElementById('section-vision')
       const problemEl = document.getElementById('section-problem')
+      const tractionEl = document.getElementById('section-traction')
 
       let hidden = false
       if (visionEl) {
@@ -24,6 +25,10 @@ export default function Navbar() {
       }
       if (problemEl) {
         const rect = problemEl.getBoundingClientRect()
+        if (rect.top <= 0 && rect.bottom >= 0) hidden = true
+      }
+      if (tractionEl) {
+        const rect = tractionEl.getBoundingClientRect()
         if (rect.top <= 0 && rect.bottom >= 0) hidden = true
       }
       setHideNav(hidden)
@@ -39,8 +44,8 @@ export default function Navbar() {
       style={{
         backdropFilter: 'blur(20px) saturate(160%)',
         WebkitBackdropFilter: 'blur(20px) saturate(160%)',
-        backgroundColor: scrolled ? 'rgba(28,31,26,0.55)' : 'rgba(28,31,26,0.22)',
-        borderBottomColor: scrolled ? 'rgba(240,237,230,0.12)' : 'rgba(240,237,230,0.08)',
+        backgroundColor: scrolled ? 'rgba(26,58,36,0.85)' : 'rgba(26,58,36,0.4)',
+        borderBottomColor: scrolled ? 'rgba(180,212,41,0.2)' : 'rgba(180,212,41,0.05)',
         boxShadow: scrolled ? '0 8px 32px rgba(0,0,0,0.25)' : '0 0px 0px rgba(0,0,0,0)',
         opacity: hideNav ? 0 : 1,
         pointerEvents: hideNav ? 'none' : 'auto',
@@ -49,20 +54,15 @@ export default function Navbar() {
       }}
     >
       {/* Logo */}
-      <Image
-        src="/timelly-logo-full.png"
-        alt="timelly"
-        width={100}
-        height={36}
-        priority
-        className="h-8 w-auto sm:h-9 select-none"
-      />
+      <div className="font-display font-bold text-2xl sm:text-3xl tracking-tight select-none" style={{ color: '#F5F4F0' }}>
+        Timelly
+      </div>
 
       {/* CTA */}
       <a
         href="mailto:timelly.tech@gmail.com"
-        className="press font-body text-xs sm:text-sm font-medium text-text-warm border border-green px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-sm hover:bg-green hover:text-black"
-        style={{ transitionProperty: 'transform, background-color, color', transitionDuration: '160ms, 200ms, 200ms', transitionTimingFunction: 'var(--ease-out)' }}
+        className="font-body text-xs sm:text-sm font-bold uppercase tracking-widest px-5 py-2.5 sm:px-7 sm:py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-lg hover:-translate-y-0.5"
+        style={{ backgroundColor: '#B4D429', color: '#1A3A24', border: '1px solid rgba(180,212,41,0.5)' }}
       >
         Schedule a Call
       </a>

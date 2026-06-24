@@ -6,12 +6,12 @@ import { gsap } from '@/lib/gsap'
 // ─── LIGHT THEME — matches original light market section palette ───────────────
 const BG       = '#F5F4F0'
 const BG_ALT   = '#EFEDE5'
-const INK      = '#1E2A1A'
-const INK_DIM  = 'rgba(30,42,26,0.60)'
+const INK      = '#1A3A24'   // dark forest green — clearly green, not black
+const INK_DIM  = 'rgba(26,58,36,0.60)'
 const LIME     = '#B4D429'
 const LIME_DIM = 'rgba(180,212,41,0.15)'
 const LIME_BRD = 'rgba(180,212,41,0.40)'
-const BORDER   = 'rgba(30,42,26,0.10)'
+const BORDER   = 'rgba(26,58,36,0.12)'
 const WHITE    = '#FFFFFF'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -256,7 +256,7 @@ export default function MarketSection() {
         <div ref={headingRef} className="text-center">
           {/* Line 1 */}
           <div
-            className="font-body font-bold uppercase tracking-tight leading-[0.88] flex flex-wrap justify-center gap-x-[0.25em]"
+            className="font-body font-bold uppercase tracking-tight leading-[0.88] flex flex-wrap justify-center gap-x-[0.35em]"
             style={{ fontSize: 'clamp(36px, 6.2vw, 96px)', color: INK }}
           >
             <span>WE</span>
@@ -269,7 +269,7 @@ export default function MarketSection() {
           </div>
           {/* Line 2 */}
           <div
-            className="font-body font-bold uppercase tracking-tight leading-[0.88] flex flex-wrap justify-center gap-x-[0.25em] mt-2"
+            className="font-body font-bold uppercase tracking-tight leading-[0.88] flex flex-wrap justify-center gap-x-[0.35em] mt-2"
             style={{ fontSize: 'clamp(36px, 6.2vw, 96px)', color: INK }}
           >
             <span>WE&apos;RE</span>
@@ -290,23 +290,33 @@ export default function MarketSection() {
         </div>
       </section>
 
-      {/* ══ BLOCK 3 — BIG INVESTOR MOMENT ══ */}
+      {/* ══ BLOCK 3 — BIG INVESTOR MOMENT (dark theme) ══ */}
       <section
+        ref={bigMomentRef}
         className="relative w-full px-[8vw] py-32 overflow-hidden"
-        style={{ backgroundColor: WHITE, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}
+        style={{ backgroundColor: '#23271A' }}
       >
-        <div ref={bigMomentRef} className="relative z-10 max-w-[1200px] mx-auto text-center">
-          <div className="bim-top mb-6">
+        {/* Contour lines */}
+        <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.05]" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1400 600" fill="none" stroke="#E9ECDB" strokeWidth="1" aria-hidden>
+          <path d="M-100 150 C 300 60, 600 280, 1000 150 S 1500 80, 1600 220" />
+          <path d="M-100 300 C 300 210, 600 430, 1000 300 S 1500 230, 1600 370" />
+          <path d="M-100 450 C 300 360, 600 560, 1000 450 S 1500 380, 1600 520" />
+          <ellipse cx="220" cy="300" rx="200" ry="140" />
+          <ellipse cx="1180" cy="280" rx="260" ry="180" />
+        </svg>
+
+        <div className="relative z-10 max-w-[1200px] mx-auto text-center">
+          <div className="bim-top mb-4">
             {[
               [{ text: 'THIS' }, { text: "ISN'T" }, { text: 'A' }, { text: 'SCHOOL' }],
               [{ text: 'SOFTWARE', lime: true }, { text: 'MARKET.' }],
             ].map((line, i) => (
-              <div key={i} className="flex flex-wrap justify-center gap-x-[0.35em]">
+              <div key={i} className="flex flex-wrap justify-center gap-x-[0.3em]">
                 {line.map((w: {text:string;lime?:boolean}, j) => (
                   <span
                     key={j}
                     className={`leading-[0.88] tracking-tight uppercase ${w.lime ? 'font-display font-bold' : 'font-body font-bold'}`}
-                    style={{ color: w.lime ? LIME : INK, fontSize: 'clamp(36px,5.5vw,80px)' }}
+                    style={{ color: w.lime ? '#B4D429' : '#F0EDE6', fontSize: 'clamp(38px,5.8vw,86px)' }}
                   >
                     {w.text}
                   </span>
@@ -316,17 +326,17 @@ export default function MarketSection() {
           </div>
 
           <div className="bim-btm">
-            <div className="mx-auto mb-6 h-px w-24" style={{ background: LIME_BRD }} />
+            <div className="mx-auto my-7 h-px w-24" style={{ background: 'rgba(180,212,41,0.4)' }} />
             {[
               [{ text: "IT'S" }, { text: 'AN' }, { text: 'EDUCATION' }],
               [{ text: 'INFRASTRUCTURE', lime: true }, { text: 'MARKET.' }],
             ].map((line, i) => (
-              <div key={i} className="flex flex-wrap justify-center gap-x-[0.35em]">
+              <div key={i} className="flex flex-wrap justify-center gap-x-[0.3em]">
                 {line.map((w: {text:string;lime?:boolean}, j) => (
                   <span
                     key={j}
                     className={`leading-[0.88] tracking-tight uppercase ${w.lime ? 'font-display font-bold' : 'font-body font-bold'}`}
-                    style={{ color: w.lime ? LIME : INK, fontSize: 'clamp(36px,5.5vw,80px)' }}
+                    style={{ color: w.lime ? '#B4D429' : '#F0EDE6', fontSize: 'clamp(38px,5.8vw,86px)' }}
                   >
                     {w.text}
                   </span>
@@ -336,46 +346,50 @@ export default function MarketSection() {
           </div>
 
           <div className="bim-sub mt-10 space-y-1">
-            <p className="font-body text-lg" style={{ color: INK_DIM }}>The institutions may change.</p>
-            <p className="font-body text-lg font-semibold" style={{ color: INK }}>The infrastructure remains the same.</p>
+            <p className="font-body text-lg" style={{ color: 'rgba(240,237,230,0.55)' }}>The institutions may change.</p>
+            <p className="font-body text-lg font-semibold" style={{ color: '#F0EDE6' }}>The infrastructure remains the same.</p>
           </div>
         </div>
       </section>
 
-      {/* ══ BLOCK 4 — TAM / SAM / SOM ══ */}
-      <section id="market-size-section" className="relative w-full px-[8vw] py-28" style={{ backgroundColor: BG }}>
+      {/* ══ BLOCK 4 — TAM / SAM / SOM — redesigned ══ */}
+      <section id="market-size-section" className="relative w-full px-[8vw] py-24" style={{ backgroundColor: BG_ALT }}>
         <div className="max-w-[1400px] mx-auto">
-          {/* Heading */}
-          <span
-            className="inline-block mb-6 rounded-full px-4 py-1.5 font-body text-xs font-bold tracking-[0.3em] uppercase"
-            style={{ background: LIME_DIM, border: `1px solid ${LIME_BRD}`, color: INK }}
-          >
-            MARKET SIZE
-          </span>
-          <div className="mb-12 flex flex-wrap gap-x-[0.3em]">
-            <span className="font-body font-bold uppercase leading-[0.9] tracking-tight" style={{ color: INK, fontSize: 'clamp(36px,5vw,74px)' }}>THE</span>
-            <span className="font-display font-bold uppercase leading-[0.9] tracking-tight" style={{ color: LIME, fontSize: 'clamp(36px,5vw,74px)' }}>OPPORTUNITY</span>
+
+          {/* Section label + heading */}
+          <div className="mb-14">
+            <span
+              className="inline-block mb-5 rounded-full px-4 py-1.5 font-body text-xs font-bold tracking-[0.3em] uppercase"
+              style={{ background: 'rgba(30,42,26,0.08)', border: `1px solid ${BORDER}`, color: INK }}
+            >
+              MARKET SIZE
+            </span>
+            <div className="flex flex-wrap gap-x-[0.35em] items-baseline">
+              <span className="font-body font-bold uppercase leading-[0.9] tracking-tight" style={{ color: INK, fontSize: 'clamp(38px,5.5vw,80px)' }}>THE</span>
+              <span className="font-display font-bold uppercase leading-[0.9] tracking-tight" style={{ color: LIME, fontSize: 'clamp(38px,5.5vw,80px)' }}>OPPORTUNITY</span>
+              <span className="font-display font-bold uppercase leading-[0.9] tracking-tight" style={{ color: LIME, fontSize: 'clamp(38px,5.5vw,80px)' }}>.</span>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 items-center">
             {/* Circles */}
             <div className="flex justify-center relative h-[400px] w-full">
               <svg viewBox="0 0 400 400" className="w-full h-full max-w-[400px]">
-                <circle ref={tamCircleRef} cx="200" cy="180" r="160" fill={INK} opacity="0.90" />
-                <text x="200" y="70" textAnchor="middle" fill={LIME} fontSize="14" fontWeight="bold" letterSpacing="4">TAM</text>
-                <text x="200" y="90" textAnchor="middle" fill="#F5F4F0" fontSize="13" fontWeight="600">42.58 B</text>
+                <circle ref={tamCircleRef} cx="200" cy="180" r="160" fill={INK} opacity="0.95" />
+                <text x="200" y="70" textAnchor="middle" fill={LIME} fontSize="14" fontWeight="bold" letterSpacing="4" className="font-body">TAM</text>
+                <text x="200" y="90" textAnchor="middle" fill="#F5F4F0" fontSize="13" fontWeight="600" className="font-body">42.58 B</text>
 
-                <circle ref={samCircleRef} cx="200" cy="220" r="120" fill="#2F6B3A" opacity="0.90" />
-                <text x="200" y="160" textAnchor="middle" fill={LIME} fontSize="13" fontWeight="bold" letterSpacing="4">SAM</text>
-                <text x="200" y="178" textAnchor="middle" fill="#F5F4F0" fontSize="12" fontWeight="600">1.16 B</text>
+                <circle ref={samCircleRef} cx="200" cy="220" r="120" fill="#2A5C34" opacity="0.95" />
+                <text x="200" y="160" textAnchor="middle" fill={LIME} fontSize="13" fontWeight="bold" letterSpacing="4" className="font-body">SAM</text>
+                <text x="200" y="178" textAnchor="middle" fill="#F5F4F0" fontSize="12" fontWeight="600" className="font-body">1.16 B</text>
 
                 <circle ref={somCircleRef} cx="200" cy="270" r="70" fill={LIME} opacity="0.25" />
-                <text x="200" y="262" textAnchor="middle" fill={INK} fontSize="12" fontWeight="bold" letterSpacing="3">SOM</text>
-                <text x="200" y="280" textAnchor="middle" fill={INK} fontSize="11" fontWeight="600">₹1 CR</text>
+                <text x="200" y="262" textAnchor="middle" fill={INK} fontSize="12" fontWeight="bold" letterSpacing="3" className="font-body">SOM</text>
+                <text x="200" y="280" textAnchor="middle" fill={INK} fontSize="11" fontWeight="600" className="font-body">₹1 CR</text>
               </svg>
             </div>
 
-            {/* Cards — light theme */}
+            {/* Vertical metric cards */}
             <div ref={tamSamSomCardsRef} className="flex flex-col gap-6">
               {MARKET_SIZES.map((item, i) => (
                 <div
@@ -386,7 +400,7 @@ export default function MarketSection() {
                   <div className="flex items-center gap-3 mb-3">
                     <span
                       className="rounded-full px-3 py-1 font-body text-xs font-bold tracking-widest uppercase"
-                      style={{ background: LIME_DIM, border: `1px solid ${LIME_BRD}`, color: INK }}
+                      style={{ background: 'rgba(30,42,26,0.08)', border: `1px solid ${BORDER}`, color: INK }}
                     >
                       {item.abbr}
                     </span>
@@ -401,98 +415,102 @@ export default function MarketSection() {
         </div>
       </section>
 
-      {/* ══ BLOCK 5 — EXPANSION LADDER ══ */}
+      {/* ══ BLOCK 5 — EXPANSION VISION — redesigned ══ */}
       <section
-        className="relative w-full px-[8vw] py-28"
-        style={{ backgroundColor: BG_ALT, borderTop: `1px solid ${BORDER}` }}
+        className="relative w-full px-[8vw] py-24 overflow-hidden"
+        style={{ backgroundColor: BG, borderTop: `1px solid ${BORDER}` }}
       >
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div ref={ladderRef} className="flex flex-col items-start gap-0">
+        <div className="max-w-[1400px] mx-auto">
+          {/* Label + heading */}
+          <div className="mb-14 flex flex-col items-center text-center">
+            <span
+              className="inline-block mb-5 rounded-full px-4 py-1.5 font-body text-xs font-bold tracking-[0.3em] uppercase"
+              style={{ background: 'rgba(30,42,26,0.08)', border: `1px solid ${BORDER}`, color: INK }}
+            >
+              EXPANSION VISION
+            </span>
+            <h3 className="font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[0.85] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
+              <div className="flex flex-wrap justify-center gap-x-[0.25em]">
+                <span className="font-display font-bold" style={{ color: LIME }}>ONE</span>
+                <span style={{ color: INK }}>PLATFORM.</span>
+              </div>
+              <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
+                <span style={{ color: INK }}>MULTIPLE</span>
+                <span className="font-display font-bold" style={{ color: LIME }}>SEGMENTS.</span>
+              </div>
+            </h3>
+            <p className="mt-8 font-body text-base md:text-xl leading-relaxed max-w-2xl text-center" style={{ color: INK_DIM }}>
+              The same foundation that powers schools today can power lifelong learning tomorrow.
+            </p>
+          </div>
+
+          {/* Ladder — horizontal chips */}
+          <div ref={ladderRef} className="flex flex-wrap items-center justify-center gap-3">
             {LADDER.map((item, i) => (
-              <div key={item} className="flex flex-col items-start ladder-item">
+              <div key={item} className="flex items-center gap-3 ladder-item">
                 <div
-                  className="rounded-xl px-8 py-4 font-body text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:scale-105"
+                  className="rounded-full px-6 py-3 font-body text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:scale-105"
                   style={{
-                    background: i === 0 ? LIME_DIM : WHITE,
-                    border: `1px solid ${i === 0 ? LIME_BRD : BORDER}`,
-                    color: INK,
-                    minWidth: '280px',
+                    background: i === 0 ? INK : WHITE,
+                    border: `1px solid ${i === 0 ? INK : BORDER}`,
+                    color: i === 0 ? '#F0EDE6' : INK,
                   }}
                 >
                   {item}
                 </div>
                 {i < LADDER.length - 1 && (
-                  <div className="flex flex-col items-start pl-8">
-                    <div className="w-px h-5" style={{ background: LIME_BRD }} />
-                    <span className="text-sm font-bold" style={{ color: LIME }}>↓</span>
-                    <div className="w-px h-5" style={{ background: LIME_BRD }} />
-                  </div>
+                  <span className="font-body text-sm font-bold" style={{ color: INK_DIM }}>→</span>
                 )}
               </div>
             ))}
           </div>
-
-          <div className="space-y-6">
-            <span
-              className="inline-block mb-4 rounded-full px-4 py-1.5 font-body text-xs font-bold tracking-[0.3em] uppercase"
-              style={{ background: LIME_DIM, border: `1px solid ${LIME_BRD}`, color: INK }}
-            >
-              EXPANSION VISION
-            </span>
-            <div className="flex flex-wrap gap-x-[0.3em]">
-              <span className="font-display font-bold uppercase leading-[0.9] tracking-tight" style={{ color: LIME, fontSize: 'clamp(36px,5vw,74px)' }}>ONE</span>
-              <span className="font-body font-bold uppercase leading-[0.9] tracking-tight" style={{ color: INK, fontSize: 'clamp(36px,5vw,74px)' }}>PLATFORM.</span>
-            </div>
-            <div className="flex flex-wrap gap-x-[0.3em]">
-              <span className="font-body font-bold uppercase leading-[0.9] tracking-tight" style={{ color: INK, fontSize: 'clamp(36px,5vw,74px)' }}>MULTIPLE</span>
-              <span className="font-display font-bold uppercase leading-[0.9] tracking-tight" style={{ color: LIME, fontSize: 'clamp(36px,5vw,74px)' }}>SEGMENTS.</span>
-            </div>
-            <p className="font-body text-base leading-relaxed max-w-md pt-2" style={{ color: INK_DIM }}>
-              The same foundation that powers schools today can power lifelong learning tomorrow.
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* ══ BLOCK 6 — ENDING STATEMENT ══ */}
+      {/* ══ BLOCK 6 — ENDING STATEMENT — redesigned ══ */}
       <section
-        className="relative w-full px-[8vw] py-28"
-        style={{ backgroundColor: WHITE, borderTop: `1px solid ${BORDER}` }}
+        className="relative w-full px-[8vw] py-24"
+        style={{ backgroundColor: BG_ALT, borderTop: `1px solid ${BORDER}` }}
       >
-        <div ref={endingRef} className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            {[
-              [{ text: 'THE' }, { text: 'MARKET' }, { text: "ISN'T" }],
-              [{ text: 'MEASURED', lime: true }, { text: 'IN' }],
-              [{ text: 'INSTITUTIONS.' }],
-              [],
-              [{ text: "IT'S" }, { text: 'MEASURED' }],
-              [{ text: 'IN', lime: true }, { text: 'LEARNERS.' }],
-            ].map((line, i) =>
-              line.length === 0 ? (
-                <div key={i} className="h-4" />
-              ) : (
-                <div key={i} className="flex flex-wrap gap-x-[0.35em]">
-                  {line.map((w: {text:string;lime?:boolean}, j) => (
-                    <span
-                      key={j}
-                      className={`leading-[0.88] tracking-tight uppercase ${w.lime ? 'font-display font-bold' : 'font-body font-bold'}`}
-                      style={{ color: w.lime ? LIME : INK, fontSize: 'clamp(32px,4.5vw,64px)' }}
-                    >
-                      {w.text}
-                    </span>
-                  ))}
-                </div>
-              )
-            )}
+        <div ref={endingRef} className="max-w-[1400px] mx-auto">
+          {/* Full-width headline */}
+          <div className="mb-14 flex flex-col items-center text-center">
+            <h3 className="font-body font-bold uppercase text-[clamp(44px,7vw,100px)] leading-[0.85] tracking-tight flex flex-col items-center justify-center w-full max-w-[1200px]">
+              <div className="flex flex-wrap justify-center gap-x-[0.25em]">
+                <span style={{ color: INK }}>THE</span>
+                <span className="font-display font-bold" style={{ color: LIME }}>MARKET</span>
+                <span style={{ color: INK }}>ISN'T</span>
+              </div>
+              <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
+                <span style={{ color: INK }}>MEASURED</span>
+                <span style={{ color: INK }}>IN</span>
+                <span className="font-display font-bold" style={{ color: LIME }}>INSTITUTIONS.</span>
+              </div>
+              <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-6 md:mt-8">
+                <span style={{ color: INK }}>IT'S</span>
+                <span style={{ color: INK }}>MEASURED</span>
+              </div>
+              <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
+                <span className="font-display font-bold" style={{ color: LIME }}>IN</span>
+                <span style={{ color: INK }}>LEARNERS.</span>
+              </div>
+            </h3>
           </div>
 
-          <div className="space-y-3 pl-0 lg:pl-8" style={{ borderLeft: `2px solid ${LIME_BRD}` }}>
+          {/* Three stat cards below */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {['Millions of students.', 'Millions of parents.', 'Millions of educational journeys.'].map((line, i) => (
-              <p key={i} className="font-body text-lg font-semibold pl-6" style={{ color: INK }}>{line}</p>
+              <div
+                key={i}
+                className="rounded-2xl p-8 shadow-sm"
+                style={{ background: WHITE, border: `1px solid ${BORDER}` }}
+              >
+                <div className="mb-3 h-1 w-8 rounded-full" style={{ background: INK }} />
+                <p className="font-body text-lg font-semibold" style={{ color: INK }}>{line}</p>
+              </div>
             ))}
-            <p className="font-body text-base pl-6 pt-4 font-bold" style={{ color: LIME }}>One connected ecosystem.</p>
           </div>
+          <p className="mt-8 font-body text-base font-bold" style={{ color: INK }}>One connected ecosystem.</p>
         </div>
       </section>
 

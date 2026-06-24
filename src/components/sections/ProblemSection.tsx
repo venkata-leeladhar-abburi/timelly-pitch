@@ -198,28 +198,21 @@ export default function ProblemSection() {
             renderFrame(pi, frameIndex)
           }
 
-          // ── Text opacity (slightly tighter than canvas) ────────────────────
-          const textFadeBuffer = TRANSITION_FRAC * 0.7
-          const textStart = sectionStart + textFadeBuffer
-          const textEnd = sectionEnd - textFadeBuffer
-
-          let textOpacity = 0
-          if (progress >= textStart && progress <= textEnd) {
-            textOpacity = 1
-            // Smooth ramp in
-            if (progress < textStart + TRANSITION_FRAC * 0.5) {
-              textOpacity = (progress - textStart) / (TRANSITION_FRAC * 0.5)
-            }
-            // Smooth ramp out
-            if (progress > textEnd - TRANSITION_FRAC * 0.5) {
-              textOpacity = 1 - (progress - (textEnd - TRANSITION_FRAC * 0.5)) / (TRANSITION_FRAC * 0.5)
-            }
-          }
-
-          textOpacity = clamp01(textOpacity)
+          // ── Text visibility (hard switch, no fading) ─────────────────────────
+          const isActive = progress >= sectionStart && progress < sectionEnd
+          const textOpacity = isActive ? 1 : 0
 
           const headline = headlineRefs.current[pi]
-          if (headline) headline.style.opacity = String(textOpacity)
+          if (headline) {
+            headline.style.opacity = String(textOpacity)
+            if (window.innerWidth <= 768) {
+              headline.style.transform = isActive ? 'translateY(0)' : 'translateY(20px)'
+              headline.style.transition = isActive ? 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
+            } else {
+              headline.style.transform = 'none'
+              headline.style.transition = 'none'
+            }
+          }
 
           // ── Progress dot ──────────────────────────────────────────────────
           const dot = dotRefs.current[pi]
@@ -310,10 +303,10 @@ export default function ProblemSection() {
                 style={{ opacity: pi === 0 ? 1 : 0, transition: 'none' }}
               >
 
-                {/* ── TOP-LEFT CARD: Label + Headline + Loss ── */}
-                <div className="absolute top-4 left-6 md:top-6 md:left-8 lg:top-8 lg:left-10 w-full max-w-[580px]">
+                {/* ── MAIN CARD: Bottom on mobile, Top-left on desktop ── */}
+                <div className="absolute bottom-10 left-4 md:bottom-auto md:top-6 md:left-8 lg:top-8 lg:left-10 w-[calc(100%-32px)] md:w-full max-w-[580px]">
                   <div
-                    className="rounded-2xl p-8 md:p-10"
+                    className="rounded-2xl p-6 md:p-10"
                     style={{
                       background: 'rgba(16, 20, 16, 0.82)',
                       backdropFilter: 'blur(24px)',
@@ -323,17 +316,17 @@ export default function ProblemSection() {
                     }}
                   >
                     {/* Label row */}
-                    <div className="mb-5 flex items-center gap-3">
+                    <div className="mb-4 flex flex-col md:flex-row md:items-center gap-2 md:gap-3 items-start">
                       <span
-                        className="font-body text-xs font-semibold tracking-[0.25em] uppercase"
+                        className="font-body text-[10px] md:text-xs font-semibold tracking-[0.2em] md:tracking-[0.25em] uppercase"
                         style={{ color: 'rgba(240,237,230,0.45)' }}
                       >
                         {problem.label}
                       </span>
-                      <div className="h-px flex-1" style={{ background: 'rgba(240,237,230,0.12)' }} />
+                      <div className="hidden md:block h-px flex-1" style={{ background: 'rgba(240,237,230,0.12)' }} />
                       {/* Category pill */}
                       <span
-                        className="rounded-full px-3 py-1 font-body text-[11px] font-bold tracking-[0.18em] uppercase"
+                        className="rounded-full px-3 py-1 font-body text-[10px] md:text-[11px] font-bold tracking-[0.18em] uppercase"
                         style={{
                           background: 'rgba(180, 212, 41, 0.14)',
                           border: '1px solid rgba(180, 212, 41, 0.40)',
@@ -346,10 +339,10 @@ export default function ProblemSection() {
 
                     {/* Headline — Mona Sans line 1, Brier+lime line 2 */}
                     <h2
-                      className="mb-5 font-body font-bold uppercase leading-[1.0] tracking-tight"
+                      className="mb-0 md:mb-5 font-body font-bold uppercase leading-[1.05] tracking-tight"
                       style={{
                         color: '#F0EDE6',
-                        fontSize: 'clamp(28px, 3.5vw, 50px)',
+                        fontSize: 'clamp(24px, 6vw, 50px)',
                       }}
                     >
                       {problem.headline.map((line, li) => (
@@ -366,11 +359,11 @@ export default function ProblemSection() {
                     </h2>
 
                     {/* Lime divider */}
-                    <div className="mb-5 h-px w-12" style={{ background: 'rgba(180,212,41,0.5)' }} />
+                    <div className="hidden md:block mb-5 h-px w-12" style={{ background: 'rgba(180,212,41,0.5)' }} />
 
                     {/* Body / loss text */}
                     <p
-                      className="font-body text-base font-light leading-relaxed"
+                      className="hidden md:block font-body text-base font-light leading-relaxed"
                       style={{ color: 'rgba(240,237,230,0.88)' }}
                     >
                       {problem.card.loss}
@@ -378,16 +371,14 @@ export default function ProblemSection() {
                   </div>
                 </div>
 
-                {/* ── BOTTOM-RIGHT CARD: Right cards list ── */}
-                <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10 w-full max-w-[420px]">
+                {/* ── BOTTOM-RIGHT CARD: Right cards list (Desktop Only) ── */}
+                <div className="hidden md:block absolute bottom-6 right-6 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10 w-full max-w-[420px]">
                   <div
                     className="rounded-2xl p-8 md:p-9"
                     style={{
-                      background: 'rgba(16, 20, 16, 0.82)',
-                      backdropFilter: 'blur(24px)',
-                      WebkitBackdropFilter: 'blur(24px)',
-                      border: '1px solid rgba(240, 237, 230, 0.13)',
-                      boxShadow: '0 20px 60px rgba(0,0,0,0.55)',
+                      background: '#1A3A24',
+                      border: '1px solid rgba(180, 212, 41, 0.2)',
+                      boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
                     }}
                   >
                     <div className="flex flex-col gap-4">

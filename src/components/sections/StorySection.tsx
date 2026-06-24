@@ -156,12 +156,12 @@ export default function StorySection() {
 
               {/* Text */}
               <p className="font-body leading-snug text-[clamp(16px,1.6vw,20px)]">
-                <span className="text-[#F5F4F0] font-light">{item.pre}</span>
+                <span style={{ color: '#F5F4F0' }}>{item.pre}</span>
                 <span className="font-display font-bold" style={{ color: GREEN }}>{item.highlight}</span>
                 {item.line2 && (
                   <>
                     <br />
-                    <span className="text-[#F5F4F0]/50 font-light">{item.line2}</span>
+                    <span style={{ color: 'rgba(245, 244, 240, 0.6)' }}>{item.line2}</span>
                   </>
                 )}
               </p>
