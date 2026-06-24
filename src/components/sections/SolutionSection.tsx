@@ -246,16 +246,16 @@ export default function SolutionSection() {
 
         <div className="relative z-10 flex flex-col items-center text-center">
           <h2
-            className="font-display text-[clamp(36px,9vw,48px)] tracking-tight uppercase"
+            className="font-body font-bold text-[clamp(36px,9vw,48px)] tracking-tight uppercase"
             style={{ color: CREAM }}
           >
-            THE SOLUTION<span style={{ color: LIME }}>.</span>
+            THE <span className="font-display font-bold" style={{ color: LIME }}>SOLUTION</span>.
           </h2>
 
-          <h3 className="mt-6 font-display text-[clamp(30px,8vw,40px)] leading-[1.05] tracking-tight uppercase" style={{ color: CREAM }}>
-            SCHOOLS DON&apos;T NEED <span className="font-serif font-semibold italic" style={{ color: LIME }}>MORE</span> SOFTWARE.
+          <h3 className="mt-6 font-body font-bold text-[clamp(30px,8vw,40px)] leading-[1.05] tracking-tight uppercase" style={{ color: CREAM }}>
+            SCHOOLS DON&apos;T NEED <span className="font-display font-bold" style={{ color: LIME }}>MORE</span> SOFTWARE.
             <br />
-            THEY NEED ONE <span className="font-serif font-semibold italic" style={{ color: LIME }}>SYSTEM</span> THAT ACTUALLY WORKS.
+            THEY NEED ONE <span className="font-display font-bold" style={{ color: LIME }}>SYSTEM</span> THAT ACTUALLY WORKS.
           </h3>
 
           <p className="font-body text-base mt-6 leading-relaxed" style={{ color: CREAM, opacity: 0.75 }}>
@@ -281,10 +281,10 @@ export default function SolutionSection() {
           </div>
 
           {/* Transition statement — condensed */}
-          <h2 className="mt-16 font-display text-[clamp(28px,7vw,36px)] leading-[1.15] tracking-tight uppercase" style={{ color: CREAM }}>
-            BUILT FOR <span className="font-serif font-semibold italic" style={{ color: LIME }}>PRINCIPALS.</span> LOVED BY{' '}
-            <span className="font-serif font-semibold italic" style={{ color: LIME }}>TEACHERS.</span> TRUSTED BY{' '}
-            <span className="font-serif font-semibold italic" style={{ color: LIME }}>PARENTS.</span>
+          <h2 className="mt-16 font-body font-bold text-[clamp(28px,7vw,36px)] leading-[1.15] tracking-tight uppercase" style={{ color: CREAM }}>
+            BUILT FOR <span className="font-display font-bold" style={{ color: LIME }}>PRINCIPALS.</span> LOVED BY{' '}
+            <span className="font-display font-bold" style={{ color: LIME }}>TEACHERS.</span> TRUSTED BY{' '}
+            <span className="font-display font-bold" style={{ color: LIME }}>PARENTS.</span>
           </h2>
 
           {/* Feature cards — stacked, normal flow, fully scrollable */}
@@ -348,29 +348,29 @@ export default function SolutionSection() {
           {/* Section Heading */}
           <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full">
             <h2 
-              className="font-display text-[clamp(44px,6vw,80px)] tracking-tight uppercase"
+              className="font-body font-bold text-[clamp(44px,6vw,80px)] tracking-tight uppercase"
               style={{ color: CREAM }}
             >
-              THE SOLUTION<span style={{ color: LIME }}>.</span>
+              THE <span className="font-display font-bold" style={{ color: LIME }}>SOLUTION</span>.
             </h2>
           </div>
 
           {/* Main Headline */}
-          <h3 className="mt-12 font-display text-[clamp(44px,7vw,100px)] leading-[0.85] tracking-tight uppercase flex flex-col items-center justify-center w-full z-10">
+          <h3 className="mt-12 font-body font-bold text-[clamp(44px,7vw,100px)] leading-[0.85] tracking-tight uppercase flex flex-col items-center justify-center w-full z-10">
             <div className="flex flex-wrap justify-center gap-x-[0.25em]">
               <span style={{ color: CREAM }}>SCHOOLS</span>
               <span style={{ color: CREAM }}>DON'T</span>
               <span style={{ color: CREAM }}>NEED</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
-              <span className="font-serif font-semibold italic" style={{ color: LIME }}>MORE</span>
+              <span className="font-display font-bold" style={{ color: LIME }}>MORE</span>
               <span style={{ color: CREAM }}>SOFTWARE.</span>
               <span style={{ color: CREAM }}>THEY</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
               <span style={{ color: CREAM }}>NEED</span>
               <span style={{ color: CREAM }}>ONE</span>
-              <span className="font-serif font-semibold italic" style={{ color: LIME }}>SYSTEM</span>
+              <span className="font-display font-bold" style={{ color: LIME }}>SYSTEM</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
               <span style={{ color: CREAM }}>THAT</span>
@@ -410,26 +410,26 @@ export default function SolutionSection() {
           className="absolute inset-0 z-20 flex flex-col items-center justify-center px-8 text-center pointer-events-none"
           style={{ opacity: 0 }}
         >
-          <h2 className="font-display text-[clamp(50px,8vw,120px)] leading-[0.85] tracking-tight uppercase flex flex-col items-center justify-center w-full">
+          <h2 className="font-body font-bold text-[clamp(50px,8vw,120px)] leading-[0.85] tracking-tight uppercase flex flex-col items-center justify-center w-full">
             <div className="flex flex-wrap justify-center gap-x-[0.25em]">
               <span style={{ color: CREAM }}>BUILT</span>
               <span style={{ color: CREAM }}>FOR</span>
-              <span className="font-serif font-semibold italic" style={{ color: LIME }}>PRINCIPALS.</span>
+              <span className="font-display font-bold" style={{ color: LIME }}>PRINCIPALS.</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
               <span style={{ color: CREAM }}>LOVED</span>
               <span style={{ color: CREAM }}>BY</span>
-              <span className="font-serif font-semibold italic" style={{ color: LIME }}>TEACHERS.</span>
+              <span className="font-display font-bold" style={{ color: LIME }}>TEACHERS.</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
               <span style={{ color: CREAM }}>TRUSTED</span>
               <span style={{ color: CREAM }}>BY</span>
-              <span className="font-serif font-semibold italic" style={{ color: LIME }}>PARENTS.</span>
+              <span className="font-display font-bold" style={{ color: LIME }}>PARENTS.</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
               <span style={{ color: CREAM }}>DESIGNED</span>
               <span style={{ color: CREAM }}>FOR</span>
-              <span className="font-serif font-semibold italic" style={{ color: LIME }}>STUDENTS.</span>
+              <span className="font-display font-bold" style={{ color: LIME }}>STUDENTS.</span>
             </div>
           </h2>
         </div>
@@ -501,14 +501,14 @@ export default function SolutionSection() {
         className="relative z-40 w-full py-32 px-8 md:px-16 flex flex-col items-center text-center border-t border-white/5"
         style={{ backgroundColor: BG_COLOR }}
       >
-        <h2 className="font-display text-[clamp(44px,7vw,110px)] leading-[0.85] tracking-tight uppercase flex flex-col items-center justify-center w-full mb-10">
+        <h2 className="font-body font-bold text-[clamp(44px,7vw,110px)] leading-[0.85] tracking-tight uppercase flex flex-col items-center justify-center w-full mb-10">
           <div className="flex flex-wrap justify-center gap-x-[0.25em]">
             <span style={{ color: CREAM }}>THE</span>
             <span style={{ color: CREAM }}>COST</span>
             <span style={{ color: CREAM }}>OF</span>
           </div>
           <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
-            <span className="font-serif font-semibold italic" style={{ color: LIME }}>TIMELLY</span>
+            <span className="font-display font-bold" style={{ color: LIME }}>TIMELLY</span>
             <span style={{ color: CREAM }}>IS</span>
             <span style={{ color: CREAM }}>LESS</span>
           </div>
@@ -519,14 +519,14 @@ export default function SolutionSection() {
           </div>
           <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
             <span style={{ color: CREAM }}>OF</span>
-            <span className="font-serif font-semibold italic" style={{ color: LIME }}>CHAOS.</span>
+            <span className="font-display font-bold" style={{ color: LIME }}>CHAOS.</span>
           </div>
         </h2>
         <p 
           className="font-body text-lg md:text-xl max-w-3xl mb-20 leading-relaxed"
           style={{ color: CREAM, opacity: 0.8 }}
         >
-          For just <strong className="font-serif font-semibold italic" style={{ color: LIME }}>₹199 per student per year</strong>, schools replace paperwork, disconnected communication, and operational inefficiencies with a unified digital ecosystem.
+          For just <strong className="font-display font-bold" style={{ color: LIME }}>₹199 per student per year</strong>, schools replace paperwork, disconnected communication, and operational inefficiencies with a unified digital ecosystem.
         </p>
 
         <div className="flex flex-col md:flex-row gap-12 items-center justify-center w-full max-w-4xl">
@@ -536,7 +536,7 @@ export default function SolutionSection() {
             style={{ backgroundColor: CARD_BG, border: `1px solid ${CARD_BORDER}` }}
           >
             <span 
-              className="font-display text-[clamp(64px,10vw,100px)] leading-none mb-4"
+              className="font-body font-bold text-[clamp(64px,10vw,100px)] leading-none mb-4"
               style={{ color: LIME }}
             >
               ₹199

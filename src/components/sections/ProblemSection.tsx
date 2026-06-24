@@ -301,83 +301,122 @@ export default function ProblemSection() {
             style={{ background: 'linear-gradient(to top, rgba(10,13,10,0.75) 0%, transparent 100%)' }}
           />
 
-          {/* ── Per-problem text overlays (all positioned same spot, opacity-switched) ── */}
+          {/* ── Per-problem text overlays (two cards: top-left + bottom-right) ── */}
           {PROBLEMS.map((problem, pi) => (
             <div key={pi} className="pointer-events-none absolute inset-0 z-20">
-              
-              {/* Unified Content Block - Left Aligned & Vertically Centered */}
               <div
                 ref={(el) => { headlineRefs.current[pi] = el }}
-                className="absolute inset-0 flex items-center justify-center px-6 md:justify-between md:px-16"
+                className="absolute inset-0"
                 style={{ opacity: pi === 0 ? 1 : 0, transition: 'none' }}
               >
 
-                {/* LEFT SIDE: Heading & Loss */}
-                <div className="max-w-full text-center md:max-w-[50vw] md:-mt-64 md:text-left">
-                  {/* Top Label (e.g. PROBLEM 01 / 04 —— ADMINISTRATIVE CHAOS) */}
-                  <div className="mb-6 flex flex-col items-center gap-3 md:mb-8 md:flex-row md:items-center md:gap-6">
-                    <span className="font-body text-sm font-semibold tracking-[0.2em] text-[#F5F4F0]/50">
-                      {problem.label}
-                    </span>
-                    <div className="hidden h-px w-20 bg-[#F5F4F0]/30 md:block" />
-                    <span className="font-body text-sm font-semibold tracking-[0.3em] text-[#8DC63F] uppercase">
-                      {problem.card.heading}
-                    </span>
-                  </div>
+                {/* ── TOP-LEFT CARD: Label + Headline + Loss ── */}
+                <div className="absolute top-4 left-6 md:top-6 md:left-8 lg:top-8 lg:left-10 w-full max-w-[580px]">
+                  <div
+                    className="rounded-2xl p-8 md:p-10"
+                    style={{
+                      background: 'rgba(16, 20, 16, 0.82)',
+                      backdropFilter: 'blur(24px)',
+                      WebkitBackdropFilter: 'blur(24px)',
+                      border: '1px solid rgba(240, 237, 230, 0.13)',
+                      boxShadow: '0 20px 60px rgba(0,0,0,0.55)',
+                    }}
+                  >
+                    {/* Label row */}
+                    <div className="mb-5 flex items-center gap-3">
+                      <span
+                        className="font-body text-xs font-semibold tracking-[0.25em] uppercase"
+                        style={{ color: 'rgba(240,237,230,0.45)' }}
+                      >
+                        {problem.label}
+                      </span>
+                      <div className="h-px flex-1" style={{ background: 'rgba(240,237,230,0.12)' }} />
+                      {/* Category pill */}
+                      <span
+                        className="rounded-full px-3 py-1 font-body text-[11px] font-bold tracking-[0.18em] uppercase"
+                        style={{
+                          background: 'rgba(180, 212, 41, 0.14)',
+                          border: '1px solid rgba(180, 212, 41, 0.40)',
+                          color: '#B4D429',
+                        }}
+                      >
+                        {problem.card.heading}
+                      </span>
+                    </div>
 
-                  {/* Massive Hook / Headline — desktop only */}
-                  <h2 className="mb-8 hidden text-[clamp(48px,5vw,80px)] leading-[0.9] text-[#F5F4F0] tracking-tight drop-shadow-2xl md:block">
-                    {problem.headline.map((line, li) => {
-                      const isLast = li === problem.headline.length - 1
-                      return (
-                        <span
-                          key={li}
-                          className={
-                            isLast
-                              ? 'block font-serif font-semibold italic'
-                              : 'block font-display'
-                          }
-                          style={isLast ? { color: '#8DC63F' } : undefined}
-                        >
-                          {line}
+                    {/* Headline — Mona Sans line 1, Brier+lime line 2 */}
+                    <h2
+                      className="mb-5 font-body font-bold uppercase leading-[1.0] tracking-tight"
+                      style={{
+                        color: '#F0EDE6',
+                        fontSize: 'clamp(28px, 3.5vw, 50px)',
+                      }}
+                    >
+                      {problem.headline.map((line, li) => (
+                        <span key={li} className="block">
+                          {li === 0 ? (
+                            line
+                          ) : (
+                            <span className="font-display" style={{ color: '#B4D429' }}>
+                              {line}
+                            </span>
+                          )}
                         </span>
-                      )
-                    })}
-                  </h2>
+                      ))}
+                    </h2>
 
-                  {/* The Loss (Small Point) — desktop only */}
-                  <div className="hidden border-l-[3px] border-[#8DC63F] pl-8 md:block">
-                    <p className="font-body text-xl font-light leading-relaxed text-[#F5F4F0]/90 max-w-xl drop-shadow-md">
+                    {/* Lime divider */}
+                    <div className="mb-5 h-px w-12" style={{ background: 'rgba(180,212,41,0.5)' }} />
+
+                    {/* Body / loss text */}
+                    <p
+                      className="font-body text-base font-light leading-relaxed"
+                      style={{ color: 'rgba(240,237,230,0.88)' }}
+                    >
                       {problem.card.loss}
                     </p>
                   </div>
                 </div>
 
-                {/* RIGHT SIDE: Cards List — desktop only */}
-                <div className="hidden flex-col gap-5 mr-8 w-80 mt-80 md:flex">
-                  {problem.rightCards.map((rc, rci) => (
-                    <div
-                      key={rci}
-                      className="flex items-center gap-5 rounded-2xl border p-5"
-                      style={{
-                        background: 'rgba(20, 24, 20, 0.75)',
-                        backdropFilter: 'blur(16px)',
-                        borderColor: 'rgba(245, 244, 240, 0.1)',
-                        boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-                      }}
-                    >
-                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#8DC63F]/10 border border-[#8DC63F]/30 text-[#8DC63F]">
-                         <span className="font-body text-sm font-bold">0{rci + 1}</span>
-                       </div>
-                       <h4 className="font-body text-lg font-medium leading-tight text-[#F5F4F0]">
-                         {rc}
-                       </h4>
+                {/* ── BOTTOM-RIGHT CARD: Right cards list ── */}
+                <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10 w-full max-w-[420px]">
+                  <div
+                    className="rounded-2xl p-8 md:p-9"
+                    style={{
+                      background: 'rgba(16, 20, 16, 0.82)',
+                      backdropFilter: 'blur(24px)',
+                      WebkitBackdropFilter: 'blur(24px)',
+                      border: '1px solid rgba(240, 237, 230, 0.13)',
+                      boxShadow: '0 20px 60px rgba(0,0,0,0.55)',
+                    }}
+                  >
+                    <div className="flex flex-col gap-4">
+                      {problem.rightCards.map((rc, rci) => (
+                        <div key={rci} className="flex items-center gap-4">
+                          {/* Number badge */}
+                          <div
+                            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-body text-sm font-bold"
+                            style={{
+                              background: 'rgba(180, 212, 41, 0.12)',
+                              border: '1px solid rgba(180, 212, 41, 0.35)',
+                              color: '#B4D429',
+                            }}
+                          >
+                            0{rci + 1}
+                          </div>
+                          <span
+                            className="font-body text-base font-medium leading-tight"
+                            style={{ color: 'rgba(240,237,230,0.92)' }}
+                          >
+                            {rc}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
 
               </div>
-
             </div>
           ))}
 
@@ -424,7 +463,7 @@ export default function ProblemSection() {
         </svg>
 
         <h3
-          className="relative z-10 font-body font-extrabold uppercase leading-[1.05] tracking-tight max-w-[20ch]"
+          className="relative z-10 font-body font-bold uppercase leading-[1.05] tracking-tight max-w-[20ch]"
           style={{
             color: '#E9ECDB',
             fontSize: 'clamp(36px, 5.4vw, 84px)',
@@ -432,9 +471,7 @@ export default function ProblemSection() {
         >
           THERE IS A
           <br />
-          <span className="font-serif font-semibold italic" style={{ color: '#A3C72E' }}>
-            BETTER WAY.
-          </span>
+          BETTER <span className="font-display font-bold" style={{ color: '#B4D429' }}>WAY.</span>
         </h3>
         <p className="relative z-10 mt-8 font-body text-base md:text-lg font-light tracking-wide text-[#E9ECDB]/60">
           One platform. For every school in India.

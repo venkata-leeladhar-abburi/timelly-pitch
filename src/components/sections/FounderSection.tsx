@@ -110,14 +110,14 @@ export default function FounderSection() {
           </div>
 
           {/* Name */}
-          <h2 className="font-serif font-medium leading-[0.92] text-text-warm md:text-bg-primary">
+          <h2 className="font-body font-bold leading-[0.92] text-text-warm md:text-bg-primary">
             {['SREERAMA', 'KARTHEEK'].map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <span
                   ref={(el) => {
                     nameRefs.current[i] = el
                   }}
-                  className="block text-[clamp(40px,9vw,104px)] tracking-tight"
+                  className="block text-[clamp(32px,6.5vw,76px)] tracking-tight"
                 >
                   {line}
                 </span>
@@ -128,7 +128,7 @@ export default function FounderSection() {
                 ref={(el) => {
                   nameRefs.current[2] = el
                 }}
-                className="block text-[clamp(40px,9vw,104px)] tracking-tight pb-4 pr-4"
+                className="block text-[clamp(32px,6.5vw,76px)] tracking-tight pb-4 pr-4"
               >
                 RAJ<span className="text-[#A9B97B] md:text-[#7E8B4F]">.</span>
               </span>
@@ -145,7 +145,7 @@ export default function FounderSection() {
           {/* Signature */}
           <div
             ref={signRef}
-            className="mt-4 font-serif italic text-3xl md:text-4xl text-[#A9B97B] md:text-[#7E8B4F]"
+            className="mt-4 font-script text-3xl md:text-4xl text-[#A9B97B] md:text-[#7E8B4F]"
           >
             {FOUNDER.name}
           </div>

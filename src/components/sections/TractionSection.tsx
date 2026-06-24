@@ -204,7 +204,7 @@ export default function TractionSection() {
       {/* ── Title Header ───────────────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-[6vw] md:px-[8vw] mb-24">
         <h2
-          className="font-display text-[clamp(54px,7vw,96px)] tracking-tight uppercase"
+          className="font-body font-bold text-[clamp(54px,7vw,96px)] tracking-tight uppercase"
           style={{ color: CREAM }}
         >
           CURRENT TRACTION<span style={{ color: LIME }}>.</span>

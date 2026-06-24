@@ -76,7 +76,7 @@ export default function LegacySection() {
       </svg>
 
       <p
-        className="relative z-10 max-w-[22ch] text-center font-display uppercase leading-[1.05] tracking-tight md:max-w-[26ch]"
+        className="relative z-10 max-w-[22ch] text-center font-body font-bold uppercase leading-[1.05] tracking-tight md:max-w-[26ch]"
         style={{
           color: CREAM,
           fontSize: 'clamp(36px, 5.4vw, 84px)',
@@ -88,7 +88,7 @@ export default function LegacySection() {
               ref={(el) => {
                 wordsRef.current[i] = el
               }}
-              className={t.accent ? 'font-serif font-semibold' : undefined}
+              className={t.accent ? 'font-display font-bold' : undefined}
               style={t.accent ? { color: LIME } : undefined}
             >
               {t.text}

@@ -150,7 +150,7 @@ export default function JourneySection() {
       <div className="relative z-10 mx-auto w-full max-w-[1450px]">
         {/* Section Title */}
         <div ref={labelRef} className="mb-24">
-          <h2 className="font-display text-[clamp(44px,6vw,80px)] tracking-tight text-[#1C1F1A] uppercase">
+          <h2 className="font-body font-bold text-[clamp(44px,6vw,80px)] tracking-tight text-[#1C1F1A] uppercase">
             THE JOURNEY<span style={{ color: GREEN }}>.</span>
           </h2>
         </div>
@@ -221,7 +221,7 @@ export default function JourneySection() {
                   {step.highlight && (
                     <>
                       {' '}
-                      <span className="font-serif font-semibold italic" style={{ color: GREEN }}>{step.highlight}</span>
+                      <span className="font-display font-bold" style={{ color: GREEN }}>{step.highlight}</span>
                     </>
                   )}
                 </h3>

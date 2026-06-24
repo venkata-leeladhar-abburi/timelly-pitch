@@ -1,9 +1,5 @@
 import type { Metadata } from 'next'
-import {
-  JetBrains_Mono,
-  Playfair_Display,
-  Cedarville_Cursive,
-} from 'next/font/google'
+import { JetBrains_Mono, Cedarville_Cursive } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 
@@ -27,13 +23,6 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains',
 })
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-playfair',
-})
-
 const cedarville = Cedarville_Cursive({
   subsets: ['latin'],
   weight: '400',
@@ -54,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${brier.variable} ${monaSans.variable} ${jetbrainsMono.variable} ${playfair.variable} ${cedarville.variable}`}
+      className={`${brier.variable} ${monaSans.variable} ${jetbrainsMono.variable} ${cedarville.variable}`}
     >
       <body className="bg-bg-primary overflow-x-hidden cursor-none">
         {children}

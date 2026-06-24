@@ -59,7 +59,7 @@ function Glyph({ kind }: { kind: IconKind }) {
       )
     case 'timelly':
       return (
-        <span className="font-display text-2xl leading-none" style={{ color: GREEN }}>
+        <span className="font-body text-2xl leading-none" style={{ color: GREEN }}>
           T
         </span>
       )
@@ -131,7 +131,7 @@ export default function StorySection() {
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1400px] flex-col justify-center px-8 py-24 md:px-16 md:py-32">
         {/* Section Title */}
         <div ref={labelRef} className="mb-12">
-          <h2 className="font-display text-[clamp(44px,6vw,80px)] tracking-tight text-[#F5F4F0] uppercase">
+          <h2 className="font-body font-bold text-[clamp(44px,6vw,80px)] tracking-tight text-[#F5F4F0] uppercase">
             THE STORY<span style={{ color: GREEN }}>.</span>
           </h2>
         </div>
@@ -157,7 +157,7 @@ export default function StorySection() {
               {/* Text */}
               <p className="font-body leading-snug text-[clamp(16px,1.6vw,20px)]">
                 <span className="text-[#F5F4F0] font-light">{item.pre}</span>
-                <span className="font-serif font-semibold italic" style={{ color: GREEN }}>{item.highlight}</span>
+                <span className="font-display font-bold" style={{ color: GREEN }}>{item.highlight}</span>
                 {item.line2 && (
                   <>
                     <br />

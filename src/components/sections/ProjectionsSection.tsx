@@ -128,9 +128,9 @@ export default function ProjectionsSection() {
       <div className="relative z-10 w-full px-[8vw] py-20">
         <div ref={headerRef} className="max-w-[1400px] mx-auto mb-16">
           <p className="font-body text-xs uppercase tracking-[0.3em] mb-4" style={{ color: GREEN }}>FUTURE PROJECTIONS</p>
-          <h2 className="font-display text-[clamp(44px,6vw,80px)] tracking-tight uppercase leading-[0.9] mb-8" style={{ color: INK }}>
+          <h2 className="font-body font-bold text-[clamp(44px,6vw,80px)] tracking-tight uppercase leading-[0.9] mb-8" style={{ color: INK }}>
             FROM SCHOOL SOFTWARE<br />
-            <span className="font-serif font-semibold italic" style={{ color: GREEN }}>TO EDUCATION</span> INFRASTRUCTURE<span style={{ color: GREEN }}>.</span>
+            <span className="font-display font-bold" style={{ color: GREEN }}>TO EDUCATION</span> INFRASTRUCTURE<span style={{ color: GREEN }}>.</span>
           </h2>
           <div className="flex items-center gap-6 mb-8 max-w-3xl">
             <div className="h-px flex-1" style={{ backgroundColor: BORDER }} />
@@ -167,20 +167,20 @@ export default function ProjectionsSection() {
             {/* Left: Compact Headline */}
             <div>
               <p className="font-body text-xs uppercase tracking-[0.3em] mb-4" style={{ color: DARK_BAND_ACCENT }}>THE BIG PICTURE</p>
-              <h2 className="font-display text-[clamp(40px,5vw,64px)] leading-[0.9] tracking-tight uppercase" style={{ color: DARK_BAND_TEXT }}>
+              <h2 className="font-body font-bold text-[clamp(40px,5vw,64px)] leading-[0.9] tracking-tight uppercase" style={{ color: DARK_BAND_TEXT }}>
                 <span className="reveal-word inline-block">THE </span>
-                <span className="reveal-word inline-block font-serif font-semibold italic" style={{ color: DARK_BAND_ACCENT }}> FUTURE </span>
+                <span className="reveal-word inline-block font-display font-bold" style={{ color: DARK_BAND_ACCENT }}> FUTURE </span>
                 <span className="reveal-word inline-block"> SCHOOL</span><br/>
                 <span className="reveal-word inline-block">WON&apos;T RUN </span>
                 <span className="reveal-word inline-block"> ON SOFTWARE.</span><br/>
                 <span className="reveal-word inline-block">IT WILL </span>
                 <span className="reveal-word inline-block"> RUN ON </span>
-                <span className="reveal-word inline-block font-serif font-semibold italic" style={{ color: DARK_BAND_ACCENT }}> AI.</span>
+                <span className="reveal-word inline-block font-display font-bold" style={{ color: DARK_BAND_ACCENT }}> AI.</span>
               </h2>
 
               <div className="mt-8 flex flex-wrap gap-x-4 gap-y-2">
                 {['Ask.', 'Approve.', 'Analyze.', 'Automate.'].map((word, i) => (
-                  <span key={i} className="reveal-word font-display text-2xl md:text-3xl uppercase tracking-tight" style={{ color: i % 2 === 0 ? DARK_BAND_TEXT : DARK_BAND_ACCENT }}>{word}</span>
+                  <span key={i} className="reveal-word font-body font-bold text-2xl md:text-3xl uppercase tracking-tight" style={{ color: i % 2 === 0 ? DARK_BAND_TEXT : DARK_BAND_ACCENT }}>{word}</span>
                 ))}
               </div>
               <p className="reveal-word font-body text-base mt-6 max-w-md" style={{ color: 'rgba(245,244,240,0.65)' }}>
@@ -230,14 +230,14 @@ export default function ProjectionsSection() {
         <img src="/timelly-logo-full.png" alt="Timelly" className="closing-line h-12 md:h-16 mb-12 opacity-0" />
 
         <div className="relative z-10 max-w-4xl mx-auto space-y-4">
-          <p className="closing-line font-display text-[clamp(28px,4vw,56px)] leading-[1.1] tracking-tight uppercase opacity-0" style={{ color: INK }}>
+          <p className="closing-line font-body font-bold text-[clamp(28px,4vw,56px)] leading-[1.1] tracking-tight uppercase opacity-0" style={{ color: INK }}>
             STARTING WITH SCHOOLS.
           </p>
-          <p className="closing-line font-display text-[clamp(28px,4vw,56px)] leading-[1.1] tracking-tight uppercase opacity-0" style={{ color: INK }}>
-            EXPANDING TO EVERY <span className="font-serif font-semibold italic" style={{ color: GREEN }}>LEARNING INSTITUTION.</span>
+          <p className="closing-line font-body font-bold text-[clamp(28px,4vw,56px)] leading-[1.1] tracking-tight uppercase opacity-0" style={{ color: INK }}>
+            EXPANDING TO EVERY <span className="font-display font-bold" style={{ color: GREEN }}>LEARNING INSTITUTION.</span>
           </p>
-          <p className="closing-line font-display text-[clamp(28px,4vw,56px)] leading-[1.1] tracking-tight uppercase opacity-0" style={{ color: INK }}>
-            POWERING THE FUTURE OF <span className="font-serif font-semibold italic" style={{ color: GREEN }}>EDUCATION.</span>
+          <p className="closing-line font-body font-bold text-[clamp(28px,4vw,56px)] leading-[1.1] tracking-tight uppercase opacity-0" style={{ color: INK }}>
+            POWERING THE FUTURE OF <span className="font-display font-bold" style={{ color: GREEN }}>EDUCATION.</span>
           </p>
 
           <div className="closing-line mt-12 opacity-0 flex justify-center">
@@ -272,7 +272,7 @@ function PhaseCard({ phase, index }: { phase: typeof PHASES[number], index: numb
       style={{ background: '#FFFFFF', border: `1px solid ${BORDER}` }}
     >
       <div className="mb-4">
-        <span className="font-display text-[clamp(44px,5vw,64px)] leading-none" style={{ color: GREEN }}>
+        <span className="font-body font-bold text-[clamp(44px,5vw,64px)] leading-none" style={{ color: GREEN }}>
           {phase.year}
         </span>
       </div>

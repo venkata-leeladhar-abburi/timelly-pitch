@@ -32,7 +32,7 @@ export default function LoadingScreen({
       ref={screenRef}
       className="fixed inset-0 z-[9998] bg-bg-primary flex flex-col items-center justify-center"
     >
-      <div className="font-display text-4xl text-text-warm mb-8 tracking-widest">
+      <div className="font-body text-4xl text-text-warm mb-8 tracking-widest">
         TIMELLY
       </div>
       <div className="w-64 h-px bg-bg-card relative overflow-hidden">

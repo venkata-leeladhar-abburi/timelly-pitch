@@ -40,6 +40,10 @@ html {
 }
 
 body {
+  font-family: var(--font-mona), sans-serif;
+}
+
+body {
   background: #1c1f1a;
   color: #f0ede6;
   overflow-x: hidden;

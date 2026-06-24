@@ -145,12 +145,12 @@ export default function HeroSection() {
               ref={(el) => {
                 textRefs.current[i] = el
               }}
-              className={`absolute bottom-[14%] sm:bottom-[12%] px-6 sm:px-8 md:px-12 z-10 w-full ${
+              className={`absolute bottom-[14%] sm:bottom-[12%] px-6 sm:px-8 md:px-12 z-10 w-full flex flex-col ${
                 beat.align === 'center'
-                  ? 'left-1/2 -translate-x-1/2 text-center'
+                  ? 'left-1/2 -translate-x-1/2 text-center items-center'
                   : beat.align === 'left'
-                    ? 'left-0 text-center sm:text-left max-w-full sm:max-w-xl md:max-w-2xl'
-                    : 'right-0 text-center sm:text-right max-w-full sm:max-w-xl md:max-w-2xl ml-auto'
+                    ? 'left-0 text-center sm:text-left items-center sm:items-start max-w-full sm:max-w-xl md:max-w-2xl'
+                    : 'right-0 text-center sm:text-right items-center sm:items-end max-w-full sm:max-w-xl md:max-w-2xl ml-auto'
               }`}
             >
               {beat.label && (
@@ -158,9 +158,9 @@ export default function HeroSection() {
                   {beat.label}
                 </div>
               )}
-              <h1 className="font-display text-hero text-text-warm leading-none mb-2 sm:mb-4">
+              <h1 className="font-body font-bold text-hero text-text-warm leading-none mb-2 sm:mb-4">
                 {beat.headline.map((line, j) => (
-                  <span key={j} className="block">
+                  <span key={j} className="block whitespace-nowrap">
                     {line}
                   </span>
                 ))}

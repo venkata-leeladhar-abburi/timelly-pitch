@@ -266,23 +266,15 @@ export default function VisionSection() {
         <div className="relative z-10 mb-8 h-2.5 w-2.5 rounded-full" style={{ backgroundColor: '#3F8F3F' }} />
 
         <h3
-          className="relative z-10 font-body font-extrabold uppercase leading-[1.05] tracking-tight max-w-[24ch]"
+          className="relative z-10 font-body font-bold uppercase leading-[1.05] tracking-tight max-w-[24ch]"
           style={{
             color: '#E9ECDB',
             fontSize: 'clamp(28px, 4.6vw, 64px)',
           }}
         >
-          THIS ISN&apos;T A{' '}
-          <span className="font-serif font-semibold italic" style={{ color: '#A3C72E' }}>
-            SCHOOL SOFTWARE
-          </span>{' '}
-          COMPANY.
+          THIS ISN&apos;T A SCHOOL <span className="font-display font-bold" style={{ color: '#B4D429' }}>SOFTWARE</span> COMPANY.
           <br />
-          IT&apos;S AN EDUCATION{' '}
-          <span className="font-serif font-semibold italic" style={{ color: '#A3C72E' }}>
-            INFRASTRUCTURE
-          </span>{' '}
-          COMPANY.
+          IT&apos;S AN EDUCATION <span className="font-display font-bold" style={{ color: '#B4D429' }}>INFRASTRUCTURE</span> COMPANY.
         </h3>
       </div>
 
@@ -328,33 +320,73 @@ export default function VisionSection() {
             <div key={vi} className="pointer-events-none absolute inset-0 z-20">
               <div
                 ref={(el) => { headlineRefs.current[vi] = el }}
-                className="absolute inset-0 flex items-center justify-center px-6 md:justify-start md:px-16"
+                className="absolute inset-0 flex items-end justify-end p-6 md:p-10 lg:p-14"
                 style={{ opacity: vi === 0 ? 1 : 0, transition: 'none' }}
               >
-                <div className="max-w-full text-center md:max-w-[50vw] md:text-left">
-                  <div className="mb-6 flex flex-col items-center gap-3 md:mb-8 md:flex-row md:items-center md:gap-6">
-                    <span className="font-body text-sm font-semibold tracking-[0.2em] text-[#F5F4F0]/50">
+                {/* ── Vision Card ── */}
+                <div
+                  className="w-full max-w-[580px] rounded-2xl p-8 md:p-10"
+                  style={{
+                    background: 'rgba(16, 20, 16, 0.82)',
+                    backdropFilter: 'blur(24px)',
+                    WebkitBackdropFilter: 'blur(24px)',
+                    border: '1px solid rgba(240, 237, 230, 0.13)',
+                    boxShadow: '0 20px 60px rgba(0,0,0,0.55)',
+                  }}
+                >
+                  {/* Label row */}
+                  <div className="mb-5 flex items-center gap-3">
+                    <span
+                      className="font-body text-xs font-semibold tracking-[0.25em] uppercase"
+                      style={{ color: 'rgba(240,237,230,0.45)' }}
+                    >
                       {vision.label}
                     </span>
-                    <div className="hidden h-px w-20 bg-[#F5F4F0]/30 md:block" />
-                    <span className="font-body text-sm font-semibold tracking-[0.3em] text-[#8DC63F] uppercase">
+                    <div className="h-px flex-1" style={{ background: 'rgba(240,237,230,0.12)' }} />
+                    {/* Heading tag pill */}
+                    <span
+                      className="rounded-full px-3 py-1 font-body text-[11px] font-bold tracking-[0.18em] uppercase"
+                      style={{
+                        background: 'rgba(180, 212, 41, 0.14)',
+                        border: '1px solid rgba(180, 212, 41, 0.40)',
+                        color: '#B4D429',
+                      }}
+                    >
                       {vision.card.heading}
                     </span>
                   </div>
 
-                  <h2 className="mb-8 hidden font-display text-[clamp(48px,5vw,80px)] leading-[0.9] text-[#F5F4F0] tracking-tight drop-shadow-2xl md:block">
+                  {/* Main headline — Brier for accent line, Mona Sans otherwise */}
+                  <h2
+                    className="mb-5 font-body font-bold uppercase leading-[1.0] tracking-tight"
+                    style={{
+                      color: '#F0EDE6',
+                      fontSize: 'clamp(28px, 3.4vw, 48px)',
+                    }}
+                  >
                     {vision.headline.map((line, li) => (
                       <span key={li} className="block">
-                        {line}
+                        {li === 0 ? (
+                          line
+                        ) : (
+                          <span className="font-display" style={{ color: '#B4D429' }}>
+                            {line}
+                          </span>
+                        )}
                       </span>
                     ))}
                   </h2>
 
-                  <div className="hidden border-l-[3px] border-[#8DC63F] pl-8 md:block">
-                    <p className="font-body text-xl font-light leading-relaxed text-[#F5F4F0]/90 max-w-xl drop-shadow-md">
-                      {vision.card.loss}
-                    </p>
-                  </div>
+                  {/* Divider */}
+                  <div className="mb-5 h-px w-12" style={{ background: 'rgba(180,212,41,0.5)' }} />
+
+                  {/* Body text */}
+                  <p
+                    className="font-body text-base font-light leading-relaxed"
+                    style={{ color: 'rgba(240,237,230,0.88)' }}
+                  >
+                    {vision.card.loss}
+                  </p>
                 </div>
               </div>
             </div>
@@ -400,17 +432,15 @@ export default function VisionSection() {
         </svg>
 
         <h3
-          className="relative z-10 font-body font-extrabold uppercase leading-[1.05] tracking-tight max-w-[24ch]"
+          className="relative z-10 font-body font-bold uppercase leading-[1.05] tracking-tight max-w-[24ch]"
           style={{
             color: '#E9ECDB',
             fontSize: 'clamp(36px, 5.4vw, 84px)',
           }}
         >
-          NOT SOFTWARE FOR SCHOOLS.
+          NOT <span className="font-display font-bold" style={{ color: '#B4D429' }}>SOFTWARE</span> FOR SCHOOLS.
           <br />
-          <span className="font-serif font-semibold italic" style={{ color: '#A3C72E' }}>
-            INTELLIGENCE FOR EDUCATION.
-          </span>
+          <span className="font-display font-bold" style={{ color: '#B4D429' }}>INTELLIGENCE</span> FOR EDUCATION.
         </h3>
         <p className="relative z-10 mt-8 font-body text-base md:text-lg font-light tracking-wide text-[#E9ECDB]/60">
           One platform. Every learner. Every stage.

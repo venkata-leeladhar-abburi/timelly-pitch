@@ -8,19 +8,25 @@ export default function Navbar() {
   // viewport. Only the tint/border/shadow intensify once the user scrolls,
   // and those are cheap, paint-only properties safe to transition directly.
   const [scrolled, setScrolled] = useState(false)
-  const [inVisionSection, setInVisionSection] = useState(false)
+  const [hideNav, setHideNav] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 80)
 
       const visionEl = document.getElementById('section-vision')
+      const problemEl = document.getElementById('section-problem')
+
+      let hidden = false
       if (visionEl) {
         const rect = visionEl.getBoundingClientRect()
-        setInVisionSection(rect.top <= 0 && rect.bottom >= 0)
-      } else {
-        setInVisionSection(false)
+        if (rect.top <= 0 && rect.bottom >= 0) hidden = true
       }
+      if (problemEl) {
+        const rect = problemEl.getBoundingClientRect()
+        if (rect.top <= 0 && rect.bottom >= 0) hidden = true
+      }
+      setHideNav(hidden)
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -36,8 +42,8 @@ export default function Navbar() {
         backgroundColor: scrolled ? 'rgba(28,31,26,0.55)' : 'rgba(28,31,26,0.22)',
         borderBottomColor: scrolled ? 'rgba(240,237,230,0.12)' : 'rgba(240,237,230,0.08)',
         boxShadow: scrolled ? '0 8px 32px rgba(0,0,0,0.25)' : '0 0px 0px rgba(0,0,0,0)',
-        opacity: inVisionSection ? 0 : 1,
-        pointerEvents: inVisionSection ? 'none' : 'auto',
+        opacity: hideNav ? 0 : 1,
+        pointerEvents: hideNav ? 'none' : 'auto',
         transition:
           'background-color 300ms var(--ease-out), border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out), opacity 300ms var(--ease-out)',
       }}

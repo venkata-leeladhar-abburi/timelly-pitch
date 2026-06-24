@@ -16,15 +16,14 @@ const config: Config = {
         gold: '#C8A96E',
       },
       fontFamily: {
-        display: ['var(--font-brier)', 'serif'],
         body: ['var(--font-mona)', 'sans-serif'],
+        display: ['var(--font-brier)', 'serif'],
         mono: ['var(--font-jetbrains)', 'monospace'],
-        serif: ['var(--font-playfair)', 'serif'],
         script: ['var(--font-script)', 'cursive'],
       },
       fontSize: {
         massive: 'clamp(80px, 14vw, 200px)',
-        hero: 'clamp(56px, 8vw, 120px)',
+        hero: 'clamp(40px, 6vw, 88px)',
         xl2: 'clamp(36px, 5vw, 64px)',
         lg2: 'clamp(22px, 3vw, 36px)',
       },

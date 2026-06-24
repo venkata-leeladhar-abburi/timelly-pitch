@@ -77,7 +77,7 @@ export default function StatementSection() {
 
       {/* Statement */}
       <p
-        className="relative z-10 max-w-[14ch] text-center font-display uppercase leading-[0.95] tracking-tight md:max-w-[16ch]"
+        className="relative z-10 max-w-[14ch] text-center font-body font-bold uppercase leading-[0.95] tracking-tight md:max-w-[16ch]"
         style={{
           color: CREAM,
           fontSize: 'clamp(40px, 7vw, 112px)',
@@ -89,7 +89,7 @@ export default function StatementSection() {
               ref={(el) => {
                 wordsRef.current[i] = el
               }}
-              className={t.accent ? 'font-serif font-semibold' : undefined}
+              className={t.accent ? 'font-display font-bold' : undefined}
               style={t.accent ? { color: LIME } : undefined}
             >
               {t.text}
