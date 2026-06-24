@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from '@/lib/gsap'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 interface LoadingScreenProps {
   progress: number
@@ -80,17 +83,17 @@ export default function LoadingScreen({
         </div>
 
         {/* Dynamic Boot Text */}
-        <div className="w-full flex justify-between items-end mb-5">
-          <div className="font-display text-sm md:text-base font-bold tracking-[0.2em] uppercase" style={{ color: '#B4D429' }}>
+        <div className={`w-full flex justify-between items-end mb-5 ${inter.className}`}>
+          <div className="text-[11px] md:text-sm font-bold tracking-[0.25em] uppercase" style={{ color: '#B4D429' }}>
             {bootText}
           </div>
-          <div className="font-display text-sm md:text-base font-bold tracking-widest" style={{ color: '#F5F4F0' }}>
+          <div className="text-[14px] md:text-lg font-bold tracking-widest" style={{ color: '#F5F4F0' }}>
             {progress}%
           </div>
         </div>
 
         {/* Premium Progress Bar */}
-        <div className="w-full h-1 relative overflow-hidden rounded-full" style={{ backgroundColor: 'rgba(245, 244, 240, 0.1)' }}>
+        <div className="w-full h-3 md:h-4 relative overflow-hidden rounded-full" style={{ backgroundColor: 'rgba(245, 244, 240, 0.1)' }}>
           <div
             ref={barRef}
             className="absolute inset-y-0 left-0 transition-all duration-300 ease-out rounded-full"

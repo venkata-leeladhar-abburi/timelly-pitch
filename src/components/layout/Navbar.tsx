@@ -61,8 +61,8 @@ export default function Navbar() {
       {/* CTA */}
       <a
         href="mailto:timelly.tech@gmail.com"
-        className="font-body text-xs sm:text-sm font-bold uppercase tracking-widest px-5 py-2.5 sm:px-7 sm:py-3 rounded-sm transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-lg hover:-translate-y-0.5"
-        style={{ backgroundColor: '#B4D429', color: '#1A3A24', border: '1px solid rgba(180,212,41,0.5)' }}
+        className="font-body text-xs sm:text-sm font-bold uppercase tracking-widest px-6 py-3 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(180,212,41,0.3)] hover:shadow-[0_0_25px_rgba(180,212,41,0.5)] hover:-translate-y-0.5"
+        style={{ backgroundColor: '#B4D429', color: '#1A3A24', border: '1px solid rgba(180,212,41,0.8)' }}
       >
         Schedule a Call
       </a>
