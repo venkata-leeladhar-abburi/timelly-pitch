@@ -41,6 +41,7 @@ export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const textRefs = useRef<(HTMLDivElement | null)[]>([])
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null)
   const [totalFrames, setTotalFrames] = useState(0)
 
   // Load frame count from meta.json
@@ -101,7 +102,16 @@ export default function HeroSection() {
       trigger: sectionRef.current,
       start: 'top top',
       end: 'bottom bottom',
-      onUpdate: (self) => apply(self.progress),
+      onUpdate: (self) => {
+        apply(self.progress)
+        if (scrollIndicatorRef.current) {
+          gsap.to(scrollIndicatorRef.current, {
+            opacity: self.progress > 0.01 ? 0 : 1,
+            duration: 0.3,
+            overwrite: 'auto',
+          })
+        }
+      },
     })
 
     apply(0) // initialize first beat visible on load
@@ -173,9 +183,20 @@ export default function HeroSection() {
             </div>
           ))}
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
-            <div className="w-px h-12 animate-pulse" style={{ backgroundColor: '#B4D429' }} />
+          {/* Highly visible scroll indicator */}
+          <div 
+            ref={scrollIndicatorRef}
+            className="absolute top-24 left-1/2 -translate-x-1/2 md:top-auto md:bottom-16 md:left-auto md:right-12 md:-translate-x-0 z-20 flex flex-col items-center gap-2 sm:gap-4 pointer-events-none"
+          >
+            <div className="font-display font-bold text-lg sm:text-3xl uppercase tracking-[0.2em] text-center leading-tight animate-pulse text-[#1A3A24] md:text-[#B4D429] [text-shadow:0_4px_10px_rgba(0,0,0,0.15)] md:[text-shadow:0_0_20px_rgba(180,212,41,0.6)]">
+              SCROLL<br className="hidden sm:block" /><span className="sm:hidden"> </span>TO BEGIN
+            </div>
+            <div className="flex flex-col items-center animate-bounce mt-1">
+              <div className="w-[4px] sm:w-[6px] h-10 sm:h-20 rounded-full bg-[#1A3A24] md:bg-[#B4D429] shadow-[0_4px_10px_rgba(0,0,0,0.15)] md:shadow-[0_0_15px_rgba(180,212,41,0.6)]" />
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" className="sm:w-[40px] sm:h-[40px] stroke-[#1A3A24] md:stroke-[#B4D429] drop-shadow-[0_4px_6px_rgba(0,0,0,0.15)] md:drop-shadow-[0_0_10px_rgba(180,212,41,0.6)]" style={{ marginTop: '-4px' }}>
+                <path d="M4 8l8 8 8-8"/>
+              </svg>
+            </div>
           </div>
         </div>
       </section>
