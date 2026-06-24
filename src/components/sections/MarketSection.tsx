@@ -160,7 +160,7 @@ function SectionHeading({ label, lines }: { label: string; lines: { words: { tex
         {lines.map((line, i) => (
           <div key={i} className="flex flex-wrap gap-x-[0.35em]">
             {line.words.map((w, j) => (
-              <span key={j} className="font-display text-[clamp(36px,5vw,74px)] leading-[0.88] tracking-tight uppercase" style={{ color: w.lime ? GREEN : INK }}>
+              <span key={j} className={`text-[clamp(36px,5vw,74px)] leading-[0.88] tracking-tight uppercase ${w.lime ? 'font-serif font-semibold italic' : 'font-display'}`} style={{ color: w.lime ? GREEN : INK }}>
                 {w.text}
               </span>
             ))}
@@ -335,7 +335,7 @@ export default function MarketSection() {
             ].map((line, i) => (
               <div key={i} className="flex flex-wrap justify-center gap-x-[0.35em]">
                 {line.map((w: {text:string;lime?:boolean}, j) => (
-                  <span key={j} className="font-display text-[clamp(36px,5.5vw,80px)] leading-[0.88] tracking-tight uppercase" style={{ color: w.lime ? GREEN : INK }}>
+                  <span key={j} className={`text-[clamp(36px,5.5vw,80px)] leading-[0.88] tracking-tight uppercase ${w.lime ? 'font-serif font-semibold italic' : 'font-display'}`} style={{ color: w.lime ? GREEN : INK }}>
                     {w.text}
                   </span>
                 ))}
@@ -351,7 +351,7 @@ export default function MarketSection() {
             ].map((line, i) => (
               <div key={i} className="flex flex-wrap justify-center gap-x-[0.35em]">
                 {line.map((w: {text:string;lime?:boolean}, j) => (
-                  <span key={j} className="font-display text-[clamp(36px,5.5vw,80px)] leading-[0.88] tracking-tight uppercase" style={{ color: w.lime ? GREEN : INK }}>
+                  <span key={j} className={`text-[clamp(36px,5.5vw,80px)] leading-[0.88] tracking-tight uppercase ${w.lime ? 'font-serif font-semibold italic' : 'font-display'}`} style={{ color: w.lime ? GREEN : INK }}>
                     {w.text}
                   </span>
                 ))}
@@ -478,7 +478,7 @@ export default function MarketSection() {
               ) : (
                 <div key={i} className="flex flex-wrap gap-x-[0.35em]">
                   {line.map((w: {text:string;lime?:boolean}, j) => (
-                    <span key={j} className="font-display text-[clamp(32px,4.5vw,64px)] leading-[0.88] tracking-tight uppercase" style={{ color: w.lime ? GREEN : INK }}>
+                    <span key={j} className={`text-[clamp(32px,4.5vw,64px)] leading-[0.88] tracking-tight uppercase ${w.lime ? 'font-serif font-semibold italic' : 'font-display'}`} style={{ color: w.lime ? GREEN : INK }}>
                       {w.text}
                     </span>
                   ))}
@@ -509,7 +509,7 @@ export default function MarketSection() {
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.35em]">
               {[{ w: 'TO', lime: false }, { w: 'AN', lime: false }, { w: 'ENTIRE', lime: true }, { w: 'GENERATION.', lime: false }].map((obj, i) => (
-                <span key={i} className="font-display text-[clamp(44px,7vw,110px)] leading-[0.88] tracking-tight uppercase" style={{ color: obj.lime ? GREEN : INK }}>{obj.w}</span>
+                <span key={i} className={`text-[clamp(44px,7vw,110px)] leading-[0.88] tracking-tight uppercase ${obj.lime ? 'font-serif font-semibold italic' : 'font-display'}`} style={{ color: obj.lime ? GREEN : INK }}>{obj.w}</span>
               ))}
             </div>
           </div>

@@ -130,7 +130,7 @@ export default function ProjectionsSection() {
           <p className="font-body text-xs uppercase tracking-[0.3em] mb-4" style={{ color: GREEN }}>FUTURE PROJECTIONS</p>
           <h2 className="font-display text-[clamp(44px,6vw,80px)] tracking-tight uppercase leading-[0.9] mb-8" style={{ color: INK }}>
             FROM SCHOOL SOFTWARE<br />
-            <span style={{ color: GREEN }}>TO EDUCATION</span> INFRASTRUCTURE<span style={{ color: GREEN }}>.</span>
+            <span className="font-serif font-semibold italic" style={{ color: GREEN }}>TO EDUCATION</span> INFRASTRUCTURE<span style={{ color: GREEN }}>.</span>
           </h2>
           <div className="flex items-center gap-6 mb-8 max-w-3xl">
             <div className="h-px flex-1" style={{ backgroundColor: BORDER }} />
@@ -169,13 +169,13 @@ export default function ProjectionsSection() {
               <p className="font-body text-xs uppercase tracking-[0.3em] mb-4" style={{ color: DARK_BAND_ACCENT }}>THE BIG PICTURE</p>
               <h2 className="font-display text-[clamp(40px,5vw,64px)] leading-[0.9] tracking-tight uppercase" style={{ color: DARK_BAND_TEXT }}>
                 <span className="reveal-word inline-block">THE </span>
-                <span className="reveal-word inline-block" style={{ color: DARK_BAND_ACCENT }}> FUTURE </span>
+                <span className="reveal-word inline-block font-serif font-semibold italic" style={{ color: DARK_BAND_ACCENT }}> FUTURE </span>
                 <span className="reveal-word inline-block"> SCHOOL</span><br/>
                 <span className="reveal-word inline-block">WON&apos;T RUN </span>
                 <span className="reveal-word inline-block"> ON SOFTWARE.</span><br/>
                 <span className="reveal-word inline-block">IT WILL </span>
                 <span className="reveal-word inline-block"> RUN ON </span>
-                <span className="reveal-word inline-block" style={{ color: DARK_BAND_ACCENT }}> AI.</span>
+                <span className="reveal-word inline-block font-serif font-semibold italic" style={{ color: DARK_BAND_ACCENT }}> AI.</span>
               </h2>
 
               <div className="mt-8 flex flex-wrap gap-x-4 gap-y-2">
@@ -234,10 +234,10 @@ export default function ProjectionsSection() {
             STARTING WITH SCHOOLS.
           </p>
           <p className="closing-line font-display text-[clamp(28px,4vw,56px)] leading-[1.1] tracking-tight uppercase opacity-0" style={{ color: INK }}>
-            EXPANDING TO EVERY <span style={{ color: GREEN }}>LEARNING INSTITUTION.</span>
+            EXPANDING TO EVERY <span className="font-serif font-semibold italic" style={{ color: GREEN }}>LEARNING INSTITUTION.</span>
           </p>
           <p className="closing-line font-display text-[clamp(28px,4vw,56px)] leading-[1.1] tracking-tight uppercase opacity-0" style={{ color: INK }}>
-            POWERING THE FUTURE OF <span style={{ color: GREEN }}>EDUCATION.</span>
+            POWERING THE FUTURE OF <span className="font-serif font-semibold italic" style={{ color: GREEN }}>EDUCATION.</span>
           </p>
 
           <div className="closing-line mt-12 opacity-0 flex justify-center">

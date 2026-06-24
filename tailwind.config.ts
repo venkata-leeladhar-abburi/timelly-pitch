@@ -16,8 +16,8 @@ const config: Config = {
         gold: '#C8A96E',
       },
       fontFamily: {
-        display: ['var(--font-bebas)', 'sans-serif'],
-        body: ['var(--font-dm-sans)', 'sans-serif'],
+        display: ['var(--font-brier)', 'serif'],
+        body: ['var(--font-mona)', 'sans-serif'],
         mono: ['var(--font-jetbrains)', 'monospace'],
         serif: ['var(--font-playfair)', 'serif'],
         script: ['var(--font-script)', 'cursive'],

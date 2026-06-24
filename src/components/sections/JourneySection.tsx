@@ -221,7 +221,7 @@ export default function JourneySection() {
                   {step.highlight && (
                     <>
                       {' '}
-                      <span className="font-extrabold" style={{ color: GREEN }}>{step.highlight}</span>
+                      <span className="font-serif font-semibold italic" style={{ color: GREEN }}>{step.highlight}</span>
                     </>
                   )}
                 </h3>

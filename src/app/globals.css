@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-bebas: 'Bebas Neue', sans-serif;
-  --font-dm-sans: 'DM Sans', sans-serif;
+  --font-brier: 'Brier', serif;
+  --font-mona: 'Mona Sans', sans-serif;
   --font-jetbrains: 'JetBrains Mono', monospace;
 
   /* Premium easing curves — stronger than default CSS easings */

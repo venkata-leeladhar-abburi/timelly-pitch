@@ -253,9 +253,9 @@ export default function SolutionSection() {
           </h2>
 
           <h3 className="mt-6 font-display text-[clamp(30px,8vw,40px)] leading-[1.05] tracking-tight uppercase" style={{ color: CREAM }}>
-            SCHOOLS DON&apos;T NEED <span style={{ color: LIME }}>MORE</span> SOFTWARE.
+            SCHOOLS DON&apos;T NEED <span className="font-serif font-semibold italic" style={{ color: LIME }}>MORE</span> SOFTWARE.
             <br />
-            THEY NEED ONE <span style={{ color: LIME }}>SYSTEM</span> THAT ACTUALLY WORKS.
+            THEY NEED ONE <span className="font-serif font-semibold italic" style={{ color: LIME }}>SYSTEM</span> THAT ACTUALLY WORKS.
           </h3>
 
           <p className="font-body text-base mt-6 leading-relaxed" style={{ color: CREAM, opacity: 0.75 }}>
@@ -282,9 +282,9 @@ export default function SolutionSection() {
 
           {/* Transition statement — condensed */}
           <h2 className="mt-16 font-display text-[clamp(28px,7vw,36px)] leading-[1.15] tracking-tight uppercase" style={{ color: CREAM }}>
-            BUILT FOR <span style={{ color: LIME }}>PRINCIPALS.</span> LOVED BY{' '}
-            <span style={{ color: LIME }}>TEACHERS.</span> TRUSTED BY{' '}
-            <span style={{ color: LIME }}>PARENTS.</span>
+            BUILT FOR <span className="font-serif font-semibold italic" style={{ color: LIME }}>PRINCIPALS.</span> LOVED BY{' '}
+            <span className="font-serif font-semibold italic" style={{ color: LIME }}>TEACHERS.</span> TRUSTED BY{' '}
+            <span className="font-serif font-semibold italic" style={{ color: LIME }}>PARENTS.</span>
           </h2>
 
           {/* Feature cards — stacked, normal flow, fully scrollable */}
@@ -363,14 +363,14 @@ export default function SolutionSection() {
               <span style={{ color: CREAM }}>NEED</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
-              <span style={{ color: LIME }}>MORE</span>
+              <span className="font-serif font-semibold italic" style={{ color: LIME }}>MORE</span>
               <span style={{ color: CREAM }}>SOFTWARE.</span>
               <span style={{ color: CREAM }}>THEY</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
               <span style={{ color: CREAM }}>NEED</span>
               <span style={{ color: CREAM }}>ONE</span>
-              <span style={{ color: LIME }}>SYSTEM</span>
+              <span className="font-serif font-semibold italic" style={{ color: LIME }}>SYSTEM</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
               <span style={{ color: CREAM }}>THAT</span>
@@ -414,22 +414,22 @@ export default function SolutionSection() {
             <div className="flex flex-wrap justify-center gap-x-[0.25em]">
               <span style={{ color: CREAM }}>BUILT</span>
               <span style={{ color: CREAM }}>FOR</span>
-              <span style={{ color: LIME }}>PRINCIPALS.</span>
+              <span className="font-serif font-semibold italic" style={{ color: LIME }}>PRINCIPALS.</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
               <span style={{ color: CREAM }}>LOVED</span>
               <span style={{ color: CREAM }}>BY</span>
-              <span style={{ color: LIME }}>TEACHERS.</span>
+              <span className="font-serif font-semibold italic" style={{ color: LIME }}>TEACHERS.</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
               <span style={{ color: CREAM }}>TRUSTED</span>
               <span style={{ color: CREAM }}>BY</span>
-              <span style={{ color: LIME }}>PARENTS.</span>
+              <span className="font-serif font-semibold italic" style={{ color: LIME }}>PARENTS.</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
               <span style={{ color: CREAM }}>DESIGNED</span>
               <span style={{ color: CREAM }}>FOR</span>
-              <span style={{ color: LIME }}>STUDENTS.</span>
+              <span className="font-serif font-semibold italic" style={{ color: LIME }}>STUDENTS.</span>
             </div>
           </h2>
         </div>
@@ -508,7 +508,7 @@ export default function SolutionSection() {
             <span style={{ color: CREAM }}>OF</span>
           </div>
           <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
-            <span style={{ color: LIME }}>TIMELLY</span>
+            <span className="font-serif font-semibold italic" style={{ color: LIME }}>TIMELLY</span>
             <span style={{ color: CREAM }}>IS</span>
             <span style={{ color: CREAM }}>LESS</span>
           </div>
@@ -519,14 +519,14 @@ export default function SolutionSection() {
           </div>
           <div className="flex flex-wrap justify-center gap-x-[0.25em] mt-1 md:mt-2">
             <span style={{ color: CREAM }}>OF</span>
-            <span style={{ color: LIME }}>CHAOS.</span>
+            <span className="font-serif font-semibold italic" style={{ color: LIME }}>CHAOS.</span>
           </div>
         </h2>
         <p 
           className="font-body text-lg md:text-xl max-w-3xl mb-20 leading-relaxed"
           style={{ color: CREAM, opacity: 0.8 }}
         >
-          For just <strong style={{ color: LIME }}>₹199 per student per year</strong>, schools replace paperwork, disconnected communication, and operational inefficiencies with a unified digital ecosystem.
+          For just <strong className="font-serif font-semibold italic" style={{ color: LIME }}>₹199 per student per year</strong>, schools replace paperwork, disconnected communication, and operational inefficiencies with a unified digital ecosystem.
         </p>
 
         <div className="flex flex-col md:flex-row gap-12 items-center justify-center w-full max-w-4xl">

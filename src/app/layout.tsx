@@ -1,24 +1,24 @@
 import type { Metadata } from 'next'
 import {
-  Bebas_Neue,
-  DM_Sans,
   JetBrains_Mono,
   Playfair_Display,
   Cedarville_Cursive,
 } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 
-const bebasNeue = Bebas_Neue({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-bebas',
+const brier = localFont({
+  src: '../fonts/Brier-Bold.woff2',
+  weight: '700',
+  variable: '--font-brier',
+  display: 'swap',
 })
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-dm-sans',
+const monaSans = localFont({
+  src: '../fonts/MonaSans-Variable.woff2',
+  weight: '200 900',
+  variable: '--font-mona',
+  display: 'swap',
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -54,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebasNeue.variable} ${dmSans.variable} ${jetbrainsMono.variable} ${playfair.variable} ${cedarville.variable}`}
+      className={`${brier.variable} ${monaSans.variable} ${jetbrainsMono.variable} ${playfair.variable} ${cedarville.variable}`}
     >
       <body className="bg-bg-primary overflow-x-hidden cursor-none">
         {children}
